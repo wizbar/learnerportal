@@ -1,0 +1,94 @@
+@model learner_portal.Models.Job
+
+<form asp-action="Delete">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="tab-content mb-0 b-0">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <b>@Html.DisplayNameFor(model => model.CompanyId):</b>
+                    <div class="form-control form-control-feedback h-auto p-3">
+                        @Html.DisplayFor(model => model.Company.CompanyId)
+                    </div>
+                </div> 
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <b>@Html.DisplayNameFor(model => model.JobCode):</b>
+                    <div class="form-control form-control-feedback h-auto p-3">
+                        @Html.DisplayFor(model => model.JobCode)
+                    </div>
+                </div> 
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <b>@Html.DisplayNameFor(model => model.JobTitle):</b>
+                    <div class="form-control form-control-feedback h-auto p-3">
+                        @Html.DisplayFor(model => model.JobTitle)
+                    </div>
+                </div> 
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <b>@Html.DisplayNameFor(model => model.OfoId):</b>
+                    <div class="form-control form-control-feedback h-auto p-3">
+                        @Html.DisplayFor(model => model.Ofo.OfoTitle)
+                    </div>
+                </div> 
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <b>@Html.DisplayNameFor(model => model.JobDesc):</b>
+                    <div class="form-control form-control-feedback h-auto p-3">
+                        @Html.DisplayFor(model => model.JobDesc)
+                    </div>
+                </div> 
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <b>@Html.DisplayNameFor(model => model.ListedDate):</b>
+                    <div class="form-control form-control-feedback h-auto p-3">
+                        @Html.DisplayFor(model => model.ListedDate)
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <b>@Html.DisplayNameFor(model => model.ExpiryDate):</b>
+                    <div class="form-control form-control-feedback h-auto p-3">
+                        @Html.DisplayFor(model => model.ExpiryDate)
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <b>@Html.DisplayNameFor(model => model.SectorId):</b>
+                    <div class="form-control form-control-feedback h-auto p-3">
+                        @Html.DisplayFor(model => model.Sector.SectorDesc)
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <b>@Html.DisplayNameFor(model => model.JobTypeId):</b>
+                    <div class="form-control form-control-feedback h-auto p-3">
+                        @Html.DisplayFor(model => model.JobType.JobTypeDesc)
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <b>@Html.DisplayNameFor(model => model.ProvinceId):</b>
+                    <div class="form-control form-control-feedback h-auto p-3">
+                        @Html.DisplayFor(model => model.Province.ProvinceName)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" asp-for="JobId"/>
+    <div class="form-group">
+        <input type="submit" value="Delete" class="btn btn-danger mr-1"/>
+    </div>
+</form>

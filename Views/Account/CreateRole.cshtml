@@ -1,0 +1,39 @@
+﻿@model learner_portal.DTO.RegisterUserDto
+
+@{
+    Layout = "_Layout_Main";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<div class="card card-custom gutter-b">
+    <div class="card-header">
+        <h4 class="mt-8">Add User</h4>
+    </div>
+    <div class="card-body">
+        <form asp-action="CreateRole">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+            <div class="form-group col-md-6">
+                <label asp-for="Role" class="control-label"></label>
+                <input asp-for="Role" class="form-control" placeholder="Enter Username"/>
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary mr-1"/>
+                <a asp-action="Index" class="btn btn-bg-primary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

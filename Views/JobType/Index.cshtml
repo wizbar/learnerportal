@@ -1,0 +1,40 @@
+@{
+    Layout = "_Layout_Main";
+}
+
+<div class="card card-custom gutter-b">
+        <div class="card-header">
+            <h4 class="mt-8">Job Types</h4>
+        </div>
+    <div class="card-body">
+        <table id="alljobType" class="table">
+            <thead>
+            <tr>
+                <div class="form-actions no-color col-md-3 float-left">
+                    <button class="btn btn-primary btn-sm mb-2 btn-rounded" onclick="showInPopUp('@Url.Action("Create", "JobType", null, Context.Request.Scheme)', 'Add Job Type')" id="btnCreate"><i class="fa fa-plus"></i>Create Job Type</button>
+                </div>
+            </tr>
+            <tr>
+                <th>ID</th>
+                <th>Job Type Code</th>
+                <th>Job Type Description</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+        </table>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#divProcessing").hide();
+
+        createJobTypeDataTable('alljobType', '/JobType/GetAllJobType'); 
+
+        // Hide the "busy" Gif at load:
+
+    });
+
+</script>    

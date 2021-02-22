@@ -1,0 +1,73 @@
+@model learner_portal.Models.Job
+
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <b>Company</b>
+                    <select asp-for="CompanyId" class="form-control" asp-items="ViewBag.CompanyId">
+                            <option value="" selected disabled hidden>Which Company</option>
+                    </select>
+                </div>                
+                <div class="form-group col-md-6 mt-3">
+                    <b>Job Image</b><br>
+                    <input asp-for="JobPhoto" name="JobPhoto" accept="Image/*">
+                </div>
+                <div class="form-group col-md-6">
+                    <b>Job Code</b>
+                    <input asp-for="JobCode" class="form-control" placeholder="Enter Job Code"/>
+                    <span asp-validation-for="JobCode" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                   <b>Job Title</b>
+                    <input asp-for="JobTitle" class="form-control" placeholder="Enter Job Title"/>
+                    <span asp-validation-for="JobTitle" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <b>Job Organising Framework for Occupations (OFO)</b>
+                    <select asp-for="OfoId" class="form-control" asp-items="ViewBag.OfoId">
+                        <option value="" selected disabled hidden>Choose Job OFO</option>
+                    </select>
+                    <span asp-validation-for="OfoId" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <b>Job Description</b>
+                    <input asp-for="JobDesc" class="form-control" placeholder="Enter Job Description"/>
+                    <span asp-validation-for="JobDesc" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <b>Listed Date</b>
+                    <input asp-for="ListedDate" class="form-control" placeholder="Set Listing Date"/>
+                    <span asp-validation-for="ListedDate" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <b>Expiry Date</b>
+                    <input asp-for="ExpiryDate" class="form-control"/>
+                    <span asp-validation-for="ExpiryDate" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <b>Sector</b>
+                    <select asp-for="SectorId" class="form-control" asp-items="ViewBag.SectorId">
+                        <option value="" selected disabled hidden>Choose Sector</option>
+                    </select>
+                    <span asp-validation-for="SectorId" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                   <b>Job Type</b>
+                    <select asp-for="JobTypeId" class="form-control" asp-items="ViewBag.JobTypeId"> 
+                        <option value="" selected disabled hidden>Choose Job Type</option>
+                    </select>
+                    <span asp-validation-for="JobTypeId" class="text-danger"></span>
+                </div> 
+                <div class="form-group col-md-6">
+                    <b>Province</b><br>
+                    <select asp-for="ProvinceId" class="form-control" style="width: 100%" asp-items="ViewBag.ProvinceId">
+                        <option value="" selected disabled hidden>Choose Your Province</option>
+                    </select>
+                    <span asp-validation-for="ProvinceId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary mr-1"/>
+            </div>
+        </form>

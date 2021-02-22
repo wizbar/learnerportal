@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "_Layout_Main";
+}
+
+<div class="card card-custom gutter-b">
+    <div class="card-header">
+        <h4 class="mt-8">Document</h4>
+    </div>
+    <div class="card-body">
+        <table id="allDocuments" class="table "> 
+            <thead>
+            <tr>
+                <div class="form-actions no-color col-md-3 float-left">
+                    <button class="btn btn-primary btn-sm mb-2 btn-rounded" onclick="showInPopUp('@Url.Action("Create", "Documents", null, Context.Request.Scheme)', 'Add Document')" id="btnCreate"><i class="fa fa-plus"></i>Create Document</button>
+                </div>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <th>Document Type</th>
+                <th>Comment</th>
+                <th>Learner</th>
+                <th>Company</th>
+                <span class=" label-light"><th>Verified</th></span>
+                <th>Verification Date</th>
+                <th>Verified By</th>
+                <th>Job Application</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+        </table>
+
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#divProcessing").hide();
+
+        createDocumentsDataTable('allDocuments', '/Documents/GetAllDocuments'); 
+
+        // Hide the "busy" Gif at load:
+
+
+    });
+
+</script>

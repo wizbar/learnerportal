@@ -1,0 +1,26 @@
+@model learner_portal.Models.School
+
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SchoolId"/>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <b>School Code</b>
+                    <input asp-for="SchoolCode" class="form-control" placeholder="Enter School Code"/>
+                    <span asp-validation-for="SchoolCode" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-12">
+                    <b>Emis No</b>
+                    <input asp-for="EmisNo" class="form-control" placeholder="Enter School EMIS No"/>
+                    <span asp-validation-for="EmisNo" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-12">
+                    <b>School Name</b>
+                    <input asp-for="SchoolName" class="form-control" placeholder="Enter School Name"/>
+                    <span asp-validation-for="SchoolName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success mr-1"/>
+            </div>
+        </form>

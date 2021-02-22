@@ -1,0 +1,41 @@
+﻿@model learner_portal.Models.Financialyear
+
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for=" FinancialyearId" />
+             <div class="row">
+                            <div class="form-group col-md-12">
+                                <b>Start Date</b>
+                                <input asp-for="StartDate" class="form-control" />
+                                <span asp-validation-for="StartDate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <b>End Date</b>
+                                <input asp-for="EndDate" class="form-control" />
+                                <span asp-validation-for="EndDate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <b>Active For Wsp?</b>
+                                <input asp-for="ActiveForWsp" class="form-control" placeholder="Yes/No"/>
+                                <span asp-validation-for="ActiveForWsp" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <b>Financial year Description</b>
+                                <input asp-for="FinancialyearDesc" class="form-control" placeholder="Enter Description" />
+                                <span asp-validation-for="FinancialyearDesc" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <b>Locked For Wsp Submission?</b>
+                                <input asp-for="LockedForWspSubmission" class="form-control" placeholder="Yes/No"/>
+                                <span asp-validation-for="LockedForWspSubmission" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <b>Active(Y/N)</b>
+                                <input asp-for="ActiveYn" class="form-control" placeholder="Yes/No"/>
+                                <span asp-validation-for="ActiveYn" class="text-danger"></span>
+                            </div>
+                        </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-success mr-1" />
+                </div>
+            </form>

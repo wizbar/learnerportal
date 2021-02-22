@@ -1,0 +1,137 @@
+﻿@model List<learner_portal.Models.Job>
+
+<div class="d-flex">
+    @foreach (var item in Model)
+    { 
+        <div class="card gutter-b ml-1 col-md-3 mt-3">
+            <div class="card-body"> 
+					
+                <a ><img src="@("~" + item.JobPhotoPath + "/" + item.JobPhotoName)" asp-append-version="true" alt="..." style="width:280px; height: 180px;"> </a>
+					
+                <div class="text-center pt-10"> 
+                    <span class="font-weight-bolder display-5 text-dark-52 align-self-center">@Html.DisplayFor(modelItem => item.JobTitle)</span>
+                    <p class="font-size-h6 d-block d-block font-weight-bold text-dark-50 pb-5">@Html.DisplayFor(modelItem => item.JobDesc)
+                        <small><a asp-controller="Job" asp-action="Details" asp-route-id="@item.JobCode" class="label label-outline-success label-inline ml-2">more info <i class="icon-xl la la-arrow-right" style="color: #1BC5BD"></i></a></small>
+                    </p>
+						
+                    <p>
+                        @Html.DisplayFor(modelItem => item.ExpiryDate)
+                    </p>
+                    @if(User.Identity.IsAuthenticated){
+												   
+                        <a href="#" class="btn btn-primary text-uppercase font-weight-bolder px-16 py-4"  data-toggle="modal" data-target="#exampleModalCenter">Apply</a>
+                    }
+                    else {
+                        <a href="/Account/Register" class="btn btn-success text-uppercase font-weight-bolder px-16 py-4">Register</a>
+                    }
+                    
+                    
+                    <!-- Modal-->
+                    <div class="modal fade" id="exampleModalCenter" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+                    	                    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                    		                    <div class="modal-content"> 
+                    			                    <div class="modal-header ribbon ribbon-clip ribbon-left">
+                    				                    <div class="ribbon-target" style="top: 12px;">
+                    					                    <span class="ribbon-inner bg-primary"></span><p class=" text-uppercase text-white">Confirm Job Details</p></div>
+                    				                    <div></div>
+                    				                    <a asp-action="Index" type="button" class="close mt-5" data-dismiss="modal" style="padding-left: 920px;" aria-label="Close">
+                    					                    <i aria-hidden="true" class="ki ki-close"></i>
+                    				                    </a>
+                                                    
+                    				                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    					                    <span>&times;</span>
+                    				                    </button>
+                    			                    </div>
+                    			                    <form asp-action="">
+                    				                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    				                    <input hidden asp-route-id="JobId">
+                    				                    <div class="card-body">
+                    					                    <!--begin::Top-->
+                    					                    <div class="d-flex">
+                    						                    <!--begin: Info-->
+                    						                    <div class="flex-grow-1">
+                    							                    <!--begin::Title-->
+                    							                    <div class="d-flex align-items-center justify-content-between flex-wrap mt-2">
+                    								                    <!--begin::User-->
+                    								                    <div class="mr-3">
+                    									                    <!--begin::Name-->
+                    									                    <a class="d-flex align-items-center text-dark text-hover-primary display-4 font-weight-bold mr-3 mb-3">@Html.DisplayFor(modelItem => item.JobTitle)</a>
+                    									                    <!--end::Name-->
+                    									                    <!--begin::Contacts-->
+                    									                    <div class="d-flex flex-wrap my-2">
+                    										                    <a class="text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                    											                    <b class="text-muted">@Html.DisplayNameFor(modelItem => item.JobTypeId):</b> @Html.DisplayFor(modelItem => item.JobType.JobTypeDesc)</a>
+                    										                    <a class="text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                    											                    <b class="text-muted">@Html.DisplayNameFor(modelItem => item.SectorId):</b> @Html.DisplayFor(modelItem => item.Sector.SectorDesc)</a>
+                    									                    </div>
+                    									                    <!--end::Contacts-->
+                    								                    </div>
+                    								                    <!--begin::User-->
+                    							                    </div>
+                    							                    <!--end::Title-->
+                    							                    <style>
+                    												#more {display: none;}
+                    												</style>
+                    							                    <!--begin::Content-->
+                    							                    <div class="d-flex align-items-center flex-wrap justify-content-between">
+                    								                    <!--begin::Description-->
+                    								                    <div class="flex-grow-1 font-weight-bold text-dark-50 py-2 py-lg-2 mr-5">@Html.DisplayFor(modelItem => item.JobDesc)</div>
+                    								                    <!--end::Description-->
+                    							                    </div>
+                    							                    <!--end::Content-->
+                    						                    </div>
+                    						                    <!--end::Info-->
+                    					                    </div>
+                    					                    <!--end::Top-->
+                    					                    <!--begin::Separator-->
+                    					                    <div class="separator separator-solid my-7"></div>
+                    					                    <!--end::Separator-->
+                    					                    <!--begin::Bottom-->
+                    					                    <div class="d-flex align-items-center flex-wrap">
+                    						                    <!--begin: Item-->
+                    						                    <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+                    							                    <i class="icon-2x text-dark-50 flaticon-placeholder-3 mr-3"></i>
+                    							                    <div class="d-flex flex-column text-dark-75">
+                    								                    <span class="font-weight-bolder font-size-sm">@Html.DisplayNameFor(modelItem => item.ProvinceId)</span>
+                    								                    <span class="font-weight-bolder font-size-h5">
+                    									                    @Html.DisplayFor(modelItem => item.Province.ProvinceName)</span>
+                    							                    </div>
+                    						                    </div> 
+                    						                    <!--end: Item-->
+                    						                    <!--begin: Item-->
+                    						                    <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+                    							                    <i class="icon-2x text-dark-50 flaticon-calendar-with-a-clock-time-tools mr-3"></i>
+                    							                    <div class="d-flex flex-column text-dark-75">
+                    								                    <span class="font-weight-bolder font-size-sm">@Html.DisplayNameFor(modelItem => item.ListedDate)</span>
+                    								                    <span class="font-weight-bolder font-size-h5">
+                    									                    @Html.DisplayFor(modelItem => item.ListedDate)</span>
+                    							                    </div>
+                    						                    </div> 
+                    						                    <!--end: Item-->
+                    						                    <!--begin: Item-->
+                    						                    <div class="d-flex align-items-center flex-lg-fill mr-5 my-1"> 
+                    							                    <i class="icon-2x text-dark-50 flaticon-event-calendar-symbol mr-3"></i>
+                    							                    <div class="d-flex flex-column text-dark-75">
+                    								                    <span class="font-weight-bolder font-size-sm">@Html.DisplayNameFor(modelItem => item.ExpiryDate)</span>
+                    								                    <span class="font-weight-bolder font-size-h5">
+                    									                    @Html.DisplayFor(modelItem => item.ExpiryDate)</span>
+                    							                    </div>
+                    						                    </div>
+                    						                    <!--end: Item-->
+                    					                    </div>
+                    					                    <!--end::Bottom--> 
+                    				                    </div>
+                    				                    <div class="form-group">
+                    					                    <a  asp-controller="JobApplications" asp-action="Apply"  class="btn btn-sm btn-light-success font-weight-bolder float-left ml-8 mb-5">Apply Now</a> 
+                    				                    </div>
+                    			                    </form>
+                    
+                    		                    </div>
+                    	                    </div>
+                                        </div>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>

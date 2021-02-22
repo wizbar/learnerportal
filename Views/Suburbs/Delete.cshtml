@@ -1,0 +1,37 @@
+﻿@model learner_portal.Models.Suburb
+
+<form asp-action="Delete">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div id="progressbarwizard">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.SuburbCode):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.SuburbCode)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.SuburbName):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.SuburbName)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.City):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.City.CityName)
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <input type="hidden" asp-for="SuburbId" />
+    <div class="form-group">
+        <input type="submit" value="Delete" class="btn btn-danger mr-1" />
+    </div>
+</form>

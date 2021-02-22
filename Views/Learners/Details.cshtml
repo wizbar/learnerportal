@@ -1,0 +1,13 @@
+﻿@model learner_portal.DTO.LearnerDetailsDto
+
+<form asp-controller="JobApplications" asp-action="Apply" asp-route-id="@Model">
+
+    <input type="hidden" asp-for="LearnerId" />
+    <div class="row">
+        @*<div class="col-md-6">
+            <button type="submit" class="btn btn-bg-danger float-right text-white" value="Confirm"><i class="fa fa-envelope-open" style="color: #FFFFFF" ></i>Apply</button>
+        </div>*@
+
+    </div>
+   @Html.PartialAsync("~/Views/Person/ViewResumePdf.cshtml", @Model).Result;
+</form>

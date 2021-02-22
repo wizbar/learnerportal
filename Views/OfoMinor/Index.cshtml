@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "_Layout_Main";
+}
+
+<div class="card card-custom gutter-b">
+    <div class="card-header">
+        <h4 class="mt-8">Ofo Minors</h4>
+    </div>
+    <div class="card-body">
+        <table id="allofoMinor" class="table ">
+            <thead>
+            <tr>
+                <div class="form-actions no-color col-md-3 float-left">
+                    <button class="btn btn-primary btn-sm mb-2 btn-rounded" onclick="showInPopUp('@Url.Action("Create", "OfoMinor", null, Context.Request.Scheme)', 'Add Ofo Minor')" id="btnCreate"><i class="fa fa-plus"></i>Create Ofo Minor</button>
+                </div>
+            </tr>
+            <tr>
+                <th>ID</th>
+                <th>OFO Minor Code</th>
+                <th>OFO Minor Title</th>
+                <th>Financial Year</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+        </table>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#divProcessing").hide();
+
+        createOfoMinorDataTable('allofoMinor', '/OfoMinor/GetAllOfoMinor');
+
+        // Hide the "busy" Gif at load:
+
+
+    });
+
+
+</script>

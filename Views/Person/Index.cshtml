@@ -1,0 +1,52 @@
+@{
+    Layout = "_Layout_Main";
+}
+
+<div class="card card-custom gutter-b">
+    <div class="card-header">
+        <h4 class="mt-8">Persons</h4>
+    </div>
+    <div class="card-body">
+        <table id="allPerson" class="table ">
+            <thead>
+                <tr>
+                    <div class="dropdown dropdown-inline" data-toggle="tooltip" title="" data-placement="top" data-original-title="Quick actions">
+                        <a asp-action="CreateAccount" class="btn btn-primary btn-sm mb-2 btn-rounded" aria-haspopup="true" aria-expanded="false">
+                            <img style="height: 20px;" src="assets/media/svg/icons/Communication/Add-user.svg" /> Create Profile
+                        </a>
+                    </div>
+                </tr>
+            <tr>
+                <th>Id</th>  
+                <th>Profile Picture</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>phone Number</th>
+                <th>Province</th>
+                <th>Country</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+        </table>
+        
+
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#divProcessing").hide();
+
+        createPersonDataTable('allPerson', '/Person/GetAllPerson'); 
+
+        // Hide the "busy" Gif at load:
+
+
+    });
+
+</script>

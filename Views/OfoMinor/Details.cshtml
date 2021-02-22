@@ -1,0 +1,50 @@
+﻿@model learner_portal.DTO.OfoMinorDTO
+
+                <form asp-action="Details">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div id="progressbarwizard">
+
+                        <div class="tab-content mb-0 b-0">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <b>@Html.DisplayNameFor(model => model.OfoMinorCode):</b>
+                                        <div class="form-control form-control-feedback h-auto p-3">
+                                            @Html.DisplayFor(model => model.OfoMinorCode)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <b>@Html.DisplayNameFor(model => model.OfoMinorTitle):</b>
+                                        <div class="form-control form-control-feedback h-auto p-3">
+                                            @Html.DisplayFor(model => model.OfoMinorTitle)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+@*                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <b>@Html.DisplayNameFor(model => model.OfoSubMajorId):</b>
+                                        <div class="form-control form-control-feedback h-auto p-3">
+                                            @Html.DisplayFor(model => model.OfoSubMajorId)
+                                        </div>
+                                    </div>
+                                </div>*@
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <b>@Html.DisplayNameFor(model => model.FinancialYearDesc):</b>
+                                        <div class="form-control form-control-feedback h-auto p-3">
+                                            @Html.DisplayFor(model => model.FinancialYearDesc)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <a asp-action="Edit" class="btn btn-success mr-1" asp-route-id="@Model.OfoMinorCode">Edit</a>
+                    </div>
+                </form>

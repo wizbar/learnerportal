@@ -1,0 +1,46 @@
+﻿@{
+    Layout = "_Layout_Main";
+}
+
+<div class="card card-custom gutter-b">
+    <div class="card-header">
+        <h4 class="mt-8">Financial years</h4>
+    </div>
+    <div class="card-body">
+        <table id="allfinancialyear" class="table ">
+            <thead>
+            <tr>
+                <div class="form-actions no-color col-md-3 float-left">
+                    <button class="btn btn-primary btn-sm mb-2 btn-rounded" onclick="showInPopUp('@Url.Action("Create", "Financialyear", null, Context.Request.Scheme)', 'Add Financial year')" id="btnCreate"><i class="fa fa-plus"></i>Create Financial year</button>
+                </div>
+            </tr>
+            <tr>
+                <th>ID</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Active For WSP</th>
+                <th>Description</th>
+                <th>Locked For WSP Submission</th>
+                <th>Active(Y/N)</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+        </table>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#divProcessing").hide();
+
+        createFinancialyearDataTable('allfinancialyear', '/Financialyear/GetAllFinancialyear');
+
+        // Hide the "busy" Gif at load:
+
+
+    });
+
+
+</script>    

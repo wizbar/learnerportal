@@ -1,0 +1,25 @@
+﻿@model learner_portal.Models.Province
+
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ProvinceId" />
+    <div class="row">
+        <div class="form-group col-md-12">
+           <b>Province Name</b>
+            <input asp-for="ProvinceName" class="form-control" />
+            <span asp-validation-for="ProvinceName" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-12">
+            <b>Province Code</b>
+            <input asp-for="ProvinceCode" class="form-control" />
+            <span asp-validation-for="ProvinceCode" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-12">
+           <b>Country</b>
+            <select asp-for="CountryId" class ="form-control" asp-items="ViewBag.CountryId"></select>
+        </div>
+    </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success" />
+            </div>
+        </form>

@@ -1,0 +1,7 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=CONFIRMRECRUITED/@EntryIndexedValue">ConfirmRecruited</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/MappedPaths/=WWWROOT_005CJOBAPPLICATIONS/@EntryIndexedValue"></s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/MappedPaths/=WWWROOT_005CJOB_005C_005FJOBDETAILS_005C_0040ITEM_002EJOBID/@EntryIndexedValue"></s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=CONFIRMRECRUITED/@EntryIndexedValue">ConfirmRecruited</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=WWWROOT_005CJOBAPPLICATIONS/@EntryIndexedValue">wwwroot\JobApplications</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=WWWROOT_005CJOB_005C_005FJOBDETAILS_005C_0040ITEM_002EJOBID/@EntryIndexedValue">wwwroot\Job\_JobDetails\@item.JobId</s:String></wpf:ResourceDictionary>

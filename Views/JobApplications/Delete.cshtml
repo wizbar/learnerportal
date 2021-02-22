@@ -1,0 +1,48 @@
+﻿@model learner_portal.Models.JobApplications
+
+<form asp-action="Delete">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div id="progressbarwizard">
+        <div class="tab-content mb-0 b-0">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.DateApplied):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.DateApplied)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.ApplicationStatus):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.ApplicationStatus)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.LearnerId):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayNameFor(model => model.LearnerId)
+                        </div>
+                    </div>
+                </div>        
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <b>@Html.DisplayFor(model => model.LearnerId):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.JobId)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" asp-for="Id" />
+    <div class="row">
+        <input type="submit" value="Delete" class="btn btn-danger mr-1"/>
+        <a asp-action="Index" class="btn btn-primary text-white">Back to List</a>
+    </div>
+</form>

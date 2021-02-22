@@ -1,0 +1,355 @@
+﻿@using learner_portal.Helpers
+@model IEnumerable<learner_portal.Models.Job>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<!DOCTYPE html>
+<html lang="en">
+<!--begin::Head-->
+<head><base href="../../../../">
+	<meta charset="utf-8" /> 
+	<title>CHIETA | Sign Up</title>
+	<meta name="description" content="Singin page example" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<!--begin::Fonts-->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+	<!--end::Fonts--> 
+	<!--begin::Page Custom Styles(used by this page)-->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" type="text/css" />
+	<link href="~/assets/css/courasel-style.css" rel="stylesheet" type="text/css" />
+	<link href="~/assets/css/pages/login/login-3.css" rel="stylesheet" type="text/css" />
+	<link href="~/assets/css/pages/wizard/wizard-1.css" rel="stylesheet" type="text/css" />
+	<!--end::Page Custom Styles-->
+	<!--begin::Global Theme Styles(used by all pages)-->
+	<link href="~/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="~/assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="~/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	<!--end::Global Theme Styles-->
+	<!--begin::Layout Themes(used by all pages)-->
+	<!--begin::Layout Themes(used by all pages)-->
+		<!--begin::Layout Themes(used by all pages)-->
+		<link href="~/assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
+		<link href="~/assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" /> 
+		<link href="~/assets/css/themes/layout/brand/light.css" rel="stylesheet" type="text/css" />
+	<link href="~/assets/css/themes/layout/aside/light.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="assets/DataTables/datatables.min.css"/>
+	<!--begin::Page Vendors Styles(used by this page)-->
+	<link href="~/assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+	<!--end::Layout Themes-->
+	<link rel="shortcut icon" href="~/assets/media/logos/favicon.ico" />
+	<!-- Third party JavaScript Plugins -->
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" type="text/javascript"></script>
+	@*<link href="css/select2.min.css" rel="stylesheet" />
+    <script src="js/select2.min.js"></script>*@
+</head> 
+<!--end::Head--> 
+<body id="kt_body" class="quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+<!--begin::Entry-->
+
+<!--begin::Container-->  
+<div class="d-flex-fluid">
+	<div class="card-body d-flex align-items-center py-3">
+		<div class="d-flex flex-center position-relative ml-5 mr-15 ml-lg-9">
+		
+			@if(User.Identity.Name == null){
+				<a href="/Account/Login" type="button" class="btn btn-danger">Log In</a>
+				<a href="/Account/Register" type="button" class=" ml-4 btn btn-success">Register </a>
+			}
+		</div>
+		<div class="col-md-5"></div>
+		<div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
+			<!--begin::Header Menu-->
+			<div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
+				<!--begin::Header Nav-->
+				<ul class="menu-nav">
+					<li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
+						<a href="javascript:;" class="menu-link menu-toggle">
+							<span class="menu-text">Tel: <i class="icon-1.5x text-dark-50 flaticon2-phone mr-1 ml-2"></i> 087 944 4377</span>
+						</a>
+					</li>
+					<li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
+						<a href="javascript:;" class="menu-link menu-toggle">
+							<span class="menu-text"> <i class="icon-1.5x text-dark-50 flaticon2-phone mr-1 ml-2"></i>Anti-Fraud Line: 0800 204 489</span>
+						</a>
+					</li>
+					<li class="menu-item menu-item-submenu menu-item-rel mr-1 ml-2" data-menu-toggle="click" aria-haspopup="true">
+						<a href="mailto:info@chieta.org.za" class="menu-link">
+							<span class="menu-text"><i class="icon-1.5x text-dark-50 flaticon-chat mr-1 ml-2"></i>info@chieta.org.za</span>
+						</a>
+					</li>
+										<li class="menu-item menu-item-submenu menu-item-rel mr-1 ml-2" data-menu-toggle="click" aria-haspopup="true">
+                    						<a href="/Dashboard/Index" class="menu-link btn btn-dark">
+                    							<span class="text-white"><i class="fa fa-home"></i>Home</span>
+                    						</a>
+                    					</li>
+				</ul>
+				<!--end::Header Nav-->
+			</div>
+			<!--end::Header Menu-->
+		</div>
+	</div>
+
+	<section class="home">
+		<div class="slider">
+			<div class="slide active">
+				<img src="~/assets/media/chieta/slider0.jpg" alt="">
+			</div>
+			<div class="slide">
+				<img src="~/assets/media/chieta/slider1.jpg" alt="">
+			</div> 
+			<div class="slide">
+				<img src="~/assets/media/chieta/slider2.jpg" alt="">
+			</div>
+			<div class="slide">
+				<img src="~/assets/media/chieta/slider3.jpg" alt="">
+			</div>
+			<div class="slide">
+				<img src="~/assets/media/chieta/slider4.jpg" alt="">
+			</div>
+		</div>
+
+		<!-- controls  -->
+		<div class="controls">
+			<div class="prev"><i class="icon-2x text-dark-50 flaticon2-left-arrow"></i></div>
+			<div class="next"><i class="icon-2x text-dark-50 flaticon2-right-arrow"></i></div>
+		</div>
+
+		<!-- indicators -->
+		<div class="indicator">
+		</div>
+	</section>
+	
+		<!--start::Introduction Text-->
+    	<div class="card card-custom gutter-b ml-3 mt-8 align-items-center">
+    		<div class="card-body d-flex align-items-center py-5 py-lg-10">
+    			<!--begin::Description-->
+    			<div class="m-0 text-dark-50 font-weight-bold font-size-lg">This Learner Portal serves as a domain to provide you with the best possible emplyment opportunities available. <br>
+    				Learners with the marketplace qualifications will have the opportunity to be employed with the work firms that are in partnership with us. <br> If you are interested, go on and 
+    				have access and if not, then reccomend a friend. <p class="text-muted">TOGETHER WE CAN FIGHT UNEMPLOYMENT.</p><a class="font-weight-bold btn btn-light font-weight-bold mr-2" href="#">Click Here</a></div>
+    			<!--end::Description-->
+    		</div>
+    	</div>
+		<!--end::Introduction Text-->
+		
+		<partial  name="_AvailableJobs" ></partial>
+  
+
+		<!--begin::partners-->
+	<div class="card align-items-center">
+		<div class="text-muted display-4 mt-2">
+			Our Partners
+		</div>
+		<div class="row mt-3 mb-3">
+			<div class="col-lmd-4 mr-1">
+				<img class="bg-gray-200 rounded" src="~/assets/media/Partners/Caltex.jpg" alt="" style="height: 150px; width: 150px;">
+			</div>
+			<div class="col-lmd-4 mr-1">
+				<img class="bg-gray-200 rounded" src="~/assets/media/Partners/budget.jpg" alt="" style="height: 150px; width: 150px;">
+			</div>
+			<div class="col-lmd-4 mr-1">
+				<img class="bg-gray-200 rounded" src="~/assets/media/Partners/Sasol.jpg" alt="" style="height: 150px; width: 150px;">
+			</div>
+			<div class="col-lmd-4 mr-1">
+				<img class="bg-gray-200 rounded" src="~/assets/media/Partners/fnb-logo.png" alt="" style="height: 150px; width: 150px;">
+			</div>
+			<div class="col-lmd-4 mr-1">
+				<img class="bg-gray-200 rounded" src="~/assets/media/Partners/Michelin.jpg" alt="" style="height: 150px; width: 150px;">
+			</div>
+			<div class="col-lmd-4">
+				<img class="bg-gray-200 rounded" src="~/assets/media/Partners/multichoice.jpg" alt="" style="height: 150px; width: 150px;">
+			</div>
+		</div>
+	</div><hr class="hr-light"> 
+	<!--end::partners-->
+</div>
+
+<!--begin::Footer-->
+<div class="footer py-4 d-flex flex-lg-column" id="kt_footer" style="background-color: #3c1454;">
+	<!--begin::Container-->
+	<div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
+		<!--begin::Copyright-->
+		<div class="text-dark order-2 order-md-1">
+			<span class="text-muted font-weight-bold mr-2"><img src="~/assets/media/chieta/slogan.png" alt=""></span>
+		</div>
+		<!--end::Copyright-->
+		<!--begin::Nav-->
+		<div class="nav nav-dark">
+			<a href="https://www.chieta.org.za/" target="_blank" class="nav-link pl-0 pr-2 text-white">Copyright 2021 CHIETA</a>
+			
+		</div>
+		<!--end::Nav-->
+	</div>
+	<!--end::Container-->
+</div>
+<!--end::Footer-->
+
+<!--Start:: JavaScript-->
+@section scripts {
+	<script>
+//Start-Courasel
+	
+const slides = document.querySelector(".slider").children;
+const prev = document.querySelector(".prev");
+const next = document.querySelector(".next");
+const indicator = document.querySelector(".indicator");
+let index = 0;
+
+
+prev.addEventListener("click", function () {
+    prevSlide();
+    updateCircleIndicator();
+    resetTimer();
+})
+
+next.addEventListener("click", function () {
+    nextSlide();
+    updateCircleIndicator();
+    resetTimer();
+
+})
+
+// create circle indicators
+function circleIndicator() {
+    for (let i = 0; i < slides.length; i++) {
+        const div = document.createElement("div");
+        div.innerHTML = i + 1;
+        div.setAttribute("onclick", "indicateSlide(this)")
+        div.id = i;
+        if (i == 0) {
+            div.className = "active";
+        }
+        indicator.appendChild(div);
+    }
+}
+circleIndicator();
+
+function indicateSlide(element) {
+    index = element.id;
+    changeSlide();
+    updateCircleIndicator();
+    resetTimer();
+}
+
+function updateCircleIndicator() {
+    for (let i = 0; i < indicator.children.length; i++) {
+        indicator.children[i].classList.remove("active");
+    }
+    indicator.children[index].classList.add("active");
+}
+
+function prevSlide() {
+    if (index == 0) {
+        index = slides.length - 1;
+    }
+    else {
+        index--;
+    }
+    changeSlide();
+}
+
+function nextSlide() {
+    if (index == slides.length - 1) {
+        index = 0;
+    }
+    else {
+        index++;
+    }
+    changeSlide();
+}
+
+function changeSlide() {
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("active");
+    }
+
+    slides[index].classList.add("active");
+}
+
+function resetTimer() {
+    // when click to indicator or controls button 
+    // stop timer 
+    clearInterval(timer);
+    // then started again timer
+    timer = setInterval(autoPlay, 4000);
+}
+
+
+function autoPlay() {
+    nextSlide();
+    updateCircleIndicator();
+}
+
+let timer = setInterval(autoPlay, 4000);
+
+//end-Courasel
+        $("#submit").click(function (e) {
+            e.preventDefault();
+            var formData = new FormData();
+
+            $("input[name='InstitutionId']").each(function (i) {
+                var AudioSelected = $(this).val();
+                formData.append("LearnerCourse[" + i + "].InstitutionId", InstitutionId);
+
+            });
+            $("input[name='CourseId']").each(function (i) {
+                var ImageSelected = $(this).val();
+                formData.append("LearnerCourse[" + i + "].CourseId", CourseId); 
+
+            });
+            $("input[name='DateOfCompletion']").each(function (i) {
+                var SentenceText = $(this).val();
+                formData.append("LearnerCourse[" + i + "].DateOfCompletion", DateOfCompletion);
+
+            });
+
+            $.ajax({
+                method: 'post',
+                url: "LearnerCourse/CreateAll",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function () {
+ 
+                }
+            });
+
+        });
+
+        $("#addItem").click(function () {
+            $.ajax({
+                url: this.href,
+                cache: false,
+                success: function (html) { $("#editorRows").append(html); }
+            });
+            return false;
+        });
+
+        $("a.deleteRow").on("click", function () {
+            $(this).parents("div.editorRow:first").remove();
+            return false;
+        });
+    </script>
+}
+<!--end:: JavaScript-->
+
+<script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1400 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#3E97FF", "secondary": "#E5EAEE", "success": "#08D1AD", "info": "#844AFF", "warning": "#F5CE01", "danger": "#FF3D60", "light": "#E4E6EF", "dark": "#181C32" }, "light": { "white": "#ffffff", "primary": "#DEEDFF", "secondary": "#EBEDF3", "success": "#D6FBF4", "info": "#6125E1", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#3F4254", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#EBEDF3", "gray-300": "#E4E6EF", "gray-400": "#D1D3E0", "gray-500": "#B5B5C3", "gray-600": "#7E8299", "gray-700": "#5E6278", "gray-800": "#3F4254", "gray-900": "#181C32" } }, "font-family": "Poppins" };</script>
+
+	<!--end::Global Config-->
+<script src="~/assets/plugins/global/plugins.bundle.js"></script>
+<script src="~/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+<script src="~/assets/js/scripts.bundle.js"></script>
+<script src="~/js/site.js"></script> 
+<script src="~/assets/js/pages/custom/login/login-3.js"></script>
+<script src="~/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+<script src="~/assets/js/pages/features/datatables/basic/headers.js"></script>
+<script src="~/assets/js/pages/custom/wizard/wizard-1.js"></script>
+<script src="~/assets/js/pages/features/forms/widgets/select2.js"></script>
+<script src="~/assets/js/pages/widgets.js"></script>
+<script src="~/assets/js/pages/custom/profile/profile.js"></script>
+<!--end::Global Theme Bundle-->
+
+	</body>
+</html>

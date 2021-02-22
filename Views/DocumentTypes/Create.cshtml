@@ -1,0 +1,35 @@
+﻿@model learner_portal.Models.DocumentType
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="form-group col-md-12">
+            <b>Document Type Name</b>
+            <input asp-for="TypeName" class="form-control" placeholder="Enter Document Type Name"/>
+            <span asp-validation-for="TypeName" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-12">
+            <b>Document Type Description</b>
+            <input asp-for="Description" class="form-control" placeholder="Enter Description"/>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-12">
+            <b>Role for This Docyment Type</b><br>
+            <select asp-for="RoleId" class="form-control option-control" style="width: 100%" asp-items="ViewBag.RoleId">
+                <option value="" selected disabled hidden>Choose Role</option>
+            </select>
+        </div>
+        <div class="col-3 mb-3">
+             <label asp-for="ActiveYn" class="control-label"></label>
+            <span class="switch switch-md"> 
+                <label>
+                    <input type="checkbox" asp-for="ActiveYn" checked="checked" name="select">
+                    <span></span>
+                </label>
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>

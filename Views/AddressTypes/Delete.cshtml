@@ -1,0 +1,29 @@
+﻿@model learner_portal.Models.AddressType
+
+<form asp-action="Delete">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div id="progressbarwizard">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <b>@Html.DisplayNameFor(model => model.AddressTypeCode):</b>
+                    <div class="form-control form-control-feedback h-auto p-3">
+                        @Html.DisplayFor(model => model.AddressTypeCode)
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <b>@Html.DisplayNameFor(model => model.AddressTypeName):</b>
+                    <div class="form-control form-control-feedback h-auto p-3">
+                        @Html.DisplayFor(model => model.AddressTypeName)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" asp-for="AddressTypeId" />
+    <div class="form-group">
+        <input type="submit" value="Delete" class="btn btn-danger mr-1" />
+    </div>
+</form>

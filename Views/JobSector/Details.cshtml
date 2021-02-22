@@ -1,0 +1,57 @@
+@model learner_portal.Models.JobSector
+
+@{
+    Layout = "_Layout_Main";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div class="card">
+	<div class="card-header">
+		<h4 class="mt-8">Job Sector Details</h4>
+	</div>
+	<div class="card-body">
+		<form asp-action="Details">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div id="progressbarwizard">
+
+				<div class="tab-content mb-0 b-0">
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<b>@Html.DisplayNameFor(model => model.JobSectorCode):</b>
+								<div class="form-control form-control-feedback h-auto p-3">
+									@Html.DisplayFor(model => model.JobSectorCode)
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<b>@Html.DisplayNameFor(model => model.JobSectorDesc):</b>
+								<div class="form-control form-control-feedback h-auto p-3">
+									@Html.DisplayFor(model => model.JobSectorDesc)
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<a asp-action="Edit" class="btn btn-success mr-1" asp-route-id="@Model.JobSectorId">Edit</a>
+				<a asp-action="Index" class="btn btn-primary">Back to List</a>
+			</div>
+		</form>
+	</div>
+</div>
+<div>
+</div>
+</body>
+</html>

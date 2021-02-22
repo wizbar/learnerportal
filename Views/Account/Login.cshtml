@@ -1,0 +1,145 @@
+﻿@model learner_portal.DTO.LoginDTO
+
+@{
+
+	Layout = "_Layout";
+}
+
+
+<div class="d-flex flex-column flex-root">
+	<!--begin::Login-->
+	<div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_blockui_card">
+		<!--begin::Aside-->
+		<div class="login-aside d-flex flex-column flex-row-auto" >
+			<!--begin::Aside Top-->
+			<div class="d-flex flex-column-auto flex-column pt-lg-40 pt-15" style="background-color: #3e254f;">
+				<!--begin::Aside header-->
+				<a href="#" class="text-center mb-15">
+					<img src="~/assets/media/logos/chieta.png" alt="logo" class="h-70px" style="background-color: #3e254f;"/>
+				</a>
+				<!--end::Aside header-->
+				<!--begin::Aside title-->
+				<!--end::Aside title-->
+			</div>
+			<!--end::Aside Top-->
+			<!--begin::Aside Bottom-->
+			<div class="aside-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center" style="background-image: url(/assets/media/logos/chieta_bg.png)"></div>
+			<!--end::Aside Bottom-->
+		</div>
+		<!--begin::Aside-->
+		<!--begin::Content-->
+		<div class="login-content flex-row-fluid d-flex flex-column justify-content-center position-relative overflow-hidden p-7 mx-auto">
+			<!--begin::Content body-->
+			<div class="d-flex flex-column-fluid flex-center">
+				<!--begin::Form-->
+		
+				<form asp-controller="Account" asp-action="Login"  class="form text-white" >
+						@*<div asp-validation-summary="All" class="text-danger"></div>*@
+					<!--begin::Title-->
+					<div class="pb-13 pt-lg-0 pt-5">
+						<h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Welcome to Learner Portal</h3>
+						<span class="text-muted font-weight-bold font-size-h4">New Here?
+							<a asp-controller="Account" asp-action="Register" class="text-success font-weight-bolder">Register</a></span>
+					</div>
+					<!--begin::Title-->
+					<!--begin::Form group-->
+					<div class="form-group">
+						<input asp-for="Username" class="form-control form-control-solid h-auto p-3 rounded-lg font-size-h6" name="Username" type="text" placeholder="Username" autocomplete="off"/>
+						<span asp-validation-for="Password" class="text-danger"></span>
+					</div>
+					<!--end::Form group-->
+					<!--begin::Form group-->
+					<div class="form-group">
+						<div class="d-flex justify-content-between mt-n5">
+							<a asp-controller="Account" asp-action="ForgotPassword" class="text-success font-size-h6 font-weight-bolder text-hover-primary pt-5" id="kt_login_forgot">Forgot Password ?</a>
+				       </div>
+						<input asp-for="Password" class="form-control form-control-solid h-auto p-3 rounded-lg font-size-h6" name="Password" type="password" placeholder="Password" autocomplete="off"/>
+						<span asp-validation-for="Password" class="text-danger"></span>
+					</div>
+
+					<div class="pb-lg-0 pb-5">
+						<button type="submit" value="Login" class="btn font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3 text-white" id="LoginBtn2"  style="background-color: #3e254f;">Sign In</button>
+						<a href="javascript:;" class="btn btn-primary font-weight-bold" id="LoginBtn">Show Toast Success</a>
+						<a href="javascript:;" class="btn btn-primary font-weight-bold" id="showtoastWarning">Show Toast Warning</a>
+						<a href="javascript:;" class="btn btn-primary font-weight-bold" id="showtoastInfo">Show Toast Info</a>
+						<a href="javascript:;" class="btn btn-primary font-weight-bold" id="showtoastDanger">Show Toast Danger</a>
+					</div>
+					<!--end::Action-->
+				</form>
+				</div>
+				<!--end::Form-->
+			</div>
+			
+			
+			
+			<!--end::Content body-->
+		</div>
+		<!--end::Content-->
+	</div>
+	<!--end::Login-->
+
+
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+	<script class="">
+/*	$(function (){
+		
+		$('#showtoastSuccess').click(function (){
+			toastr.success("Success Toaster..","Toastr")
+		});		
+		
+		$('#showtoastWarning').click(function (){
+			toastr.warning("Success Toaster..","Toastr", {tapToDismiss:true} )
+		});		
+		
+		$('#showtoastInfo').click(function (){
+			toastr.info("Success Toaster..","Toastr")
+		});		
+		
+		$('#showtoastDanger').click(function (){
+			toastr.error("Success Toaster..","Toastr")
+		});		
+	
+		
+		
+	});
+	*/
+		
+			$(document).ready(function (){
+				$('#LoginBtn2').click(function () {
+					Login();
+				});
+			});
+			
+			function Login() {
+				let username = $('#Username').val();
+				let password = $('#Password').val();
+				
+				const loginDto = {Username: username, Password: password};
+				
+				$.ajax({
+				async: true,
+				type: 'POST',
+				dataType: 'JSON',
+				contentType: 'application/json; charset=utf-8',
+				data: JSON.stringify(loginDto),
+				url: '/Account/Login',
+				success: function (response) {
+					if (response.success === true){
+						toastr.success(response.message,'Sucess Alert', new { timeOut: 500} );
+					} else {
+						toastr.info(response.message,'Information Alert', new { timeOut: 500} );
+					}
+				},
+					error: function () {
+					toastr.error('There was a problem here...','Error Alert', new {timeOut: 3000});
+					},
+					
+				});
+				
+			}
+
+	</script>
+
+

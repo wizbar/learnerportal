@@ -1,0 +1,40 @@
+@{
+    Layout = "_Layout_Main";
+}
+
+<div class="card card-custom gutter-b">
+        <div class="card-header">
+            <h4 class="mt-8"> Institution Types</h4>
+        </div>
+    <div class="card-body">
+        <table id="allInstitutionType" class="table">
+            <thead>
+            <tr>
+                <div class="form-actions no-color col-md-3 float-left">
+                    <button class="btn btn-primary btn-sm mb-2 btn-rounded" onclick="showInPopUp('@Url.Action("Create", "InstitutionType", null, Context.Request.Scheme)', 'Add Institution Type')" id="btnCreate"><i class="fa fa-plus"></i>Create Institution Type</button>
+                </div>
+            </tr>
+            <tr>
+                <th>ID</th>
+                <th>Institution Type Code</th>
+                <th>Institution Type Description</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+        </table>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#divProcessing").hide();
+
+        createInstitutionTypeDataTable('allInstitutionType', '/InstitutionType/GetAllInstitutionType'); 
+
+        // Hide the "busy" Gif at load:
+
+    });
+
+</script>    

@@ -1,0 +1,39 @@
+@model List<learner_portal.Models.LearnerCourse>
+<!--begin::Card-->
+                <div class="card gutter-b mt-3">
+                	<div class="card-header">
+                		<div class="card-title">
+                			<h3 class="card-label"><strong>Qualificatoins</strong></h3>
+                		</div>
+                	</div>
+                	<div class="card-body">
+                		<!--begin::Example-->
+                		<div class="example mb-10">
+                			<div class="example-preview">
+	                            <table class="table table-sm">
+		                            <thead>
+		                            <tr>
+			                            <th scope="col">Institution Name</th>
+			                            <th scope="col">Course Name</th>
+			                            <th scope="col">Date of Completion</th>
+		                            </tr>
+		                            </thead>
+                				
+		                            <tbody>
+		                            @foreach(var qualification in Model){
+			                            <tr>
+				                            <td>@Html.DisplayFor(m => qualification.InstitutionName)</td> 
+				                            <td>@Html.DisplayFor(m => qualification.CourseName)</td>
+				                            <td>@Html.DisplayFor(m => qualification.DateOfCompletion)</td>
+			                            </tr>
+		                            }
+		                            </tbody>
+	                            </table>
+	                            
+                				
+                			</div>
+                		</div>
+                		<!--end::Example-->
+                	</div>
+                </div>
+                <!--end::Card-->

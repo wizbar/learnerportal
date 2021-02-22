@@ -1,0 +1,51 @@
+﻿@model Company
+
+        <form asp-action="Create"> 
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class=" form-group col-md-6">
+                    <label asp-for="CompanyName" class="control-label"></label>
+                    <input asp-for="CompanyName" class="form-control" placeholder="Enter Company Name"/>
+                    <span asp-validation-for="CompanyName" class="text-danger"></span>
+                </div>
+                <div class=" form-group col-md-6">
+                    <label asp-for="CompanyRegistrationNo" class="control-label"></label>
+                    <input asp-for="CompanyRegistrationNo" class="form-control" placeholder="Enter Registration No"/>
+                    <span asp-validation-for="CompanyRegistrationNo" class="text-danger"></span>
+                </div>
+                <div class=" form-group col-md-6">
+                    <label asp-for="DateBusinessCommenced" class="control-label"></label>
+                    <input asp-for="DateBusinessCommenced" class="form-control" placeholder="Enter Date Business Commenced"/>
+                    <span asp-validation-for="DateBusinessCommenced" class="text-danger"></span>
+                </div>
+                <div class=" form-group col-md-6">
+                    <label asp-for="ContactName" class="control-label"></label>
+                    <input asp-for="ContactName" class="form-control" placeholder="Enter Company Contact Person Name"/>
+                    <span asp-validation-for="ContactName" class="text-danger"></span>
+                </div>
+                <div class=" form-group col-md-6">
+                    <label asp-for="ContactSurname" class="control-label"></label>
+                    <input asp-for="ContactSurname" class="form-control" placeholder="Enter Company Contact Person Surname"/>
+                    <span asp-validation-for="ContactSurname" class="text-danger"></span>
+                </div>
+                <div class=" form-group col-md-6">
+                    <label asp-for="ContactEmail" class="control-label"></label>
+                    <input asp-for="ContactEmail" class="form-control" placeholder="Enter Company Contact Person Email"/>
+                    <span asp-validation-for="ContactEmail" class="text-danger"></span>
+                </div>
+                <div class=" form-group col-md-6">
+                    <label asp-for="ContactMobile" class="control-label"></label>
+                    <input asp-for="ContactMobile" class="form-control" placeholder="Enter Company Contact Person Mobile"/>
+                    <span asp-validation-for="ContactMobile" class="text-danger"></span>
+                </div>
+                <div class=" form-group col-md-6">
+                    <label asp-for="ContactTelephone" class="control-label"></label>
+                    <input asp-for="ContactTelephone" class="form-control" placeholder="Enter Company Contact Person Tel No"/>
+                    <span asp-validation-for="ContactTelephone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary mr-1"/>
+                    <a asp-action="Index" class="btn btn-bg-primary">Back to List</a>
+                </div>
+                </div>
+        </form>
