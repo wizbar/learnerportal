@@ -1,0 +1,84 @@
+﻿@model learner_portal.Models.Company
+
+<form asp-action="Delete">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div id="progressbarwizard">
+
+        <div class="tab-content mb-0 b-0">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.CompanyName):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.CompanyName)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.CompanyRegistrationNo):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.CompanyRegistrationNo)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.DateBusinessCommenced):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.DateBusinessCommenced)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.ContactName):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.ContactName)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.ContactSurname):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.ContactSurname)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.ContactEmail):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.ContactEmail)
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.ContactMobile):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.ContactMobile)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.ContactTelephone):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.ContactTelephone)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" asp-for="CompanyId"/>
+    <div class="form-group">
+        <input type="submit" value="Delete" class="btn btn-danger mr-1"/>
+    </div>
+</form>

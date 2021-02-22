@@ -1,0 +1,90 @@
+@model learner_portal.DTO.JobDetailsDTO
+
+<form asp-action="Details">
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+	<!--begin::Top-->
+			<div class="d-flex">
+				<!--begin: Info-->
+				<div class="flex-grow-1">
+					<!--begin::Title-->
+					<div class="d-flex align-items-center justify-content-between flex-wrap mt-2">
+						<!--begin::User-->
+						<div class="mr-3">
+							<!--begin::Name-->
+							<a class="d-flex align-items-center text-dark text-hover-primary display-4 font-weight-bold mr-3 mb-3">@Html.DisplayFor(model => model.JobTitle)</a>
+							<!--end::Name-->
+							<!--begin::Contacts-->
+							<div class="d-flex flex-wrap my-2">
+								<a class="text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+									<b class="text-muted">@Html.DisplayNameFor(model => model.JobTypeDesc):</b> @Html.DisplayFor(model => model.JobTypeDesc)</a>
+								<a class="text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+									<b class="text-muted">@Html.DisplayNameFor(model => model.SectorDesc):</b> @Html.DisplayFor(model => model.SectorDesc)</a>
+							</div>
+							<!--end::Contacts-->
+						</div>
+						<!--begin::User-->
+					</div>
+					<!--end::Title-->
+					<style>
+			#more {display: none;}
+			</style>
+					<!--begin::Content-->
+					<div class="d-flex align-items-center flex-wrap justify-content-between">
+						<!--begin::Description-->
+						<div class="flex-grow-1 font-weight-bold text-dark-50 py-2 py-lg-2 mr-5">@Html.DisplayFor(model => model.JobDesc)</div>
+						<!--end::Description-->
+						<a  asp-controller="JobApplications" asp-action="Apply" class="btn btn-sm btn-light-success font-weight-bolder">Apply Now</a>
+					</div>
+					<!--end::Content-->
+				</div>
+				<!--end::Info--> 
+			</div>
+			<!--end::Top-->
+			<!--begin::Separator-->
+			<div class="separator separator-solid my-7"></div>
+			<!--end::Separator-->
+			<!--begin::Bottom-->
+			<div class="d-flex align-items-center flex-wrap">
+				<!--begin: Item-->
+                <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+                	<i class="icon-xl far fa-building mr-2"></i>
+                	<div class="d-flex flex-column text-dark-75">
+                		<span class="font-weight-bolder font-size-sm">@Html.DisplayNameFor(model => model.CompanyName)</span>
+                		<span class="font-weight-bolder font-size-h5">
+                			@Html.DisplayFor(model => model.CompanyName)</span>
+                	</div>
+                </div> 
+				<!--end: Item-->
+				<!--begin: Item-->
+				<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+					<i class="icon-2x text-dark-50 flaticon-placeholder-3 mr-3"></i>
+					<div class="d-flex flex-column text-dark-75">
+						<span class="font-weight-bolder font-size-sm">@Html.DisplayNameFor(model => model.ProvinceName)</span>
+						<span class="font-weight-bolder font-size-h5">
+							@Html.DisplayFor(model => model.ProvinceName)</span>
+					</div>
+				</div>
+                <!--end: Item-->
+				<!--begin: Item-->
+				<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+					<i class="icon-2x text-dark-50 flaticon-calendar-with-a-clock-time-tools mr-3"></i>
+					<div class="d-flex flex-column text-dark-75">
+						<span class="font-weight-bolder font-size-sm">@Html.DisplayNameFor(model => model.ListedDate)</span>
+						<span class="font-weight-bolder font-size-h5">
+							@Html.DisplayFor(model => model.ListedDate)</span>
+					</div>
+				</div>
+				<!--end: Item-->
+				<!--begin: Item-->
+				<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+					<i class="icon-2x text-dark-50 flaticon-event-calendar-symbol mr-3"></i>
+					<div class="d-flex flex-column text-dark-75">
+						<span class="font-weight-bolder font-size-sm">@Html.DisplayNameFor(model => model.ExpiryDate)</span>
+						<span class="font-weight-bolder font-size-h5">
+							@Html.DisplayFor(model => model.ExpiryDate)</span>
+					</div>
+				</div>
+				<!--end: Item-->
+			</div>
+			<!--end::Bottom-->
+</form>

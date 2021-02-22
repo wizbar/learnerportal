@@ -1,0 +1,27 @@
+@model learner_portal.DTO.QualificationDTO
+
+<form >
+<div class="form-group row" id="kt_repeater_1">
+            <div data-repeater-list="Model" class="col-lg-12">
+                <div data-repeater-item class="form-group row align-items-center">
+                    <div class="col-md-4">
+                        <label asp-for="InstitutionName"  class="control-label"></label>
+                        <input disabled asp-for="InstitutionName" name="InstitutionName" class="form-control" />
+                        <div class="d-md-none mb-2"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="CourseName" class="control-label"></label>
+                        <input disabled asp-for="CourseName" name="CourseName" class="form-control"
+                             />
+                        <div class="d-md-none mb-2"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="DateOfCompletion" class="control-label"></label>
+                        <input type="date" disabled asp-for="DateOfCompletion" name="DateOfCompletion" class="form-control"/>
+                        <div class="d-md-none mb-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>
+ 

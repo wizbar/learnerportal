@@ -1,0 +1,1336 @@
+﻿@model learner_portal.DTO.LearnerDetailsDto
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office"
+  style="width:100%;font-family:arial, 'helvetica neue', helvetica, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="telephone=no" name="format-detection">
+  <title>PDF Template</title>
+  <link href="~/assets/css/resume.css" rel="stylesheet" type="text/css" />
+  <!--[if (mso 16)]>
+    <style type="text/css">
+    a {text-decoration: none;}
+    </style>
+    <![endif]-->
+  <!--[if gte mso 9]><style>sup { font-size: 100% !important; }</style><![endif]-->
+  <!--[if gte mso 9]>
+<xml>
+    <o:OfficeDocumentSettings>
+    <o:AllowPNG></o:AllowPNG>
+    <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
+  <!--[if !mso]>-->
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:400,400i,700,700i" rel="stylesheet">
+  <!--<![endif]-->
+
+</head>
+
+<body
+  style="width:100%;font-family:arial, 'helvetica neue', helvetica, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0">
+  <div class="es-wrapper-color" style="background-color:#F6F6F6">
+    <!--[if gte mso 9]>
+			<v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+				<v:fill type="tile" color="#f6f6f6"></v:fill>
+			</v:background>
+		<![endif]-->
+    <table class="es-wrapper" width="100%" cellspacing="0" cellpadding="0"
+      style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;padding:0;Margin:0;width:100%;height:100%;background-repeat:repeat;background-position:center top">
+      <tr style="border-collapse:collapse">
+        <td valign="top" style="padding:0;Margin:0">
+          <table class="es-content" cellspacing="0" cellpadding="0" align="center"
+            style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%">
+            <tr style="border-collapse:collapse">
+              <td align="center" style="padding:0;Margin:0">
+                <table class="es-content-body" cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center"
+                  style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px">
+                  <tr style="border-collapse:collapse">
+                    <td align="left"
+                      style="Margin:0;padding-top:20px;padding-bottom:20px;padding-left:40px;padding-right:40px">
+                      <!--[if mso]><table style="width:520px" cellpadding="0" cellspacing="0"><tr><td style="width:246px" valign="top"><![endif]-->
+                      <table class="es-left" cellspacing="0" cellpadding="0" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p0r es-m-p20b" valign="top" align="center"
+                            style="padding:0;Margin:0;width:246px">
+                            <table
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-position:center top"
+                              width="100%" cellspacing="0" cellpadding="0" role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0;font-size:0px"><img class="adapt-img"
+                                    src="https://iefcbp.stripocdn.email/content/guids/CABINET_335b69d8ad38d656db4ae2d911fe6208/images/64961611677658354.jpg"
+                                    alt
+                                    style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"
+                                    width="165"></td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:20px"></td><td style="width:254px" valign="top"><![endif]-->
+                      <table class="es-right" cellspacing="0" cellpadding="0" align="right"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
+                        <tr style="border-collapse:collapse">
+                          <td align="left" style="padding:0;Margin:0;width:254px">
+                            <table width="100%" cellspacing="0" cellpadding="0" role="presentation"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                              <tr style="border-collapse:collapse">
+                                <td class="es-m-txt-c" align="left"
+                                  style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px">
+                                  <h2 class="name"
+                                    style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:merriweather, georgia, 'times new roman', serif;font-size:24px;font-style:normal;font-weight:normal;color:#333333">
+                                   @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr style="border-collapse:collapse">
+                          <td valign="top" align="center" style="padding:0;Margin:0;width:254px">
+                            <table width="100%" cellspacing="0" cellpadding="0" role="presentation"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:merriweather, georgia, 'times new roman', serif;line-height:21px;color:#333333">
+                                    Learner</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td></tr></table><![endif]-->
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <table class="es-footer" cellspacing="0" cellpadding="0" align="center"
+            style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;background-color:transparent;background-repeat:repeat;background-position:center top">
+            <tr style="border-collapse:collapse">
+              <td align="center" style="padding:0;Margin:0">
+                <table class="es-footer-body" cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center"
+                  style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px">
+                  <tr style="border-collapse:collapse">
+                    <td align="left" bgcolor="#231f1e"
+                      style="padding:0;Margin:0;padding-top:5px;padding-left:20px;padding-right:20px;background-color:#231F1E">
+                      <table cellpadding="0" cellspacing="0" width="100%"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                        <tr style="border-collapse:collapse">
+                          <td align="center" valign="top" style="padding:0;Margin:0;width:560px">
+                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                              <tr style="border-collapse:collapse">
+                                <td align="center" style="padding:0;Margin:0;padding-bottom:5px">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#FFFFFF">
+                                    <strong>CONTACT INFORMATION</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr style="border-collapse:collapse">
+                    <td align="left" bgcolor="#efefef"
+                      style="Margin:0;padding-top:5px;padding-bottom:5px;padding-left:20px;padding-right:20px;background-color:#EFEFEF">
+                      <!--[if mso]><table style="width:560px" cellpadding="0" cellspacing="0"><tr><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p0r es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <strong>Name:</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <strong>Surname:</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <strong>Phone Number:</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:20px"></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-right" align="right"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
+                        <tr style="border-collapse:collapse">
+                          <td align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <strong>Email:</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td></tr></table><![endif]-->
+                    </td>
+                  </tr>
+                  <tr style="border-collapse:collapse">
+                    <td align="left"
+                      style="Margin:0;padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px">
+                      <!--[if mso]><table style="width:560px" cellpadding="0" cellspacing="0"><tr><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p0r es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    @Html.DisplayFor(model => model.FirstName)</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    @Html.DisplayFor(model => model.LastName)</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    0726559008</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:20px"></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-right" align="right"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
+                        <tr style="border-collapse:collapse">
+                          <td align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    @Html.DisplayFor(model => model.Email)</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td></tr></table><![endif]-->
+                    </td>
+                  </tr>
+                  <tr style="border-collapse:collapse">
+                    <td align="left" style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
+                      <table cellpadding="0" cellspacing="0" width="100%"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                        <tr style="border-collapse:collapse">
+                          <td align="center" valign="top" style="padding:0;Margin:0;width:560px">
+                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                              <tr style="border-collapse:collapse">
+                                <td align="center" style="padding:0;Margin:0;padding-top:5px">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:18px;font-family:merriweather, georgia, 'times new roman', serif;line-height:36px;color:#333333">
+                                    <strong>Motivational Text</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                              <tr style="border-collapse:collapse">
+                                <td style="padding:0;Margin:0">
+                                  <hr style="Margin:0">
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr style="border-collapse:collapse">
+                    <td align="left"
+                      style="Margin:0;padding-bottom:10px;padding-top:20px;padding-left:20px;padding-right:20px">
+                      <table cellpadding="0" cellspacing="0" width="100%"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                        <tr style="border-collapse:collapse">
+                          <td align="center" valign="top" style="padding:0;Margin:0;width:560px">
+                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" bgcolor="#efefef"
+                                  style="padding:0;Margin:0;padding-top:5px;padding-left:5px;padding-right:5px">
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333"
+                                    solid>@Html.DisplayFor(model => model.MotivationText)</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr style="border-collapse:collapse">
+                    <td align="left" bgcolor="#231f1e"
+                      style="padding:0;Margin:0;padding-top:5px;padding-left:20px;padding-right:20px;background-color:#231F1E">
+                      <table cellpadding="0" cellspacing="0" width="100%"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                        <tr style="border-collapse:collapse">
+                          <td align="center" valign="top" style="padding:0;Margin:0;width:560px">
+                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                              <tr style="border-collapse:collapse">
+                                <td align="center" style="padding:0;Margin:0;padding-bottom:5px">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#FFFFFF">
+                                    <strong>PERSONAL INFORMATION</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr style="border-collapse:collapse">
+                    <td align="left" bgcolor="#efefef"
+                      style="Margin:0;padding-top:5px;padding-bottom:5px;padding-left:20px;padding-right:20px;background-color:#EFEFEF">
+                      <!--[if mso]><table style="width:560px" cellpadding="0" cellspacing="0"><tr><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p0r es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    National ID</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <strong>Equity:</strong><br>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <strong>Disability Status:</strong><br>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:20px"></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-right" align="right"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
+                        <tr style="border-collapse:collapse">
+                          <td align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <strong>Gender:</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td></tr></table><![endif]-->
+                    </td>
+                  </tr>
+                  <tr style="border-collapse:collapse">
+                    <td align="left"
+                      style="Margin:0;padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px">
+                      <!--[if mso]><table style="width:560px" cellpadding="0" cellspacing="0"><tr><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p0r es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <br>
+                                  @Html.DisplayFor(model => model.NationalID)</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    @Html.DisplayFor(model => model.EquityName)</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    @Html.DisplayFor(model => model.DisabilityStatus)</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:20px"></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-right" align="right"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
+                        <tr style="border-collapse:collapse">
+                          <td align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    @Html.DisplayFor(model => model.GenderName)</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td></tr></table><![endif]-->
+                    </td>
+                  </tr>
+                  <tr style="border-collapse:collapse">
+                    <td align="left" bgcolor="#efefef"
+                      style="Margin:0;padding-top:5px;padding-bottom:5px;padding-left:20px;padding-right:20px;background-color:#EFEFEF">
+                      <!--[if mso]><table style="width:560px" cellpadding="0" cellspacing="0"><tr><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p0r es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <b>Date Of Birth:</b>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <b>Nationality</b><strong>:</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <strong></strong><b>Home Language:</b><strong></strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:20px"></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-right" align="right"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
+                        <tr style="border-collapse:collapse">
+                          <td align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <b>Citizenship:</b>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td></tr></table><![endif]-->
+                    </td>
+                  </tr>
+                  <tr style="border-collapse:collapse">
+                    <td align="left"
+                      style="Margin:0;padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px">
+                      <!--[if mso]><table style="width:560px" cellpadding="0" cellspacing="0"><tr><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p0r es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    @Html.DisplayFor(model => model.PersonsDob)</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    @Html.DisplayFor(model => model.Nationality)</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    @Html.DisplayFor(model => model.HomeLanguage)</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:20px"></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-right" align="right"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
+                        <tr style="border-collapse:collapse">
+                          <td align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    @Html.DisplayFor(model => model.CitizenshipStatus)</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td></tr></table><![endif]-->
+                    </td>
+                  </tr>
+                  <tr style="border-collapse:collapse">
+                    <td align="left" bgcolor="#231f1e"
+                      style="padding:0;Margin:0;padding-top:5px;padding-left:20px;padding-right:20px;background-color:#231F1E">
+                      <table cellpadding="0" cellspacing="0" width="100%"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                        <tr style="border-collapse:collapse">
+                          <td align="center" valign="top" style="padding:0;Margin:0;width:560px">
+                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                              <tr style="border-collapse:collapse">
+                                <td align="center" style="padding:0;Margin:0;padding-bottom:5px">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#FFFFFF">
+                                    <strong>ADDRESS&nbsp;INFORMATION</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr style="border-collapse:collapse">
+                    <td align="left" bgcolor="#efefef"
+                      style="Margin:0;padding-top:5px;padding-bottom:5px;padding-left:20px;padding-right:20px;background-color:#EFEFEF">
+                      <!--[if mso]><table style="width:560px" cellpadding="0" cellspacing="0"><tr><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p0r es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <strong></strong><strong>House No:</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <strong></strong><b>Street Name</b><strong>:</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <strong></strong><b>Suburb</b><strong>:</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:20px"></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-right" align="right"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
+                        <tr style="border-collapse:collapse">
+                          <td align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <strong></strong><b>City</b><strong>:</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td></tr></table><![endif]-->
+                    </td>
+                  </tr>
+                  <tr style="border-collapse:collapse">
+                    <td align="left"
+                      style="Margin:0;padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px">
+                      <!--[if mso]><table style="width:560px" cellpadding="0" cellspacing="0"><tr><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p0r es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    @Html.DisplayFor(model => model.HouseNo)</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    @Html.DisplayFor(model => model.StreetName)</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    @Html.DisplayFor(model => model.SuburbName)</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:20px"></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-right" align="right"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
+                        <tr style="border-collapse:collapse">
+                          <td align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    @Html.DisplayFor(model => model.CityName)</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td></tr></table><![endif]-->
+                    </td>
+                  </tr>
+                  <tr style="border-collapse:collapse">
+                    <td align="left" bgcolor="#efefef"
+                      style="Margin:0;padding-top:5px;padding-bottom:5px;padding-left:20px;padding-right:20px;background-color:#EFEFEF">
+                      <!--[if mso]><table style="width:560px" cellpadding="0" cellspacing="0"><tr><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p0r es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <strong></strong><b>Province</b><strong>:</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <strong></strong><b>Country</b><strong>:</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <strong></strong><b>Postal Code</b><strong>:</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:20px"></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-right" align="right"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
+                        <tr style="border-collapse:collapse">
+                          <td align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <strong></strong><b>Address Type</b><strong>:</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td></tr></table><![endif]-->
+                    </td>
+                  </tr>
+                  <tr style="border-collapse:collapse">
+                    <td align="left"
+                      style="Margin:0;padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px">
+                      <!--[if mso]><table style="width:560px" cellpadding="0" cellspacing="0"><tr><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p0r es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    @Html.DisplayFor(model => model.ProvinceName)</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    @Html.DisplayFor(model => model.CountryName)</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    @Html.DisplayFor(model => model.PostalCode)</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:20px"></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-right" align="right"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
+                        <tr style="border-collapse:collapse">
+                          <td align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    @Html.DisplayFor(model => model.AddressType)</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td></tr></table><![endif]-->
+                    </td>
+                  </tr>
+                  <tr style="border-collapse:collapse">
+                    <td align="left" bgcolor="#231f1e"
+                      style="padding:0;Margin:0;padding-top:5px;padding-left:20px;padding-right:20px;background-color:#231F1E">
+                      <table cellpadding="0" cellspacing="0" width="100%"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                        <tr style="border-collapse:collapse">
+                          <td align="center" valign="top" style="padding:0;Margin:0;width:560px">
+                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                              <tr style="border-collapse:collapse">
+                                <td align="center" style="padding:0;Margin:0;padding-bottom:5px">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#FFFFFF">
+                                    <strong>PROFESSION QUALIFICATIONS</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr style="border-collapse:collapse">
+                    <td align="left" bgcolor="#efefef"
+                      style="Margin:0;padding-top:5px;padding-bottom:5px;padding-left:20px;padding-right:20px;background-color:#EFEFEF">
+                      <!--[if mso]><table style="width:560px" cellpadding="0" cellspacing="0"><tr><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p0r es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <b>Course</b><strong>:</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:145px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <b>Date Of Completion</b><strong>:</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr style="border-collapse:collapse">
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <b>Institution</b><strong>:</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:20px"></td><td style="width:125px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-right" align="right"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
+                        <tr style="border-collapse:collapse">
+                          <td align="center" style="padding:0;Margin:0;width:125px">
+                            <table cellpadding="0" cellspacing="0" width="100%"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                              role="presentation">
+                              <tr style="border-collapse:collapse">
+                                <td align="left" style="padding:0;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                    <b>Institution Type</b><strong>:</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td></tr></table><![endif]-->
+                    </td>
+                  </tr>
+                  <tr style="border-collapse:collapse">
+                    <td align="left"
+                        style="Margin:0;padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px">
+                      
+                      @foreach (var qual in Model.Qualifications)
+                      {
+                        <!--[if mso]><table style="width:560px" cellpadding="0" cellspacing="0"><tr><td style="width:145px" valign="top"><![endif]-->
+                        <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                               style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                          <tr style="border-collapse:collapse">
+                            <td class="es-m-p0r es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                              <table cellpadding="0" cellspacing="0" width="100%"
+                                     style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                                     role="presentation">
+                                <tr style="border-collapse:collapse">
+                                  <td align="left" style="padding:0;Margin:0">
+                                    <p
+                                      style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                      <br>@Html.DisplayFor(model => qual.CourseName)
+                                    </p>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                            <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                          </tr>
+                        </table>
+
+                        <!--[if mso]></td><td style="width:125px" valign="top"><![endif]-->
+                        <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                               style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                          <tr style="border-collapse:collapse">
+                            <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                              <table cellpadding="0" cellspacing="0" width="100%"
+                                     style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                                     role="presentation">
+                                <tr style="border-collapse:collapse">
+                                  <td align="left" style="padding:0;Margin:0">
+                                    <p
+                                      style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                        <br>@Html.DisplayFor(model => qual.InstitutionName)</p>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                        <!--[if mso]></td><td style="width:145px" valign="top"><![endif]-->
+                        <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                               style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                          <tr style="border-collapse:collapse">
+                            <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:125px">
+                              <table cellpadding="0" cellspacing="0" width="100%"
+                                     style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                                     role="presentation">
+                                <tr style="border-collapse:collapse">
+                                  <td align="left" style="padding:0;Margin:0">
+                                    <p
+                                      style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                       <br>@Html.DisplayFor(model => qual.DateOfCompletion)</p>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                            <td class="es-hidden" style="padding:0;Margin:0;width:20px"></td>
+                          </tr>
+                        </table>
+                        <!--[if mso]></td><td style="width:20px"></td><td style="width:125px" valign="top"><![endif]-->
+                        <table cellpadding="0" cellspacing="0" class="es-right" align="right"
+                               style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
+                          <tr style="border-collapse:collapse">
+                            <td align="center" style="padding:0;Margin:0;width:125px">
+                              <table cellpadding="0" cellspacing="0" width="100%"
+                                     style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px"
+                                     role="presentation">
+                                <tr style="border-collapse:collapse">
+                                  <td align="left" style="padding:0;Margin:0">
+                                    <p
+                                      style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                                      University</p>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+
+                      }
+                      <!--[if mso]></td></tr></table><![endif]-->
+                    </td>
+                  </tr>
+                  <tr style="border-collapse:collapse">
+                    <td align="left" style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
+                      <table cellpadding="0" cellspacing="0" width="100%"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                        <tr style="border-collapse:collapse">
+                          <td align="center" valign="top" style="padding:0;Margin:0;width:560px">
+                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                              <tr style="border-collapse:collapse">
+                                <td style="padding:0;Margin:0">
+                                  <hr style="Margin:0">
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>

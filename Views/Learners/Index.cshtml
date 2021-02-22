@@ -1,0 +1,144 @@
+﻿@{
+    Layout = "_Layout_Main";
+}
+
+<form asp-action="">
+<div class="example-preview">
+    <ul class="nav nav-pills" id="myTab1" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab-1" data-toggle="tab" href="#home-1">
+                <span class="nav-icon">
+                    <i class="flaticon2-chat-1"></i>
+                </span>
+                <span class="nav-text">Available Learners</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab-1" data-toggle="tab" href="#profile-1" aria-controls="profile">
+                <span class="nav-icon">
+                    <i class="flaticon2-layers-1"></i>
+                </span>
+                <span class="nav-text">Applied Learners</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="contact-tab-1" data-toggle="tab" href="#contact-1" aria-controls="contact">
+                <span class="nav-icon">
+                    <i class="flaticon2-rocket-1"></i>
+                </span>
+                <span class="nav-text">Recruited Learners</span>
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content mt-5" id="myTabContent1">
+        <div class="tab-pane fade show active" id="home-1" role="tabpanel" aria-labelledby="home-tab-1"><div class="card card-custom gutter-b">
+            <div class="card-header">
+                <h4 class="mt-8">Available Learners</h4>
+            </div>
+            <div class="card-body">
+                <table id="allLearners" class="table dt-responsive nowrap w-100">
+                    <thead>
+                    <tr>
+                                                                                                                                                                                                          
+                        @*<div class="form-actions no-color col-md-3 float-left">
+                            <button class="btn btn-primary btn-sm mb-2 btn-rounded" onclick="showInPopUp('@Url.Action("Create", "Learners", null, Context.Request.Scheme)', 'Add Learner')" id="btnCreate"><i class="fa fa-plus"></i>Create Learner</button>
+                        </div>*@
+                                                                                                                                                                                                          
+                    </tr>
+                    <tr>
+                        <th>Id</th>
+                          <th>Profile</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>phone Number</th>
+                        <th>Date of Birth</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>School Name</th>
+                        <th>Grade</th>
+                        <th>Province</th>
+                        <th>Applied</th>
+                        <th>Recruited</th>
+                        <th>Action</th>
+                    </tr>
+                                                                                                                                                                                                          
+                    </thead>
+                                                                                                                                                                                                          
+                </table>
+            </div>
+        </div></div>
+        <div class="tab-pane fade" id="profile-1" role="tabpanel" aria-labelledby="profile-tab-1"><div class="card card-custom gutter-b">
+            <div class="card-header">
+                <h4 class="mt-8">Applied Learners</h4>
+            </div>
+            <div class="card-body">
+                <table id="appliedLearners" class="table dt-responsive nowrap w-100">
+                    <thead>
+
+                    <tr>
+                        <th>Id</th>
+                         <th>Profile</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>phone Number</th>
+                        <th>Date of Birth</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>School Name</th>
+                        <th>Grade</th>
+                        <th>Province</th>
+                        <th >Applied</th>
+                        <th >Recruited</th>
+                        <th>Action</th>
+                    </tr>
+                                                                                                  
+                    </thead>
+                                                                                                  
+                </table>
+            </div>
+        </div></div>
+        <div class="tab-pane fade" id="contact-1" role="tabpanel" aria-labelledby="contact-tab-1"><div class="card card-custom gutter-b">
+            <div class="card-header"> 
+                <h4 class="mt-8">Recruited Learners</h4>
+            </div>
+            <div class="card-body">
+                <table id="recruitedLearners" class="table dt-responsive nowrap w-100">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                         <th>Profile</th>
+                        <th>First Name</th> 
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>phone Number</th>
+                        <th>Date of Birth</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>School Name</th>
+                        <th>Grade</th>
+                        <th>Province</th>
+                        <th>Applied</th>
+                        <th>Recruited</th>
+                        <th>Action</th>
+                    </tr>
+                                                                                                                                                                                                 
+                    </thead>
+                                                                                                                                                                                                    
+                </table>
+            </div>
+        </div></div>
+    </div>
+</div>
+</form>
+
+<script>
+
+    $(document).ready(function () {
+        createLearnersDataTable('allLearners', '/Learners/GetAllLearners');
+        createLearnersDataTable('appliedLearners', '/Learners/GetAllAppliedLearners');
+        createLearnersDataTable('recruitedLearners', '/Learners/GetAllRecruitedLearners');
+    });
+
+</script> 

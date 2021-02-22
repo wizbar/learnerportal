@@ -1,0 +1,37 @@
+@{
+    Layout = "_Layout_Main";
+}
+
+<div class="card card-custom gutter-b">
+    <div class="card-body">
+        <table id="alljobSector" class="table">
+            <thead>
+            <tr>
+                <div class="form-actions no-color"> 
+                    <a class="btn btn-primary btn-sm mb-2 btn-rounded" asp-action="Create"><i class="fa fa-plus"></i> Create New</a>
+                </div>
+            </tr>
+            <tr>  
+                <th>ID</th>
+            <th>Job Sector Code</th>
+            <th>Job Sector Description</th>
+            <th>Action</th>
+            </tr>
+            </thead>
+
+        </table>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#divProcessing").hide();
+
+        createJobSectorDataTable('alljobSector', '/JobSector/GetAllJobSector'); 
+
+        // Hide the "busy" Gif at load:
+
+    });
+
+</script>    

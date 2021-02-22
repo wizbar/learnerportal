@@ -1,0 +1,67 @@
+﻿@{
+    Layout = "_Layout_Main";
+}
+
+<div class="card card-custom gutter-b">
+    <div class="card-header">
+        <h4 class="mt-8">Companies</h4>
+    </div>
+    <div class="card-body">
+        <table id="allCompanies" class="table ">
+            <thead>
+            <tr>
+                <style>
+            .color{
+             fill: white;
+            } 
+        </style>
+                <div class="form-actions no-color">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="dropdown dropdown-inline" data-toggle="tooltip" title="" data-placement="top" data-original-title="Quick actions">
+                                <a asp-action="CreateCompany" class="btn btn-primary btn-sm mb-2 btn-rounded" aria-haspopup="true" aria-expanded="false">
+                                    <img style="height: 20px;" src="assets/media/svg/icons/Communication/Add-user.svg"/> Create Profile</a>
+
+                            </div>
+                        </div>
+ 
+                    </div>
+                </div>
+
+            </tr>
+            <tr>
+                <th>ID</th>
+                <th>Logo</th>
+                <th>Company Name</th>
+                <th>Contact Email</th>
+                <th>Contact Mobile</th>
+                <th>Contact Telephone</th>
+                <th>Street Name</th>
+                <th>Suburb</th>
+                <th>City</th>
+                <th>Province</th>
+                <th>Country</th>
+                <th>Address Type</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+        </table>
+    </div>
+</div>
+
+
+<script>
+
+    $(document).ready(function () {
+        $("#divProcessing").hide();
+
+        createCompaniesDataTable('allCompanies', '/Companies/GetAllCompanies'); 
+
+        // Hide the "busy" Gif at load:
+
+
+    });
+
+
+</script>

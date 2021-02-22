@@ -1,0 +1,28 @@
+@model learner_portal.Models.Institution
+
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="InstitutionId"/>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <b>Institution Code</b>
+                    <input asp-for="InstitutionCode" class="form-control" placeholder="Enter Institution Code"/>
+                    <span asp-validation-for="InstitutionCode" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-12">
+                    <b>Institution Name</b>
+                    <input asp-for="InstitutionName" class="form-control" placeholder="Enter Institution Name"/>
+                    <span asp-validation-for="InstitutionName" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-12">
+                    <b class="control-label">Institution Type</b>
+                    <select asp-for="InstitutionTypeId" class="form-control" asp-items="ViewBag.InstitutionTypeId">
+                        <option value="" selected disabled hidden>Choose Institution Type</option>
+                    </select>
+                    <span asp-validation-for="InstitutionTypeId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success mr-1"/>
+            </div>
+        </form>

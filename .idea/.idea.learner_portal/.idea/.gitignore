@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/projectSettingsUpdater.xml
+/modules.xml
+/contentModel.xml
+/.idea.learner_portal.iml
+# Datasource local storage ignored files
+/../../../../../../../../:\Users\itumeleng\RiderProjects\learner_portal\.idea\.idea.learner_portal\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/

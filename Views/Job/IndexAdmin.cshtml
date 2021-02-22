@@ -1,0 +1,55 @@
+@using learner_portal.Services
+@inject ILookUpService LookUpService
+@{
+   Layout = "_Layout_Main";
+}
+
+<div class="card card-custom gutter-b">
+    <div class="card-header">
+        <h4 class="mt-8">Jobs</h4>
+    </div>
+    <div class="card-body">
+       
+        <table id="allJob" class="table">
+            <thead>
+            <tr>
+                @if(LookUpService.GetCompanyDetails().Result.Count > 0){
+                    <div class="form-actions no-color col-md-3 float-left">
+                        <button class="btn btn-primary btn-sm mb-2 btn-rounded" onclick="showInPopUpLg('@Url.Action("Create", "Job", null, Context.Request.Scheme)', 'Add Job')" id="btnCreate"><i class="fa fa-plus"></i>Create Job</button>
+                    </div>
+                }
+
+            </tr>
+            <tr> 
+                <th>Id</th>
+                <th>Code</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Date Listed</th>
+                <th>Expiry Date</th>
+                <th>Sector</th>
+                <th>Job Type</th>
+                <th>OFO</th>
+                <th>Province</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+        </table>
+        
+  
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#divProcessing").hide();
+
+        createJobDataTable('allJob', '/Job/GetAllJob'); 
+
+        // Hide the "busy" Gif at load:
+
+    });
+
+</script>

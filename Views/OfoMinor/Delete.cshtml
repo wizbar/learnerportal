@@ -1,0 +1,49 @@
+﻿@model learner_portal.Models.OfoMinor
+<form asp-action="Delete">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div id="progressbarwizard">
+
+    <div class="tab-content mb-0 b-0">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <b>@Html.DisplayNameFor(model => model.OfoMinorCode):</b>
+                    <div class="form-control form-control-feedback h-auto p-3">
+                        @Html.DisplayFor(model => model.OfoMinorCode)
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <b>@Html.DisplayNameFor(model => model.OfoMinorTitle):</b>
+                    <div class="form-control form-control-feedback h-auto p-3">
+                        @Html.DisplayFor(model => model.OfoMinorTitle)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <b>@Html.DisplayNameFor(model => model.OfoSubMajorId):</b>
+                    <div class="form-control form-control-feedback h-auto p-3">
+                        @Html.DisplayFor(model => model.OfoSubMajorId)
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <b>@Html.DisplayNameFor(model => model.FinancialYearId):</b>
+                    <div class="form-control form-control-feedback h-auto p-3">
+                        @Html.DisplayFor(model => model.Financialyear.FinancialyearDesc)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" asp-for="OfoMinorId" />
+    <div class="form-group">
+        <input type="submit" value="Delete" class="btn btn-danger mr-1" />
+    </div>
+    </div>
+</form>

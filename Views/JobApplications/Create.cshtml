@@ -1,0 +1,123 @@
+﻿@*
+@model learner_portal.Models.JobApplications
+
+@{
+    Layout = "_Layout_Main";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+<div class="card card-custom gutter-b">
+    <div class="card-header">
+        <h4 class="mt-8">Add New Job Listing</h4>
+    </div>
+    <div class="card-body">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                <label asp-for="JobTitle" class="control-label"></label>
+                <input asp-for="JobTitle" class="form-control" Pla/>
+                <span asp-validation-for="JobTitle" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="OfoId" class="control-label"></label>
+                    <select asp-for="OfoId" class="form-control select2" asp-items="ViewBag.OfoId">
+                        <option value="" selected disabled hidden>Choose Job OFO</option>
+                    </select>
+                    <span asp-validation-for="OfoId" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-12">
+                    <label asp-for="JobDesc" class="control-label"></label>
+                    <input asp-for="JobDesc" class="form-control" placeholder="Enter Job Description" />
+                    <span asp-validation-for="JobDesc" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="ListedDate" class="control-label"></label>
+                    <input asp-for="ListedDate" class="form-control" placeholder="Set Listing Date" />
+                    <span asp-validation-for="ListedDate" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="ExpiryDate" class="control-label"></label>
+                    <input asp-for="ExpiryDate" class="form-control" placeholder="Set Expiry Date" />
+                    <span asp-validation-for="ExpiryDate" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="SectorId" class="control-label"></label>
+                    <select asp-for="SectorId" class="form-control select2" asp-items="ViewBag.SectorId">
+                        <option value="" selected disabled hidden>Choose Sector</option>
+                    </select>
+                    <span asp-validation-for="SectorId" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="JobTypeId" class="control-label"></label>
+                    <select asp-for="JobTypeId" class="form-control select2" asp-items="ViewBag.JobTypeId">
+                        <option value="" selected disabled hidden>Choose Job Type</option>
+                    </select>
+                    <span asp-validation-for="JobType" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <input asp-for="JobPhoto" name="JobPhoto" accept="Image/*">
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary mr-1" />
+                <a asp-action="IndexAdmin" class="btn btn-bg-primary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<h4>JobApplications</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+
+            </div>
+            <div class="form-group">
+                <label asp-for="DateApplied" class="control-label"></label>
+                <input asp-for="DateApplied" class="form-control" />
+                <span asp-validation-for="DateApplied" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicationStatus" class="control-label"></label>
+                <input asp-for="ApplicationStatus" class="form-control" />
+                <span asp-validation-for="ApplicationStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpiryDate" class="control-label"></label>
+                <input asp-for="ExpiryDate" class="form-control" />
+                <span asp-validation-for="ExpiryDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="JobId" class="control-label"></label>
+                <select asp-for="JobId" class="form-control select2" asp-items="ViewBag.JobId">
+                    <option value="" selected disabled hidden>Choose Job</option>
+                </select>
+                <span asp-validation-for="JobId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>
+*@

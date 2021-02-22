@@ -1,0 +1,21 @@
+@model learner_portal.Models.SchoolGrade
+
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SchoolGradeId"/>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <b>School Grade Code</b>
+                    <input asp-for="SchoolGradeCode" class="form-control" placeholder="Enter School Grade Code"/>
+                    <span asp-validation-for="SchoolGradeCode" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-12">
+                    <b>School Grade Name</b>
+                    <input asp-for="SchoolGradeName" class="form-control" placeholder="Enter School Grade Name"/>
+                    <span asp-validation-for="SchoolGradeName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success mr-1"/>
+            </div>
+        </form>

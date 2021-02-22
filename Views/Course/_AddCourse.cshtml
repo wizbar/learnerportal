@@ -1,0 +1,20 @@
+@model learner_portal.Models.LearnerCourse
+
+<div class="card">
+    <input type="hidden" asp-for="LearnerId" />
+    <div class="row ml-3">
+        <div class="form-group col-md-3">
+            <label asp-for="InstitutionName" class="control-label"></label>
+            <select asp-for="InstitutionName" class="form-control " asp-items="ViewBag.InstitutionId"></select>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="CourseName" class="control-label"></label>
+            <select asp-for="CourseName" class="form-control " asp-items="ViewBag.CourseId"></select>
+
+        </div>
+
+        <div class="form-group col-md-3 mt-8">
+            <a href="#" class="deleteRow"><button class="btn btn-danger">Delete</button></a>
+        </div>
+    </div>
+</div>

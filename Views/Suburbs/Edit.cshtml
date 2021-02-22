@@ -1,0 +1,25 @@
+﻿@model learner_portal.Models.Suburb
+
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SuburbId" />
+    <div class="row">
+        <div class="form-group col-md-12">
+            <b>Suburb Name</b>
+            <input asp-for="SuburbName" class="form-control" />
+            <span asp-validation-for="SuburbName" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-12">
+            <b>Suburb Code</b>
+            <input asp-for="SuburbCode" class="form-control" />
+            <span asp-validation-for="SuburbCode" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-12">
+            <b>City</b>
+            <select asp-for="CityId" class ="form-control" asp-items="ViewBag.CityId"></select>
+        </div>
+    </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success" />
+            </div>
+        </form>

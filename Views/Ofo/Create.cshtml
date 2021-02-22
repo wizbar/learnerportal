@@ -1,0 +1,34 @@
+﻿@model learner_portal.Models.Ofo
+
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <b>OFO Code</b>
+                        <input asp-for="OfoCode" class="form-control" placeholder="Enter OFO Code" />
+                        <span asp-validation-for="OfoCode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <b>OFO Title</b>
+                        <input asp-for="OfoTitle" class="form-control" placeholder="Enter OFO Title" />
+                        <span asp-validation-for="OfoTitle" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <b>OFO Unit</b>
+                        <select asp-for="OfoUnitId" class="form-control" asp-items="ViewBag.OfoUnitId">
+                            <option value="" selected disabled hidden>Choose Unit</option>
+                        </select>
+                    </div> 
+                    <div class="form-group col-md-12">
+                        <b>Financial Year</b>
+                        <select asp-for="FinancialYearId" class="form-control" asp-items="ViewBag.FinancialYearId">
+                            <option value="" selected disabled hidden>Choose Year</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary mr-1" />
+                </div>
+            </form>

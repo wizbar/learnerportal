@@ -1,0 +1,44 @@
+﻿@{
+    Layout = "_Layout_Main";
+}
+
+<div class="card card-custom gutter-b">
+    <div class="card-header">
+        <h4 class="mt-8">Ofo Units</h4>
+    </div>
+    <div class="card-body">
+        <table id="allofoUnit" class="table ">
+            <thead>
+            <tr>
+                <div class="form-actions no-color col-md-3 float-left">
+                    <button class="btn btn-primary btn-sm mb-2 btn-rounded" onclick="showInPopUp('@Url.Action("Create", "OfoUnit", null, Context.Request.Scheme)', 'Add Ofo Unit')" id="btnCreate"><i class="fa fa-plus"></i>Create Ofo Unit</button>
+                </div>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <th>OFO Unit Code</th>
+                <th>OFO Unit Title</th>
+                <th>OFO Minor</th>
+                <th>Financial Year</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+        </table>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#divProcessing").hide();
+
+        createOfoUnitDataTable('allofoUnit', '/OfoUnit/GetAllOfoUnit');
+
+        // Hide the "busy" Gif at load:
+
+
+    });
+
+
+</script>    

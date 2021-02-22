@@ -1,0 +1,22 @@
+@model learner_portal.Models.JobType
+
+    <div class="card-body">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <b>Job Type Code</b>
+                    <input asp-for="JobTypeCode" class="form-control" placeholder="Enter Job Type Code"/>
+                    <span asp-validation-for="JobTypeCode" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-12">
+                    <b>Job Type Description</b>
+                    <input asp-for="JobTypeDesc" class="form-control" placeholder="Enter Job Type Description"/>
+                    <span asp-validation-for="JobTypeDesc" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary mr-1"/>
+            </div>
+        </form>
+    </div>

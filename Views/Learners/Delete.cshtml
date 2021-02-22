@@ -1,0 +1,62 @@
+﻿@model learner_portal.Models.Learner
+
+<form asp-action="Delete">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div id="progressbarwizard">
+
+        <div class="tab-content mb-0 b-0">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.MotivationText):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.MotivationText)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.YearSchoolCompleted):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.YearSchoolCompleted)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.Person):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.Person.Id)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.School):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.School.SchoolId)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.SchoolGrade):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.SchoolGrade.SchoolGradeId)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" asp-for="LearnerId" />
+    <div class="row">
+        <input type="submit" value="Delete" class="btn btn-danger mr-1"/>
+        <a asp-action="Index" class="btn btn-primary text-white">Back to List</a>
+    </div>
+</form>

@@ -1,0 +1,49 @@
+@model learner_portal.Models.Document
+
+<form asp-action="Create"  asp-controller="Documents" enctype="multipart/form-data"> 
+											
+	<div class="card-body">
+ 
+		<div class="row">
+			<div class="col-md-4">
+				<strong> <label asp-for="DocumentTypeId"  class="control-label"></label></strong>
+				<select asp-for="DocumentTypeId" class="form-control" asp-items="ViewBag.DocumentTypeId"></select>
+					<span asp-validation-for="DocumentTypeId" class="text-danger"></span>
+				<div class="d-md-none mb-2"></div>
+			</div>
+			<div class="col-md-8">
+				<strong><label asp-for="Comments"  class="control-label"></label></strong>
+				<textarea asp-for="Comments" class="form-control" ></textarea>
+				<div class="d-md-none mb-2"></div>
+			</div>
+		</div>
+	</div>	
+	<div class="form-group row">
+		<label class="col-md-4 col-form-label ">Upload Files:</label>
+		<div class="col-lg-9">
+			<div class="dropzone dropzone-multi" id="kt_dropzone_4">
+				<input type="file" asp-for="MyFiles" class="dropzone-file dropzone"  accept="application/pdf"/>
+			<span asp-validation-for="MyFiles" class="text-danger"></span>
+			</div>
+			<span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span>
+		</div>
+	</div>
+	 
+	<div class="card-footer">
+		<div class="row">
+			<div class="col-lg-6">	
+				<input type="submit" asp-for="MyFiles" value="Add" class="btn btn-primary font-weight-bolder btn-light-success" id="qual_save"/>
+			</div>
+			<div class="col-lg-6">
+				<button type="reset" class="btn btn-primary">Cancel</button>
+			</div>
+		</div>
+		
+	</div>
+					
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

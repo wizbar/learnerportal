@@ -1,0 +1,43 @@
+@model learner_portal.Models.JobSector
+
+@{
+    Layout = "_Layout_Main";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<div class="card card-custom gutter-b">
+    <div class="card-header">
+        <h4 class="mt-8">Add Job Sector</h4>
+    </div>
+    <div class="card-body">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label asp-for="JobSectorCode" class="control-label"></label>
+                    <input asp-for="JobSectorCode" class="form-control" placeholder="Enter Sector Code"/>
+                    <span asp-validation-for="JobSectorCode" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="JobSectorDesc" class="control-label"></label>
+                    <input asp-for="JobSectorDesc" class="form-control" placeholder="Enter Sector Description"/>
+                    <span asp-validation-for="JobSectorDesc" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary mr-1"/>
+                <a asp-action="Index" class="btn btn-bg-primary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

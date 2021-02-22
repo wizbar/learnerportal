@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "_Layout_Main";
+}
+
+<div class="card card-custom gutter-b">
+    <div class="card-header">
+        <h4 class="mt-8">Provinces</h4>
+    </div>
+    <div class="card-body">
+        <table id="allProvinces" class="table ">
+            <thead>
+            <tr>
+                <div class="form-actions no-color col-md-3 float-left">
+                    <button class="btn btn-primary btn-sm mb-2 btn-rounded" onclick="showInPopUp('@Url.Action("Create", "Provinces", null, Context.Request.Scheme)', 'Add province')" id="btnCreate"><i class="fa fa-plus"></i>Create province</button>
+                </div>
+            </tr>
+            <tr>
+                <th>ID</th>
+                <th>province Code</th>
+                <th>province Name</th>
+                <th>Country Name</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+        </table>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#divProcessing").hide();
+
+        createProvincesDataTable('allProvinces', '/Provinces/GetAllProvinces');
+
+        // Hide the "busy" Gif at load:
+
+
+    });
+
+
+</script>

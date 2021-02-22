@@ -1,0 +1,37 @@
+﻿@model learner_portal.DTO.CityDetailsDTO
+
+<form asp-action="Details">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div id="progressbarwizard">
+
+        <div class="tab-content mb-0 b-0">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.CityCode):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.CityCode)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.CityName):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.CityName)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <b>@Html.DisplayNameFor(model => model.ProvinceName):</b>
+                        <div class="form-control form-control-feedback h-auto p-3">
+                            @Html.DisplayFor(model => model.ProvinceName)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
