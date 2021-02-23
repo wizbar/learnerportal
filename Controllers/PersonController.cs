@@ -124,7 +124,7 @@ namespace learner_portal.Controllers
            
            ViewData["DocumentTypeId"] = new SelectList(  await _lookUpService.GetDocumentTypesDetailsByRole(userRole[0]), "Id", "TypeName");
            return View(personDetails);
-        } 
+        }
   
         // GET: Person/Create
         public IActionResult Create()
@@ -337,14 +337,15 @@ namespace learner_portal.Controllers
 
         // GET: Person/Edit/5
         public async Task<IActionResult> Edit(string id)
-        { 
+        {
             if (id == null)
             {
                 return NotFound();
             }
 
             var learner = await _lookUpService.GetPersonByNationalIdForEditDelete(id);
-            
+            var user = await  _userManager.Users.FirstOrDefaultAsync(a => a.UserName.Equals(User.Identity.Name));
+            var userRole =  _userManager.GetRolesAsync(user).Result;
             
             if (learner == null )
             {
@@ -365,6 +366,7 @@ namespace learner_portal.Controllers
             ViewData["AddressTypeId"] = new SelectList(_context.AddressType, "AddressTypeId", "AddressTypeName");
             ViewData["SchoolId"] = new SelectList(_context.School, "SchoolId", "SchoolName");
             ViewData["SchoolGradeId"] = new SelectList(_context.SchoolGrade, "SchoolGradeId", "SchoolGradeName");
+            ViewData["DocumentTypeId"] = new SelectList(  await _lookUpService.GetDocumentTypesDetailsByRole(userRole[0]), "Id", "TypeName");
             return View(learner);
         }
    

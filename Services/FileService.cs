@@ -66,7 +66,7 @@ namespace learner_portal.Services
         }
         
         
-        public FileDTO  DownloadDocument(string path)
+        public FileDTO  DownloadFile(string path)
         {
             FileDTO dataFile = new FileDTO();
             // Checks if the id.
@@ -74,7 +74,7 @@ namespace learner_portal.Services
             {
                 try
                 {
-                    dataFile.Data = System.IO.File.ReadAllBytes(path);
+                    dataFile.Data = File.ReadAllBytes(path);
                     dataFile.Path = path;
                 }
                 catch (Exception e)
@@ -83,7 +83,32 @@ namespace learner_portal.Services
                     throw;
                 }
             }
-                return dataFile; 
+            return dataFile;  
+        }      
+        
+        public bool  DeleteFile(string path)
+        {
+            // Checks if the id.
+            if (!string.IsNullOrEmpty(path))
+            {
+                try
+                {
+                    File.Delete(path);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+            }
+            return true;  
+        }
+        
+        public bool  FileExists(string path)
+        {
+            // Checks if the id.
+            return File.Exists(path);
+
         }
     }
 }

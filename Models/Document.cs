@@ -24,7 +24,7 @@ namespace learner_portal.Models
         [DisplayName("Comments")]
         public string Comments { get; set; }
         [DisplayName("Learner")]
-        public long? LearnerId { get; set; }
+        public long LearnerId { get; set; }
         [DisplayName("Company")]
         public long? CompanyId { get; set; }  
         [DisplayName("Verified")]
@@ -44,7 +44,9 @@ namespace learner_portal.Models
         [DisplayName("Date Updated")]
         public DateTime? DateUpdated{ get; set; } 
 
+        [DisplayName("Upload File")]
         [NotMapped] 
+        
         public IFormFile MyFiles { get; set; }
         
         

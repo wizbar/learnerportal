@@ -20,7 +20,7 @@
        View
       </div>
       <h3 class="card-title">
-       Personal Information
+       Biographical Information
       </h3>
      </div>
 	<div class="card-body pt-4">
@@ -188,8 +188,7 @@
 	</div>
 	<div class="card-toolbar">
 		<a asp-action="Edit" asp-route-id="@Model.NationalID"><button type="button" class="btn btn-primary font-weight-bolder mr-2">Edit</button></a>
-		<a asp-action="ViewResumePdf" asp-route-id="@Model.NationalID"><button type="button" class="btn btn-dark font-weight-bolder float-right mr-2">Download CV</button></a>
-		
+		<a target="_blank" asp-action="ViewResumePdf" asp-route-id="@Model.NationalID"><button type="button" class="btn btn-dark font-weight-bolder float-right mr-2">Download CV</button></a>
 	</div>
 	
 </div>
@@ -200,6 +199,7 @@
 <div class="form">
 <div class="card card-custom card-stretch tab-content" id="myTabContent5">
 <div class="tab-pane fade show active card-body mt-5" id="home-5" role="tabpanel" aria-labelledby="home-tab-5">
+	<h2>Biographical Information</h2>
 	<!--begin::Body-->
 	<div class="row">
 		<div class="col-md-6">
@@ -227,7 +227,7 @@
 				<div class="form-control form-control-feedback h-auto p-3">
 					@Html.DisplayFor(model => model.GenderName)
 				</div>
-			</div> 
+			</div>
 		</div>
 		<div class="col-md-6">
 			<div class="form-group">
@@ -278,12 +278,13 @@
 	</div>
 </div>
 <div class="tab-pane fade card-body" id="profile-5" role="tabpanel" aria-labelledby="profile-tab-5">
+	<h2>Address Information</h2>
 	<div class="row">
 		<div class="col-md-6">
 			<div class="form-group">
 				<b>@Html.DisplayNameFor(model => model.HouseNo):</b>
 				<div class="form-control form-control-feedback h-auto p-3">
-					@Html.DisplayFor(model => model.HouseNo) 
+					@Html.DisplayFor(model => model.HouseNo)
 				</div>
 			</div>
 		</div>
@@ -293,7 +294,7 @@
 				<div class="form-control form-control-feedback h-auto p-3">
 					@Html.DisplayFor(model => model.StreetName)
 				</div>
-			</div> 
+			</div>
 		</div>
 	</div>
 	<div class="row">
@@ -314,7 +315,7 @@
 			</div>
 		</div>
 	</div>
-                                                                     
+
 	<div class="row">
 		<div class="col-md-6">
 			<div class="form-group">
@@ -327,7 +328,7 @@
 		<div class="col-md-6">
 			<div class="form-group">
 				<b>@Html.DisplayNameFor(model => model.ProvinceName):</b>
-				<div class="form-control form-control-feedback h-auto p-3"> 
+				<div class="form-control form-control-feedback h-auto p-3">
 					@Html.DisplayFor(model => model.ProvinceName)
 				</div>
 			</div>
@@ -350,24 +351,23 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> 
 </div>
 <div class="tab-pane fade card-body" id="profile-6" role="tabpanel" aria-labelledby="profile-tab-6">
 	<h2 class="">High School</h2>
-				
 	<div class="row">
 		<div class="col-md-4">
 			<div class="form-group">
 				<b>@Html.DisplayNameFor(model => model.SchoolName):</b>
-				<div class="form-control form-control-feedback h-auto p-3">
+				<div class="h-auto">
 					@Html.DisplayFor(model => model.SchoolName)
 				</div>
 			</div>
-		</div>  
+		</div>
 		<div class="col-md-4">
 			<div class="form-group">
 				<b>@Html.DisplayNameFor(model => model.SchoolGradeName):</b>
-				<div class="form-control form-control-feedback h-auto p-3">
+				<div class=" h-auto">
 					@Html.DisplayFor(model => model.SchoolGradeName)
 				</div>
 			</div>
@@ -375,36 +375,63 @@
 		<div class="col-md-4">
 			<div class="form-group">
 				<b>@Html.DisplayNameFor(model => model.YearSchoolCompleted):</b>
-				<div class="form-control form-control-feedback h-auto p-3">
+				<div class=" h-auto">
 					@Html.DisplayFor(model => model.YearSchoolCompleted)
 				</div>
 			</div>
 		</div>
-	</div> 
+	</div>
 	<h2 class="">Tertiary</h2>
-			
-	@foreach(var lc in Model.Qualifications) {
-		<partial name="~/Views/LearnerCourse/_ViewQualification.cshtml" model=" lc"/>
-	}
-	<partial name="~/Views/LearnerCourse/_AddQualification.cshtml" model="new LearnerCourse(){ }"/>
+	<div class="card-toolbar">
+		<button class="btn btn-bg-primary text-white mb-3 float-right" href="javascript:" onclick="showInPopUp('@Url.Action("_AddQualification", "LearnerCourse", Context.Request.Scheme)', 'Add Qualification')">Add Qualification</button>
+	</div>
+	<table class="table table-hover">
+		<thead>
+		<tr class="table-primary">
+			<th scope="col"> <label asp-for="@Model.Qualifications[0].InstitutionName" class="control-label"></label></th>
+			<th scope="col"><label asp-for="@Model.Qualifications[0].CourseName" class="control-label"></label></th>
+			<th scope="col"><label asp-for="@Model.Qualifications[0].DateOfCompletion" class="control-label"></label></th>
+			<th scope="col">Action</th>
+		</tr>
+		</thead>
+		<tbody>
+		@foreach (var lc in Model.Qualifications)
+		{
+			<partial name="~/Views/LearnerCourse/_ViewQualification.cshtml" model="lc"/>
+		}
+		</tbody>
+	</table>
 
 </div>
 <div class="tab-pane fade card-body overflow-auto" id="profile-7" role="tabpanel" aria-labelledby="profile-tab-7">
 		<div class="card card-custom card-stretch gutter-b">
 			<!--begin::Header-->
 			<div class="card-header border-0 pt-7">
-				<h3 class="card-title align-items-start flex-column">
-					<span class="card-label font-weight-bolder font-size-h4 text-dark-75 mb-3">Supporting Documents</span>
-					<span class="card-label font-weight-bolder text-dark text-dark-50 mb-lg-5"><span class="label label-lg font-weight-bolder label-rounded label-success">@Model.Documents.Count</span>  Documents Uploaded</span>
-				</h3>
+				<span class=" font-size-h4 text-dark-75 mb-3">Supporting Documents <span class=" ml-3 label label-lg font-weight-bolder label-rounded label-success">@Model.Documents.Count</span> </span>
+					@* <span class="card-label font-weight-bolder text-dark text-dark-50 mb-lg-5"><span class="label label-lg font-weight-bolder label-rounded label-success">@Model.Documents.Count</span>  Documents Uploaded</span> *@
+					<div class="card-toolbar">
+						<button class="btn btn-bg-primary text-white" href="javascript:" onclick="showInPopUp('@Url.Action("_AddDocuments", "Documents", Context.Request.Scheme)', 'Add File')">Add File</button>
+					</div>
 			</div>
 				
-				<div class="card-body pt-2">
+			<div class="card-body pt-2">
+					<table class="table table-hover">
+                        <thead>
+                        <tr class="table-primary">
+	                          <th scope="col"> </th>
+	                        <th scope="col"> <label asp-for="Documents[0].FileName" class="control-label"></label></th>
+	                        <th scope="col"><label asp-for="Documents[0].Verified" class="control-label"></label></th>
+	                        @*<th scope="col"><label asp-for="Documents[0]" class="control-label"></label></th>*@
+	                        <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 				@foreach (var dc in Model.Documents)
-            	{
-            		<partial name="~/Views/Documents/_ViewDocuments.cshtml" model="dc"/>
-            	}
-				<partial name="~/Views/Documents/_AddDocuments.cshtml" model="new Document(){ }"/>
+				{
+					<partial name="~/Views/Documents/_ViewDocuments.cshtml" model="dc"/>
+				}
+                            </tbody>
+                        </table>
 			</div>
 		</div>
 

@@ -19,7 +19,7 @@ namespace learner_portal.DTO
         public string FileName { get; set; }
         [DisplayName("File Path")]
         public string FilePath { get; set; }
-        [DisplayName("Verified")]
+        [DisplayName("Verified?")]
         public string Verified { get; set; }
         [DisplayName("Verification Date")]
         public DateTime? VerificationDate { get; set; }

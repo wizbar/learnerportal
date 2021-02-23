@@ -671,15 +671,13 @@
 						<div class="modal ribbon-box" tabindex="-1" role="dialog" id="form-modal-lg" style="display: none;position: center;">
 							<div class="modal-dialog modal-dialog-centered modal-xl" role="document">
 								<div class="modal-content ">
-									<div class="modal-header ribbon ribbon-clip ribbon-left">
-										<h5 class="text-uppercase text-center modal-title p-2 ribbon ribbon-primary float-left"></h5> 
+									<div class="modal-header ribbon ribbon-clip ribbon-left"> 
+										<div class="ribbon-target" style="top: 12px;">
+											<span class="ribbon-inner bg-primary"></span><p class="text-uppercase text-white modal-title"></p>
+										</div>
 										<a asp-action="Index" type="button" class="close mt-5" data-dismiss="modal" style="padding-left: 920px;" aria-label="Close">
 											<i aria-hidden="true" class="ki ki-close"></i>
 										</a>
-                                                
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span>&times;</span>
-										</button>
 									</div>
 									<div class="modal-body ">
 									</div>
@@ -1180,6 +1178,7 @@
 <script src="~/js/site.js"></script> 
 @*<script src="~/assets/plugins/custom/datatables/datatables.bundle.js"></script>*@
 
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/assets/js/pages/features/datatables/basic/headers.js"></script>
 <script src="~/assets/DataTables/datatables.min.js"></script>
 <script src="~/assets/js/pages/features/forms/widgets/select2.js"></script>
@@ -1187,7 +1186,6 @@
 <script src="~/assets/js/pages/custom/profile/profile.js"></script>
 <script src="~/lib/sweetalert2/sweetalert2.all.min.js"></script>
 <script src="~/assets/js/pages/features/file-upload/image-input.js"></script>
-<script src="~/assets/js/pages/features/file-upload/dropzonejs.js"></script>
 <script src="~/assets/js/pages/custom/wizard/wizard-3.js"></script>
 <script src="~/assets/js/pages/custom/wizard/wizard-1.js"></script>
 <script src="~/assets/js/pages/custom/wizard/wizard-4.js"></script>

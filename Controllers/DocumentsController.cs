@@ -21,14 +21,16 @@ namespace learner_portal.Controllers
         private readonly LearnerContext _context;
         private readonly ILookUpService _lookUpService;
         private readonly IFileService _fileService;
+        private readonly UserManager<Users> _userManager;
         private readonly IWebHostEnvironment _env;
         private readonly FoldersConfigation _foldersConfigation;
 
-        public DocumentsController(LearnerContext context,ILookUpService lookUpService,IFileService fileService,IWebHostEnvironment env,FoldersConfigation foldersConfigation)
+        public DocumentsController(LearnerContext context,ILookUpService lookUpService,IFileService fileService,IWebHostEnvironment env,FoldersConfigation foldersConfigation,UserManager<Users> userManager)
         {
             _context = context;
             _lookUpService = lookUpService;
             _fileService = fileService;
+            _userManager = userManager;
             _env = env;
             _foldersConfigation = foldersConfigation;
         }
@@ -45,7 +47,7 @@ namespace learner_portal.Controllers
             if (ModelState.IsValid)
             {
                 var path =  _env.WebRootPath + document.FilePath + "/" + document.FileName;
-                fileBytes =  _fileService.DownloadDocument(path).Data;
+                fileBytes =  _fileService.DownloadFile(path).Data;
             }
           
             return File(fileBytes, "application/pdf"); 
@@ -127,8 +129,64 @@ namespace learner_portal.Controllers
         // GET: Address/Create
         public IActionResult Create()
         {
-
             return PartialView();
+        }
+        
+        public async Task<IActionResult> _Verify(Guid id)
+        {
+            var document = await _lookUpService.GetDocumentsDetailsByIdForEditDelete(id);
+            if ( document == null)
+            {
+                return NotFound();
+            }
+            var user = await  _userManager.Users.FirstOrDefaultAsync(a => a.UserName.Equals(User.Identity.Name));
+            var userRole =  _userManager.GetRolesAsync(user).Result;
+            
+            ViewData["DocumentTypeId"] = new SelectList(  await _lookUpService.GetDocumentTypesDetailsByRole(userRole[0]), "Id", "TypeName");
+            ViewData["CompanyId"] = new SelectList(_context.Company, "CompanyId", "CompanyName");
+            ViewData["LearnerId"] = new SelectList(_context.Learner, "LearnerId", "LearnerId");
+            ViewData["Id"] = new SelectList(_context.JobApplications, "Id", "Id");
+            return View(document);
+        }
+        
+                [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> _Verify(Guid id, [Bind("Id,FilePath,FileName,DocumentTypeId,Comments,LearnerId")] Document document)
+        {
+            if (id != document.Id)
+            {
+                return NotFound();
+            }
+   
+            if (ModelState.IsValid)
+            {
+                document.Verified = Const.VERIFIED;
+                document.VerifiedBy = User.Identity.Name;
+                document.VerificationDate = DateTime.Now;
+                document.LastUpdatedBy = User.Identity.Name;
+                document.DateUpdated = DateTime.Now;
+ 
+                try
+                {
+                    _context.Update(document);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!FileExists(document.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                var user = await _lookUpService.GetCurrentLoggedInUser(User.Identity.Name);
+                return RedirectToAction("Details","Person", new {id = user.Person.NationalId});
+            }
+
+            return View(document);
         }
 
 
@@ -157,8 +215,7 @@ namespace learner_portal.Controllers
                                         (_lookUpService.GetAllDocumentTypesById(document.DocumentTypeId).Result
                                             .TypeName);
                 _fileService.UploadFile(document.MyFiles,document.FilePath);
-                
-             
+
                 //create an audit trail
                 document.CreatedBy = user.UserName;
                 document.DateCreated = DateTime.Now;
@@ -180,10 +237,11 @@ namespace learner_portal.Controllers
         // GET: document/Create
         public async Task<IActionResult> _AddDocuments()
         {
-            
-                return PartialView();
-            
-
+            var user = await  _userManager.Users.FirstOrDefaultAsync(a => a.UserName.Equals(User.Identity.Name));
+            var userRole =  _userManager.GetRolesAsync(user).Result;
+           
+            ViewData["DocumentTypeId"] = new SelectList(  await _lookUpService.GetDocumentTypesDetailsByRole(userRole[0]), "Id", "TypeName");
+            return PartialView();
         }
         
         [HttpPost]
@@ -209,8 +267,6 @@ namespace learner_portal.Controllers
                 return RedirectToAction(nameof(Index)); 
             }
 
-            
-            ViewData["DocumentTypeId"] = new SelectList(await _lookUpService.GetCities(), "id", "Name");
             return PartialView(document);
         }
 
@@ -222,7 +278,10 @@ namespace learner_portal.Controllers
             {
                 return NotFound();
             }
-            ViewData["Id"] = new SelectList(_context.DocumentType, "Id", "TypeName");
+            var user = await  _userManager.Users.FirstOrDefaultAsync(a => a.UserName.Equals(User.Identity.Name));
+            var userRole =  _userManager.GetRolesAsync(user).Result;
+            
+            ViewData["DocumentTypeId"] = new SelectList(  await _lookUpService.GetDocumentTypesDetailsByRole(userRole[0]), "Id", "TypeName");
             ViewData["CompanyId"] = new SelectList(_context.Company, "CompanyId", "CompanyName");
             ViewData["LearnerId"] = new SelectList(_context.Learner, "LearnerId", "LearnerId");
             ViewData["Id"] = new SelectList(_context.JobApplications, "Id", "Id");
@@ -234,27 +293,33 @@ namespace learner_portal.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,FilePath,FileName,DocumentTypeId,Comments,LearnerId,CompanyId,Verified,VerificationDate,VerifiedBy,JobApplicationId,CreatedBy,DateCreated,LastUpdatedBy,DateUpdated")] Document document)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,FilePath,FileName,DocumentTypeId,Comments,LearnerId,CompanyId,Verified,VerificationDate,VerifiedBy,JobApplicationId,CreatedBy,DateCreated,LastUpdatedBy,DateUpdated,MyFiles")] Document document)
         {
             if (id != document.Id)
             {
                 return NotFound();
             }
-
+   
             if (ModelState.IsValid)
             {
-
+                document.Verified = Const.NOT_VERIFIED;
                 document.LastUpdatedBy = User.Identity.Name;
                 document.DateUpdated = DateTime.Now;
-                
+                string path = _env.WebRootPath + document.FilePath + document.FileName;
+                if (_fileService.FileExists(path))
+                {
+                    _fileService.DeleteFile(path);
+                }
+                  _fileService.UploadFile(document.MyFiles, _env.WebRootPath + document.FilePath );
                 try
                 {
+                    document.FileName = document.MyFiles.FileName;
                     _context.Update(document);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AddressExists(document.Id))
+                    if (!FileExists(document.Id))
                     {
                         return NotFound();
                     }
@@ -263,23 +328,18 @@ namespace learner_portal.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                var user = await _lookUpService.GetCurrentLoggedInUser(User.Identity.Name);
+                return RedirectToAction("Details","Person", new {id = user.Person.NationalId});
             }
-            ViewData["Id"] = new SelectList(_context.DocumentType, "Id", "TypeName", document.DocumentTypeId);
-            ViewData["CompanyId"] = new SelectList(_context.Company, "CompanyId", "CompanyName", document.CompanyId);
+            /*ViewData["CompanyId"] = new SelectList(_context.Company, "CompanyId", "CompanyName", document.CompanyId);
             ViewData["LearnerId"] = new SelectList(_context.Learner, "LearnerId", "LearnerId", document.LearnerId);
-            ViewData["Id"] = new SelectList(_context.JobApplications, "Id", "Id", document.JobApplicationId);
+            ViewData["Id"] = new SelectList(_context.JobApplications, "Id", "Id", document.JobApplicationId);*/
             return View(document);
         }
 
         // GET: Address/Delete/5
         public async Task<IActionResult> Delete(Guid id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var document = await _lookUpService.GetDocumentsDetailsByIdForEditDelete(id);
             
             if (document == null)
@@ -295,13 +355,18 @@ namespace learner_portal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
+           
+            
             var document = await _context.Document.FindAsync(id);
             _context.Document.Remove(document);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            
+            var person = await _lookUpService.GetLearnerDetailsById(document.LearnerId);
+            
+            return RedirectToAction("Details","Person", new { Id = person.NationalID});
         }
 
-        private bool AddressExists(Guid id)
+        private bool FileExists(Guid id)
         {
             return _context.Document.Any(e => e.Id.Equals(id));
         }

@@ -1,27 +1,30 @@
+@using learner_portal.Helpers
 @model learner_portal.DTO.QualificationDTO
 
-<form >
-<div class="form-group row" id="kt_repeater_1">
-            <div data-repeater-list="Model" class="col-lg-12">
-                <div data-repeater-item class="form-group row align-items-center">
-                    <div class="col-md-4">
-                        <label asp-for="InstitutionName"  class="control-label"></label>
-                        <input disabled asp-for="InstitutionName" name="InstitutionName" class="form-control" />
-                        <div class="d-md-none mb-2"></div>
-                    </div>
-                    <div class="col-md-4">
-                        <label asp-for="CourseName" class="control-label"></label>
-                        <input disabled asp-for="CourseName" name="CourseName" class="form-control"
-                             />
-                        <div class="d-md-none mb-2"></div>
-                    </div>
-                    <div class="col-md-4">
-                        <label asp-for="DateOfCompletion" class="control-label"></label>
-                        <input type="date" disabled asp-for="DateOfCompletion" name="DateOfCompletion" class="form-control"/>
-                        <div class="d-md-none mb-2"></div>
-                    </div>
-                </div>
+<tr>
+    <td>                
+        @Model.InstitutionName
+    </td>
+    <td>            
+        @Model.CourseName
+    </td>
+    <td>
+        @Model.DateOfCompletion.ToString(Const.DATE_FORMAT)
+    </td>
+    <th scope="row">				
+        <div class="btn-group">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item px-8 " href="javascript:" onclick="showInPopUp('@Url.Action("Edit", "LearnerCourse", new { Id = Model.Id }, Context.Request.Scheme)', 'Edit Qualification')"><i class="fa fa-edit mr-2" aria-hidden="true" style="color:#727cf5"></i>Edit</a>
+                <a class="dropdown-item px-8 " href="javascript:" onclick="showInPopUp('@Url.Action("Delete", "LearnerCourse", new { Id = Model.Id }, Context.Request.Scheme)', 'Delete Qualification')"><i class="fa fa-trash mr-2" aria-hidden="true" style="color:#fa5c7c"></i>Delete</a>
+          
             </div>
         </div>
-</form>
+    </th>
+</tr>
+
+
+    
+
+
  

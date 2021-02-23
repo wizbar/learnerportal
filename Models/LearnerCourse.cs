@@ -10,7 +10,7 @@ namespace learner_portal.Models
 
         [Key] public long LearnerCourseId { get; set; }
         [DisplayName("Learner")]   
-        public long? LearnerId { get; set; }
+        public long LearnerId { get; set; }
         
         [DisplayName("Course Name")] 
         [Required(ErrorMessage = "Please capture Qualification")  ]

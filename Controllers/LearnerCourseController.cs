@@ -61,7 +61,7 @@ namespace learner_portal.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LearnerCourseId,LearnerId,PersonId,InstitutionName,CourseName,DateOfCompletion,CreatedBy,DateCreated,LastUpdatedBy,DateUpdated")] LearnerCourse learnerCourse)
+        public async Task<IActionResult> Create([Bind("LearnerCourseId,LearnerId,InstitutionName,CourseName,DateOfCompletion,CreatedBy,DateCreated,LastUpdatedBy,DateUpdated")] LearnerCourse learnerCourse)
         {
             //Get current user details  
             var user = await _lookUpService.GetCurrentLoggedInUser(User.Identity.Name);
@@ -79,7 +79,7 @@ namespace learner_portal.Controllers
                 learnerCourse.CreatedBy = user.UserName;
                 learnerCourse.DateCreated = DateTime.Now; 
 
-                learnerCourse.LastUpdatedBy = "admin";
+                learnerCourse.LastUpdatedBy =  user.UserName;
                 learnerCourse.DateUpdated = DateTime.Now;
                   
                 _context.Add(learnerCourse);
@@ -134,12 +134,12 @@ namespace learner_portal.Controllers
                 return NotFound();
             }
 
-            var learnerCourse = await _context.LearnerCourse.FindAsync(id);
+            var learnerCourse = await _context.LearnerCourse.Where(a => a.LearnerCourseId == id).Include(a => a.Learner).ThenInclude(a => a.Person).FirstOrDefaultAsync();
             if (learnerCourse == null)
             { 
                 return NotFound();
             }
-            return View(learnerCourse);
+            return PartialView(learnerCourse);
         }
 
         // POST: LearnerCourse/Edit/5
@@ -147,7 +147,7 @@ namespace learner_portal.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("LearnerCourseId,LearnerId,PersonId,InstitutionId,CourseId,DateOfCompletion,CreatedBy,DateCreated,LastUpdatedBy,DateUpdated")] LearnerCourse learnerCourse)
+        public async Task<IActionResult> Edit(long id, [Bind("LearnerCourseId,LearnerId,InstitutionName,CourseName,DateOfCompletion,CreatedBy,DateCreated,LastUpdatedBy,DateUpdated")] LearnerCourse learnerCourse)
         {
             if (id != learnerCourse.LearnerCourseId)
             {
@@ -156,7 +156,9 @@ namespace learner_portal.Controllers
 
             if (ModelState.IsValid)
             {
-                learnerCourse.LastUpdatedBy = "admin"; 
+                var person = await _lookUpService.GetLearnerDetailsById(learnerCourse.LearnerId);
+                
+                learnerCourse.LastUpdatedBy = User.Identity.Name; 
                 learnerCourse.DateUpdated = DateTime.Now;
                 
                 try 
@@ -175,9 +177,9 @@ namespace learner_portal.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details","Person", new { Id = person.NationalID});
             }
-            return View(learnerCourse);
+            return View();
         }
 
         // GET: LearnerCourse/Delete/5
@@ -206,7 +208,9 @@ namespace learner_portal.Controllers
             var learnerCourse = await _context.LearnerCourse.FindAsync(id);
             _context.LearnerCourse.Remove(learnerCourse);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            
+            var person = await _lookUpService.GetLearnerDetailsById(learnerCourse.LearnerId);
+            return RedirectToAction("Details","Person", new { Id = person.NationalID});
         }
 
         private bool LearnerCourseExists(long id)

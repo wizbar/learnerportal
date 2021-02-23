@@ -9,6 +9,8 @@ namespace learner_portal.Services
         bool UploadFile(IFormFile file,string filePath);
         bool UploadFiles(IEnumerable<IFormFile> files,string filePath);
 
-        FileDTO DownloadDocument(string path);
+        FileDTO DownloadFile(string path);
+         bool DeleteFile(string path);
+         bool FileExists(string path);
     }
 }

@@ -155,7 +155,10 @@
   <ItemGroup>
     <Folder Include="Data" />
     <Folder Include="Migrations" />
-    <Folder Include="wwwroot\Documents" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Docs\0102125452086\ID Document\Mandatory_Grant_(WSPorATR)_and_Discretionery_Grant_Application_Verification_for_2021_Submission.pdf" />
   </ItemGroup>
 
 </Project>

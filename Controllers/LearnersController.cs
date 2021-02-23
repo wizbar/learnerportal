@@ -93,6 +93,7 @@ namespace learner_portal.Controllers
                             Qualifications = a.LearnerCourse.Select(qualification =>
                                 new QualificationDTO()
                                 {
+                                    Id = qualification.LearnerCourseId,
                                     CourseName = qualification.CourseName,
                                     InstitutionName = qualification.InstitutionName,
                                     DateOfCompletion = qualification.DateOfCompletion
@@ -183,7 +184,8 @@ namespace learner_portal.Controllers
                             PhotoPath = a.Person.PhotoPath,
                             Qualifications = a.LearnerCourse.Select(qualification =>
                                 new QualificationDTO()
-                                {
+                                {  
+                                    Id = qualification.LearnerCourseId,
                                     CourseName = qualification.CourseName,
                                     InstitutionName = qualification.InstitutionName,
                                     DateOfCompletion = qualification.DateOfCompletion
@@ -273,6 +275,7 @@ namespace learner_portal.Controllers
                             Qualifications = a.LearnerCourse.Select(qualification =>
                                 new QualificationDTO()
                                 {
+                                    Id = qualification.LearnerCourseId,
                                     CourseName = qualification.CourseName,
                                     InstitutionName = qualification.InstitutionName,
                                     DateOfCompletion = qualification.DateOfCompletion

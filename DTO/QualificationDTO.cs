@@ -5,7 +5,8 @@ namespace learner_portal.DTO
 {
     public class QualificationDTO
     {
-
+        [DisplayName("Id")]
+        public long Id { get; set; } 
         [DisplayName("Institution Name ")]
         public string InstitutionName { get; set; } 
         [DisplayName("Qualification Name")]

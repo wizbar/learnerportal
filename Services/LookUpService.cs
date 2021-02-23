@@ -799,6 +799,7 @@ namespace learner_portal.Services
                     YearSchoolCompleted = person.YearSchoolCompleted.ToString(Const.DATE_FORMAT),
                     Qualifications = person.LearnerCourse.Select(a => new QualificationDTO()
                     {
+                        Id = a.LearnerCourseId,
                         CourseName = a.CourseName,
                         InstitutionName = a.InstitutionName,
                         DateOfCompletion = a.DateOfCompletion
@@ -991,6 +992,7 @@ namespace learner_portal.Services
                 .Include(a => a.Person.CitizenshipStatus)
                 .Include(a => a.Person.DisabilityStatus)
                 .Include(a => a.Person.HomeLanguage)
+                .Include(a => a.Documents).ThenInclude(d => d.DocumentType)
                 .FirstOrDefaultAsync(p => p.Person.NationalId.Equals(id));
 
             return learner;
@@ -1528,7 +1530,7 @@ namespace learner_portal.Services
                 }).FirstOrDefaultAsync();
 
         }
-        
+
         public async Task<Document> GetDocumentsDetailsByIdForEditDelete(Guid id) 
         {
             return await _context.Document
