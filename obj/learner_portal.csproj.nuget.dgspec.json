@@ -36,6 +36,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "AspNetCoreHero.ToastNotification": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
             "AutoMapper": {
               "target": "Package",
               "version": "[10.1.1, )"
@@ -71,10 +75,6 @@
               "version": "[3.1.11, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[3.1.11, )"
-            },
-            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[3.1.11, )"
             },
@@ -119,10 +119,6 @@
             "reCAPTCHA.AspNetCore": {
               "target": "Package",
               "version": "[3.0.10, )"
-            },
-            "toastr": {
-              "target": "Package",
-              "version": "[2.1.1, )"
             }
           },
           "imports": [

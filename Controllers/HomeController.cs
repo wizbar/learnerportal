@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using learner_portal.Models;
@@ -13,16 +14,18 @@ namespace learner_portal.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly RoleManager<Roles> _roleManager;
         private readonly ILookUpService _lookUpService;
-
-        public HomeController( RoleManager<Roles> roleManager,ILogger<HomeController> logger,ILookUpService lookUpService)
+        private readonly IToastifyService _toastify;
+        public HomeController( RoleManager<Roles> roleManager,ILogger<HomeController> logger,ILookUpService lookUpService,IToastifyService toastify)
         {
             _roleManager = roleManager;
             _logger = logger;
             _lookUpService = lookUpService;
+            _toastify = toastify;
         }
 
         public IActionResult Index()
         {
+            _toastify.Error("Users already exists");
             var jobs = _lookUpService.GetAllJob().Result;
             
             ViewData["Name"] = new SelectList(_roleManager.Roles, "Name", "Name");

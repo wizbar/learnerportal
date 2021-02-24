@@ -1,6 +1,8 @@
 ﻿@model learner_portal.Models.DocumentType
 
-<form asp-action="Edit">
+<form asp-action="Edit"
+        data-ajax="true"
+        data-ajax-method="POST">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <input type="hidden" asp-for="Id" />
     <div class="row">
@@ -21,24 +23,15 @@
             </select>
         </div>
         <div class="col-3 mb-3">
-             <label asp-for="ActiveYn" class="control-label"></label>
-            <span class="switch switch-md"> 
-                <label>
-                    @if (Model.ActiveYn.Equals("true"))
-                    {
-                        <input type="checkbox" asp-for="ActiveYn" checked="checked" name="select">
-                    }
-                    else
-                    {
-                        <input type="checkbox" asp-for="ActiveYn"  name="select">
-                    }
-                     
-                    <span></span>
-                </label>
-            </span>
+            <div class="form-group">
+                <label asp-for="@Model.ActiveYn"></label>
+                <input  class="switch switch-md"  asp-for="@Model.ActiveYn" type="checkbox" />
+            </div>
         </div>
+        
     </div>
     <div class="form-group">
         <input type="submit" value="Save" class="btn btn-success" />
     </div>
 </form>
+

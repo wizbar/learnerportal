@@ -375,7 +375,7 @@ namespace learner_portal.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, Learner learner)
+        public async Task<IActionResult> Edit(string id,[Bind("LearnerId,PersonId,SchoolId,SchoolGradeId,MotivationText,YearSchoolCompleted,CreatedBy,DateCreated,LastUpdatedBy,DateUpdated,RecruitedYn,AppliedYn,Person,School,SchoolGrade")] Learner learner)
         {
             if (learner.Person == null )
             {

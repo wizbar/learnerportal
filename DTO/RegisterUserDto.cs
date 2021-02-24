@@ -26,7 +26,7 @@ namespace learner_portal.DTO
         public string ConfirmPassword { get; set; }        
         
         [Required]
-        [StringLength(100, ErrorMessage = "Please select a Role your registering as..", MinimumLength = 6)]
+      
         [Display(Name = "Role")]
         public string Role { get; set; } 
         

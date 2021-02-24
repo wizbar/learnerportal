@@ -9,17 +9,17 @@ namespace learner_portal.Helpers
 {
     public static class NotificationsHelper
     {
-        private static readonly HttpContext context = new DefaultHttpContext();
+        private static readonly HttpContext Context = new DefaultHttpContext();
         
         
-        public static string RenderNotifications()
+        public static string RenderNotifications() 
         {
-            if (context.Session.GetString("SessionKeyName") == null) return null;
+            if (Context.Session.GetString("Notifications") == null) return null;
             string jsBodyOpen = "<script>";
             string jsBody = "";
             string jsBodyClose = "</script>";
 
-            var notifications = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Notification>>(context.Session.GetString("Notifications").ToString());
+            var notifications = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Notification>>(Context.Session.GetString("Notifications").ToString());
             foreach(var note in notifications)
             {
                 if(note.NotificationType == NotificationType.Error)
@@ -39,7 +39,7 @@ namespace learner_portal.Helpers
         /// </summary>
         public static void Clear()
         {
-            context.Session.SetString("Notifications",null);
+            Context.Session.SetString("Notifications",null);
         }
 
         public static void AddNotification(Notification notification)
@@ -52,12 +52,12 @@ namespace learner_portal.Helpers
             };
             var notifications = new List<Notification>();
 
-            if (context.Session.GetString("Notifications") != null) {
-                notifications = JsonConvert.DeserializeObject<List<Notification>>(context.Session.GetString("Notifications").ToString());
+            if (Context.Session.GetString("Notifications") != null) {
+                notifications = JsonConvert.DeserializeObject<List<Notification>>(Context.Session.GetString("Notifications").ToString());
             }
             notifications.Add(note);
 
-            context.Session.SetString("Notifications",JsonConvert.SerializeObject(notifications));
+            Context.Session.SetString("Notifications",JsonConvert.SerializeObject(notifications));
         }
     }
 

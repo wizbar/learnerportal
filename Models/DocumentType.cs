@@ -29,6 +29,8 @@ namespace learner_portal.Models
         public string RoleId { get; set; }
         [ForeignKey("Active(Y/N)")]
         public string ActiveYn { get; set; }
+        [NotMapped]
+        public bool IsActive { get; set; }
         [DisplayName("Created By")]
         public string CreatedBy { get; set; }
         [DisplayName("Date Created")]

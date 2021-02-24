@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AspNetCoreHero.ToastNotification.Abstractions;
 using learner_portal.DTO;
 using learner_portal.Helpers;
 using learner_portal.Models;
@@ -15,7 +16,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using MimeKit;
+
 using Enum = learner_portal.Helpers.Enum;
+using Notification = learner_portal.Helpers.Notification;
 
 namespace learner_portal.Controllers
 {
@@ -27,9 +30,11 @@ namespace learner_portal.Controllers
         private readonly ILookUpService _lookUpService;
         private readonly LearnerContext _context;
         private readonly RoleManager<Roles> _roleManager;
-        private readonly EmailConfiguration _emailConfig; 
-        private readonly ILogger<AccountController> _logger;
-        // private readonly IToastNotification _toastNotification;
+        private readonly EmailConfiguration _emailConfig;    
+        private readonly ILogger<AccountController> _logger;  
+        private readonly IToastifyService _toastify;
+            
+       //  private readonly IToastNotification _toastNotification;
          
 
         public AccountController(
@@ -40,8 +45,9 @@ namespace learner_portal.Controllers
             ILookUpService lookUpService,
             EmailConfiguration emailConfig,
             ILogger<AccountController> logger,
-            LearnerContext context
-            // ,IToastNotification toastNotification
+            LearnerContext context,
+            IToastifyService toastify
+           //  ,IToastNotification toastNotification
         )
         {  
             _userManager = userManager;
@@ -52,6 +58,7 @@ namespace learner_portal.Controllers
             _roleManager = roleManager;
             _lookUpService = lookUpService;
             _context = context;
+            _toastify = toastify;
             // _toastNotification = toastNotification;
         }
  
@@ -74,11 +81,18 @@ namespace learner_portal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterUserDto input)
         {
+            ViewData["Name"] = new SelectList(_roleManager.Roles, "Name", "Name",input.Role);
             input.ActiveYn = "No";
-            Url.Content("~/");
-         //   ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
+                if (_userManager.FindByNameAsync(input.UserName) != null || _userManager.FindByEmailAsync(input.Email) != null )
+                    {   
+
+                        _toastify.Error("Users already exists");
+                    _logger.LogError("Users already exists");
+                    return View();
+                }
+
                 _logger.LogInformation("--- Register(" + input.Email + ") Start --");
                 
                 //Create a User object
@@ -133,7 +147,7 @@ namespace learner_portal.Controllers
             }
    
             // If we got this far, something failed, redisplay form
-            ViewData["Name"] = new SelectList(_roleManager.Roles, "Name", "Name",input.Role);
+     
             return RedirectToPage("/Dashboard/Dashboard");    
         } 
          
@@ -371,7 +385,7 @@ namespace learner_portal.Controllers
             token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
             _logger.LogInformation("Base64 Url Id : " + token);
             _logger.LogDebug("Build the Url..");
-
+ 
             var confirmationLink =
                 Url.Page(
                     "/Account/ResetPassword",
@@ -390,7 +404,7 @@ namespace learner_portal.Controllers
                 var body = registrationEmailTemplate.EmailBody;
 
                 _logger.LogInformation("Update the Url within the Email Body ...");
-
+ 
                 body = body.Replace("##activate##", confirmationLink);
 
                 var message = new Mail

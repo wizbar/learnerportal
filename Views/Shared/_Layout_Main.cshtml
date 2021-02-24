@@ -1,4 +1,5 @@
-﻿
+﻿@using learner_portal.Helpers
+
 <!DOCTYPE html>
 <html lang="en">
 <!--begin::Head-->
@@ -27,7 +28,9 @@
 	<link href="~/assets/plugins/custom/uppy/uppy.bundle.css" rel="stylesheet" type="text/css" />
 	<link href="~/assets/DataTables/datatables.min.css" rel="stylesheet" type="text/css" />
 	<link href="~/lib/sweetalert2/sweetalert2.css" rel="stylesheet" type="text/css" />
-
+	<link href="~/lib/toastify/toastify.css" rel="stylesheet" type="text/css" />	
+	<script src="~/lib/toastify/toastify.js" type="text/javascript"></script>
+	
     <!--end::Global Theme Bundle-->
 	@*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
 	*@
@@ -418,30 +421,6 @@
 								<span></span>
 							</i>
 							<span class="menu-text">Tree View</span>
-						</a>
-					</li>
-					<li class="menu-item" aria-haspopup="true">
-						<a href="features/miscellaneous/bootstrap-notify.html" class="menu-link">
-							<i class="menu-bullet menu-bullet-dot">
-								<span></span>
-							</i>
-							<span class="menu-text">Bootstrap Notify</span>
-						</a>
-					</li>
-					<li class="menu-item" aria-haspopup="true">
-						<a href="features/miscellaneous/toastr.html" class="menu-link">
-							<i class="menu-bullet menu-bullet-dot">
-								<span></span>
-							</i>
-							<span class="menu-text">Toastr</span>
-						</a>
-					</li>
-					<li class="menu-item" aria-haspopup="true">
-						<a href="features/miscellaneous/sweetalert2.html" class="menu-link">
-							<i class="menu-bullet menu-bullet-dot">
-								<span></span>
-							</i>
-							<span class="menu-text">SweetAlert2</span>
 						</a>
 					</li>
 					<li class="menu-item" aria-haspopup="true">
@@ -1190,7 +1169,12 @@
 <script src="~/assets/js/pages/custom/wizard/wizard-1.js"></script>
 <script src="~/assets/js/pages/custom/wizard/wizard-4.js"></script>
 	<script src="~/assets/js/pages/widgets.js"></script>
+
+
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await Component.InvokeAsync("Toastify") 
 @RenderSection("Scripts", required: false)
+
 	</body>
 </html>
 

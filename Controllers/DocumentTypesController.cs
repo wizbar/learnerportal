@@ -126,11 +126,6 @@ namespace learner_portal.Controllers
         // GET: DocumentTypes/Edit/5 
         public async Task<IActionResult> Edit(Guid id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var documentType = await _lookUpService.GetDocumentTypesDetailsByIdForEditDelete(id);
             if (documentType == null)
             {

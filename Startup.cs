@@ -1,4 +1,6 @@
 using System;
+using AspNetCoreHero.ToastNotification;
+using AspNetCoreHero.ToastNotification.Extensions;
 using learner_portal.Helpers;
 using learner_portal.Models;
 using learner_portal.Services;
@@ -33,6 +35,16 @@ namespace learner_portal
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddToastify(config=> { config.DurationInSeconds = 5; config.Position = Position.Right; config.Gravity = Gravity.Bottom; });
+            services.AddControllersWithViews().AddNewtonsoftJson(
+                options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; })
+                /*.AddNToastNotifyNoty(new NToastNotify.NotyOptions()
+            {
+                ProgressBar = true,
+                Timeout = 5000,
+                Theme = "mint",
+            });;*/
+            ;
             //Email Server Configuration   
             var emailConfig = Configuration
                 .GetSection("EmailConfiguration")
@@ -81,22 +93,10 @@ namespace learner_portal
 
             });
 
-            //Configure Toast and Notification Services for alerts 
-            /*
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
-                .AddNToastNotifyToastr(new NToastNotify.ToastrOptions() { ProgressBar = false, PositionClass = ToastPositions.BottomRight }, new NToastNotify.NToastNotifyOption()
-                {
-                    ScriptSrc = "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js?7.0.0.0",
-                    StyleHref = "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css?7.0.0.0"
-                });
-                */
-
-
-
+     
             //Add Context Assessor Singleton 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); 
             //services.AddMemoryCache();
-            services.AddMvc();
  
             // Add Database Context to access the database
             services.AddDbContext<LearnerContext>(options =>
@@ -142,18 +142,12 @@ namespace learner_portal
                 options.IdleTimeout = TimeSpan.FromMinutes(10);
                 options.Cookie.IsEssential = true;
             });
-            services.AddControllersWithViews();
-            services.AddRazorPages();
- 
-            services.AddControllersWithViews().AddNewtonsoftJson(
-                options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });
-            ;
+
         }
  
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory, IHostingEnvironment _env)
         {
-           
             
             loggerFactory.AddFile("Logs/learner_portal-{Date}.txt");
             
@@ -171,15 +165,13 @@ namespace learner_portal
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
- 
             app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseSession();
+            app.UseSession();  
             app.UseCookiePolicy();
-            // app.UseNToastNotify();
-           
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -188,6 +180,7 @@ namespace learner_portal
                    );
               
             });
+            
             RotativaConfiguration.Setup(_env, "Rotativa");
            }
     }
