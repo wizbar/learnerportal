@@ -1,8 +1,12 @@
 ﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 
 // for details on configuring this project to bundle and minify static web assets.
+/*$(document).ajaxStart($.blockUI({ message: '<h1><img src="../Images/busy.gif"/>Just a moment...</h1>' })).ajaxStop($.unblockUI);*/
+$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
 
-
+$('.select2').select2({
+    placeholder: 'Select an option'
+});
 
 // Write your JavaScript code.
 
@@ -994,22 +998,22 @@ createLearnersDataTable = (table_id, url) => {
             {
                 "render": function (data, type, full) {
 
-                    return '<span class="label label-lg font-weight-boldest label-rounded label-'+ ((full.appliedYn === 'Yes')? 'success label-inline"><i class="fas fa-check mr-2" style="color:#fff7f2 "></i>' : 'danger label-inline"><i class="fas fa-times mr-2" style="color:#fff7f2 "></i>')  +  full.appliedYn +'</span>';
+                    return '<span class="label label-lg font-weight-boldest label-rounded label-'+ ((full.appliedYn === 'true')? 'success label-inline"><i class="fas fa-check mr-2" style="color:#fff7f2 "></i>' : 'danger label-inline"><i class="fas fa-times mr-2" style="color:#fff7f2 "></i>')  +  full.appliedYn +'</span>';
 
                 }},
             {
                 "render": function (data, type, full) {
 
-                    return '<span class="label label-lg font-weight-boldest label-rounded label-'+ ((full.recruitedYn === 'Yes')? 'success label-inline"><i class="fas fa-check mr-2" style="color:#fff7f2 "></i>' : 'danger label-inline"><i class="fas fa-times mr-2" style="color:#fff7f2 "></i>') +  full.recruitedYn +'</span>';
+                    return '<span class="label label-lg font-weight-boldest label-rounded label-'+ ((full.recruitedYn === 'true')? 'success label-inline"><i class="fas fa-check mr-2" style="color:#fff7f2 "></i>' : 'danger label-inline"><i class="fas fa-times mr-2" style="color:#fff7f2 "></i>') +  full.recruitedYn +'</span>';
 
                 }},
 
             {
  
                 "render": function (data, type, full) {
-                    if(full.appliedYn === 'No' && full.recruitedYn === 'No')
+                    if(full.appliedYn === 'false' && full.recruitedYn === 'false')
                       return  `<a href="javascript:" class="btn btn-sm btn-light-danger font-weight-bold ml-3" onClick="showInPopUpLg('/Learners/Details/` + full.learnerId + `','Learner Details')" id="btnView"><i class="fa fa-eye" aria-hidden="true" ></i>View</a>`;
-                   else if(full.appliedYn === 'Yes' && full.recruitedYn === 'No')
+                   else if(full.appliedYn === 'true' && full.recruitedYn === 'false')
                       return  `<a href="javascript:" class="btn btn-sm btn-light-warning font-weight-bold ml-3" onClick="showInPopUpLg('/Learners/Recruited/` + full.learnerId + `','Learner Requitment')" id="btnView"><i class="fa fa-eye" aria-hidden="true" ></i>Recruit</a>`;
                     else 
                         return  `<a href="javascript:" class="btn btn-sm btn-light-success font-weight-bold ml-3" onClick="showInPopUpLg('/Learners/Details/` + full.learnerId + `','View Employed Learner')" id="btnView"><i class="fa fa-eye" aria-hidden="true" ></i>View</a>`;

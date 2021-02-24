@@ -57,7 +57,7 @@ namespace learner_portal.Controllers
 
                var listOfLearners = await _lookUpService.GetAllLearners().ConfigureAwait(false);
                
-               listOfLearners = listOfLearners.Where(l => !l.AppliedYn.Equals(Const.APPLIED_YES)).ToList();
+               listOfLearners = listOfLearners.Where(l => !l.AppliedYn.Equals(Const.TRUE)).ToList();
                 // Getting all Customer data  z
                 var allLearners = listOfLearners.Select(a => new LearnerDetailsDto()
                 {
@@ -149,7 +149,7 @@ namespace learner_portal.Controllers
 
                var listOfLearners = await _lookUpService.GetAllLearners();
                
-               listOfLearners = listOfLearners.Where(l => l.AppliedYn.Equals(Const.APPLIED_YES) && l.RecruitedYn.Equals(Const.RECRUITED_NO)).ToList();
+               listOfLearners = listOfLearners.Where(l => l.AppliedYn.Equals(Const.TRUE) && l.RecruitedYn.Equals(Const.FALSE)).ToList();
                 // Getting all Customer data  z
                 var allLearners = listOfLearners.Select(a => new LearnerDetailsDto()
                 {
@@ -239,7 +239,7 @@ namespace learner_portal.Controllers
 
                var listOfLearners = await _lookUpService.GetAllLearners();
                
-               listOfLearners = listOfLearners.Where(l => l.RecruitedYn.Equals(Const.RECRUITED_YES) && l.AppliedYn.Equals(Const.RECRUITED_YES) ).ToList();
+               listOfLearners = listOfLearners.Where(l => l.RecruitedYn.Equals(Const.TRUE) && l.AppliedYn.Equals(Const.TRUE) ).ToList();
                 // Getting all Customer data  z
                 var allLearners = listOfLearners.Select(a => new LearnerDetailsDto()
                 {

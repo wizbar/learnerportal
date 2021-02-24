@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreHero.ToastNotification.Abstractions;
 using learner_portal.DTO;
 using learner_portal.Helpers;
 using Microsoft.AspNetCore.Mvc;
@@ -27,9 +28,12 @@ namespace learner_portal.Controllers
         private readonly IFileService  _fileService;
         private readonly UserManager<Users> _userManager;
         private readonly FoldersConfigation _fconfig;
+        private readonly INotyfService _notyf;
         public PersonController(LearnerContext context, IWebHostEnvironment env,
                                  ILookUpService lookUpService,IFileService fileService,
-                                 FoldersConfigation fconfig,UserManager<Users> userManager
+                                 FoldersConfigation fconfig,
+                                 UserManager<Users> userManager,
+                                 INotyfService notyf
                                  )
         {
             _context = context;
@@ -37,7 +41,8 @@ namespace learner_portal.Controllers
             _lookUpService = lookUpService;
             _fileService = fileService;
             _fconfig = fconfig;
-            _userManager = userManager;  
+            _userManager = userManager;
+            _notyf = notyf;
         }
 
         public JsonResult GetCountryProvinces(long id)
@@ -306,8 +311,8 @@ namespace learner_portal.Controllers
                 learnerViewModel.Learner.LastUpdatedBy = "admin";
                 learnerViewModel.Address.DateUpdated = DateTime.Now;
                 
-                learnerViewModel.Learner.AppliedYn = Const.APPLIED_NO;
-                learnerViewModel.Learner.RecruitedYn = Const.RECRUITED_NO;
+                learnerViewModel.Learner.AppliedYn = Const.FALSE;
+                learnerViewModel.Learner.RecruitedYn = Const.FALSE;
                 
                 //Link the Address to the Person     
                 learnerViewModel.Person.Address.Add(learnerViewModel.Address); 
@@ -328,7 +333,23 @@ namespace learner_portal.Controllers
  
                 //Save the Person and Address in to the Database
                 await _context.SaveChangesAsync();
-
+                _notyf.Warning("Profile created successful...", 5);
+                
+                ViewData["CitizenshipStatusId"] = new SelectList(_context.CitizenshipStatus, "CitizenshipStatusId", "CitizenshipStatusDesc");
+                ViewData["DisabilityStatusId"] = new SelectList(_context.DisabilityStatus, "DisabilityStatusId", "DisabilityStatusDesc");
+                ViewData["EquityId"] = new SelectList(_context.Equity, "EquityId", "EquityDesc");
+                ViewData["GenderId"] = new SelectList(_context.Gender, "GenderId", "GenderDesc");
+                ViewData["HomeLanguageId"] = new SelectList(_context.HomeLanguage, "HomeLanguageId", "HomeLanguageDesc");
+                ViewData["NationalityId"] = new SelectList(_context.Nationality, "NationalityId", "NationalityDesc");
+                ViewData["CityId"] = new SelectList(await _lookUpService.GetCities(), "id", "name");
+                ViewData["SuburbId"] = new SelectList(_lookUpService.GetSuburbs().Result, "id", "name");
+                ViewData["CountryId"] = new SelectList(_lookUpService.GetCountries().Result, "id", "name");
+                ViewData["InstitutionId"] = new SelectList(_lookUpService.GetInstitutions().Result, "id", "name");
+                ViewData["CourseId"] = new SelectList(_lookUpService.GetCourses().Result, "id", "name");
+                ViewData["SchoolId"] = new SelectList(_lookUpService.GetSchools().Result, "id", "name");
+                ViewData["SchoolGradeId"] = new SelectList(_lookUpService.GetSchoolGrades().Result, "id", "name");
+                ViewData["ProvinceId"] = new SelectList(_lookUpService.GetProvinces().Result, "id", "name");
+                ViewData["AddressTypeId"] = new SelectList(_lookUpService.GetAddressTypes().Result, "id", "name");
                 return RedirectToAction(nameof(Details), new { id = learnerViewModel.Person.NationalId });
             }
 
@@ -404,6 +425,7 @@ namespace learner_portal.Controllers
                         throw;
                     }
                 }
+              _notyf.Success("Your details were edited successfully...");
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CitizenshipStatusId"] = new SelectList(_context.CitizenshipStatus, "CitizenshipStatusId", "CitizenshipStatusDesc", learner.Person.CitizenshipStatusId);

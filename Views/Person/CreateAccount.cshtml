@@ -236,7 +236,7 @@
 			        </div>
 			        <div class="form-group col-md-4">
 				        <b>Country</b><br>
-				        <select asp-for="Address.CountryId" class="form-control select2" id="CountryId" style="width: 100%" asp-items="ViewBag.CountryId">
+				        <select asp-for="Address.CountryId" class="form-control select2-search--dropdown" id="CountryId" style="width: 100%" asp-items="ViewBag.CountryId">
 					        <option value="" selected disabled hidden>Choose Your Country</option>
 				        </select>
 			        </div>
@@ -245,19 +245,19 @@
 		        <div class="row col-md-12">
 			        <div class="form-group col-md-4">
 				        <b>Province</b><br>
-				        <select asp-for="Address.ProvinceId" class="form-control select2" id="ProvinceId" style="width: 100%" asp-items="ViewBag.ProvinceId">
+				        <select asp-for="Address.ProvinceId" class="form-control select2-search--dropdown" id="ProvinceId" style="width: 100%" asp-items="ViewBag.ProvinceId">
 					        <option value="" selected disabled hidden>Choose Your Province</option>
 				        </select>
 			        </div>
 			        <div class="form-group col-md-4">
 				        <b>City</b>
-				        <select asp-for="Address.CityId" class="form-control select2" id="CityId" style="width: 100%" asp-items="ViewBag.CityId">
+				        <select asp-for="Address.CityId" class="form-control select2-search--dropdown" id="CityId" style="width: 100%" asp-items="ViewBag.CityId">
 					        <option value="" selected disabled hidden>Choose Your City</option>
 				        </select>
 			        </div>
 			        <div class="form-group col-md-4">
 				        <b>Suburb</b>
-				        <select asp-for="Address.SuburbId" class="form-control select2" id="SuburbId" style="width: 100%" asp-items="ViewBag.SuburbId">
+				        <select asp-for="Address.SuburbId" class="form-control select2-search--dropdown" id="SuburbId" style="width: 100%" asp-items="ViewBag.SuburbId">
 					        <option value="" selected disabled hidden>Choose Your Suburb</option>
 				        </select>
 			        </div>
@@ -288,13 +288,13 @@
 		        <div class="row ml-3 mt-4">
 			        <div class="form-group col-md-3">
 				        <b>School</b>
-				        <select asp-for="Learner.SchoolId" class="form-control select2" style="width: 100%" asp-items="ViewBag.SchoolId">
+				        <select asp-for="Learner.SchoolId" class="form-control select2-search--dropdown" style="width: 100%" asp-items="ViewBag.SchoolId">
 					        <option value="" selected disabled hidden>Choose Your School</option>
 				        </select>
 			        </div>
 			        <div class="form-group col-md-3">
 				       <b>School Grade</b><br>
-				        <select asp-for="Learner.SchoolGradeId" class="form-control select2" style="width: 100%" asp-items="ViewBag.SchoolGradeId">
+				        <select asp-for="Learner.SchoolGradeId" class="form-control select2-search--dropdown" style="width: 100%" asp-items="ViewBag.SchoolGradeId">
 					        <option value="" selected disabled hidden>Choose Your Last School Grade</option>
 				        </select>
 			        </div>

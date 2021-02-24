@@ -1442,7 +1442,8 @@ namespace learner_portal.Services
         public async Task<List<DocumentTypesDetailsDTO>> GetDocumentTypesDetailsByRole(string role)
         {
             var documentTypesDetails =
-                await _context.DocumentType.Where(a => a.Role.Name.Equals(role) && a.ActiveYn.Equals(Const.VERIFIED)).Include(r => r.Role)
+                await _context.DocumentType.Where(a => a.Role.Name.Equals(role) && a.ActiveYn.Equals(Const.TRUE)).Include(r => r.Role)
+                
                     .Select(d => new DocumentTypesDetailsDTO()
                     {
                         Id = d.Id,

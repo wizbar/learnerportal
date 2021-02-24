@@ -36,11 +36,11 @@
 	<link href="~/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 	<link href="~/assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
 	<link href="~/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 	@*
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 	*@
-
 	<!--end::Global Theme Styles-->
 
 	<!--begin::Layout Themes(used by all pages)-->
@@ -127,11 +127,14 @@
 <script type="text/javascript" src="~/assets/DataTables/datatables.min.js"></script>
 <script src="~/assets/js/pages/features/miscellaneous/blockui.js"></script>
 
-@*@await Component.InvokeAsync("NToastNotify")*@
-   @await Component.InvokeAsync("Toastify");
-@*@Html.Raw(NotificationsHelper.RenderNotifications())*@
+@await Component.InvokeAsync("Notyf")
 <!--end::Page Scripts-->
 @RenderSection("Scripts", required: false)
+<script>
+$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
+
+</script>
+
 
 </body>
 </html>

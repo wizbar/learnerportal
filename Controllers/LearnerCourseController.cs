@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreHero.ToastNotification.Abstractions;
 using learner_portal.DTO;
 using learner_portal.Helpers;
 using Microsoft.AspNetCore.Mvc;
@@ -19,11 +20,12 @@ namespace learner_portal.Controllers
     {
         private readonly LearnerContext _context;
         private readonly ILookUpService _lookUpService;
-
-        public LearnerCourseController(LearnerContext context,ILookUpService lookUpService)
+        private readonly INotyfService _notyf;
+        public LearnerCourseController(LearnerContext context,ILookUpService lookUpService,INotyfService notyf)
         {
             _context = context;
             _lookUpService = lookUpService;
+            _notyf = notyf;
         }
  
         // GET: LearnerCourse
@@ -84,6 +86,7 @@ namespace learner_portal.Controllers
                   
                 _context.Add(learnerCourse);
                 await _context.SaveChangesAsync();
+                
                 return RedirectToAction("Details","Person", new {id= learner.NationalID});
             }
             
@@ -121,6 +124,7 @@ namespace learner_portal.Controllers
             {  
                 _context.Add(learnerCourse);
                 await _context.SaveChangesAsync();
+                _notyf.Success("Qualification added successfully...");
                 return RedirectToAction(nameof(Index)); 
             }
             return PartialView(learnerCourse);
@@ -177,6 +181,7 @@ namespace learner_portal.Controllers
                         throw;
                     }
                 }
+                _notyf.Success("Qualification edited successfully...");
                 return RedirectToAction("Details","Person", new { Id = person.NationalID});
             }
             return View();
@@ -208,7 +213,7 @@ namespace learner_portal.Controllers
             var learnerCourse = await _context.LearnerCourse.FindAsync(id);
             _context.LearnerCourse.Remove(learnerCourse);
             await _context.SaveChangesAsync();
-            
+            _notyf.Success("Qualification deleted successfully...");
             var person = await _lookUpService.GetLearnerDetailsById(learnerCourse.LearnerId);
             return RedirectToAction("Details","Person", new { Id = person.NationalID});
         }

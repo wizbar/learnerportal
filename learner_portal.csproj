@@ -149,11 +149,24 @@
     <_ContentIncludedByDefault Remove="Pages\Account\Login.cshtml" />
     <_ContentIncludedByDefault Remove="Pages\Account\Register.cshtml" />
     <_ContentIncludedByDefault Remove="Pages\Ofo\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="wwwroot\_content\AspNetCoreHero.ToastNotification\bin\Debug\AspNetCoreHero.ToastNotification.1.1.0.nupkg" />
+    <_ContentIncludedByDefault Remove="wwwroot\_content\AspNetCoreHero.ToastNotification\bin\Debug\net5.0\AspNetCoreHero.ToastNotification.deps.json" />
+    <_ContentIncludedByDefault Remove="wwwroot\_content\AspNetCoreHero.ToastNotification\bin\Debug\net5.0\AspNetCoreHero.ToastNotification.dll" />
+    <_ContentIncludedByDefault Remove="wwwroot\_content\AspNetCoreHero.ToastNotification\bin\Debug\net5.0\AspNetCoreHero.ToastNotification.pdb" />
+    <_ContentIncludedByDefault Remove="wwwroot\_content\AspNetCoreHero.ToastNotification\bin\Debug\net5.0\AspNetCoreHero.ToastNotification.Views.dll" />
+    <_ContentIncludedByDefault Remove="wwwroot\_content\AspNetCoreHero.ToastNotification\bin\Debug\net5.0\AspNetCoreHero.ToastNotification.Views.pdb" />
+    <_ContentIncludedByDefault Remove="wwwroot\_content\AspNetCoreHero.ToastNotification\bin\Debug\net5.0\ref\AspNetCoreHero.ToastNotification.dll" />
+    <_ContentIncludedByDefault Remove="wwwroot\_content\AspNetCoreHero.ToastNotification\bin\Debug\netcoreapp3.1\AspNetCoreHero.ToastNotification.deps.json" />
+    <_ContentIncludedByDefault Remove="wwwroot\_content\AspNetCoreHero.ToastNotification\bin\Debug\netcoreapp3.1\AspNetCoreHero.ToastNotification.dll" />
+    <_ContentIncludedByDefault Remove="wwwroot\_content\AspNetCoreHero.ToastNotification\bin\Debug\netcoreapp3.1\AspNetCoreHero.ToastNotification.pdb" />
+    <_ContentIncludedByDefault Remove="wwwroot\_content\AspNetCoreHero.ToastNotification\bin\Debug\netcoreapp3.1\AspNetCoreHero.ToastNotification.Views.dll" />
+    <_ContentIncludedByDefault Remove="wwwroot\_content\AspNetCoreHero.ToastNotification\bin\Debug\netcoreapp3.1\AspNetCoreHero.ToastNotification.Views.pdb" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Data" />
     <Folder Include="Migrations" />
+    <Folder Include="wwwroot\_content" />
   </ItemGroup>
 
   <ItemGroup>

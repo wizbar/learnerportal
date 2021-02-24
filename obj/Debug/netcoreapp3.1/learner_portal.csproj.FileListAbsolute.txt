@@ -1,8 +1,5 @@
 /home/endorsed/code/learner_portal/bin/Debug/netcoreapp3.1/appsettings.Development.json
 /home/endorsed/code/learner_portal/bin/Debug/netcoreapp3.1/appsettings.json
-/home/endorsed/code/learner_portal/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
-/home/endorsed/code/learner_portal/bin/Debug/netcoreapp3.1/Properties/serviceDependencies.json
-/home/endorsed/code/learner_portal/bin/Debug/netcoreapp3.1/Properties/serviceDependencies.local.json
 /home/endorsed/code/learner_portal/bin/Debug/netcoreapp3.1/learner_portal.StaticWebAssets.xml
 /home/endorsed/code/learner_portal/bin/Debug/netcoreapp3.1/learner_portal
 /home/endorsed/code/learner_portal/bin/Debug/netcoreapp3.1/learner_portal.deps.json
@@ -91,7 +88,6 @@
 /home/endorsed/code/learner_portal/bin/Debug/netcoreapp3.1/Serilog.Sinks.File.dll
 /home/endorsed/code/learner_portal/bin/Debug/netcoreapp3.1/Serilog.Sinks.RollingFile.dll
 /home/endorsed/code/learner_portal/bin/Debug/netcoreapp3.1/System.Collections.Immutable.dll
-/home/endorsed/code/learner_portal/bin/Debug/netcoreapp3.1/System.ComponentModel.Annotations.dll
 /home/endorsed/code/learner_portal/bin/Debug/netcoreapp3.1/System.Composition.AttributedModel.dll
 /home/endorsed/code/learner_portal/bin/Debug/netcoreapp3.1/System.Composition.Convention.dll
 /home/endorsed/code/learner_portal/bin/Debug/netcoreapp3.1/System.Composition.Hosting.dll
@@ -370,3 +366,7 @@
 /home/endorsed/code/learner_portal/obj/Debug/netcoreapp3.1/learner_portal.dll
 /home/endorsed/code/learner_portal/obj/Debug/netcoreapp3.1/learner_portal.pdb
 /home/endorsed/code/learner_portal/obj/Debug/netcoreapp3.1/learner_portal.genruntimeconfig.cache
+/home/endorsed/code/learner_portal/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
+/home/endorsed/code/learner_portal/bin/Debug/netcoreapp3.1/Properties/serviceDependencies.json
+/home/endorsed/code/learner_portal/bin/Debug/netcoreapp3.1/Properties/serviceDependencies.local.json
+/home/endorsed/code/learner_portal/bin/Debug/netcoreapp3.1/System.ComponentModel.Annotations.dll

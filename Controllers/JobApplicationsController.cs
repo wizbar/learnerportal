@@ -125,7 +125,7 @@ namespace learner_portal.Controllers
                 };
 
                var lnr=  _context.Learner.FirstOrDefault(l => l.LearnerId == learner.LearnerId);
-               lnr.AppliedYn = Const.APPLIED_YES;
+               lnr.AppliedYn = Const.TRUE;
 
                await SendAcknowledgementMail(learner);
 
@@ -155,7 +155,7 @@ namespace learner_portal.Controllers
 
             if (learner != null && learner.AppliedYn.Equals("Yes"))
             {
-                learner.RecruitedYn = Const.RECRUITED_YES;
+                learner.RecruitedYn = Const.TRUE;
           
 
                 //  await SendConfirmRequitmentMail(learner);

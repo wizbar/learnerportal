@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using MimeKit;
-
+ 
 using Enum = learner_portal.Helpers.Enum;
 using Notification = learner_portal.Helpers.Notification;
 
@@ -32,7 +32,7 @@ namespace learner_portal.Controllers
         private readonly RoleManager<Roles> _roleManager;
         private readonly EmailConfiguration _emailConfig;    
         private readonly ILogger<AccountController> _logger;  
-        private readonly IToastifyService _toastify;
+        private readonly INotyfService _notyf;
             
        //  private readonly IToastNotification _toastNotification;
          
@@ -46,8 +46,8 @@ namespace learner_portal.Controllers
             EmailConfiguration emailConfig,
             ILogger<AccountController> logger,
             LearnerContext context,
-            IToastifyService toastify
-           //  ,IToastNotification toastNotification
+            INotyfService notyf
+
         )
         {  
             _userManager = userManager;
@@ -58,15 +58,15 @@ namespace learner_portal.Controllers
             _roleManager = roleManager;
             _lookUpService = lookUpService;
             _context = context;
-            _toastify = toastify;
-            // _toastNotification = toastNotification;
+            _notyf = notyf;
+           
         }
  
         
         // GET
         public IActionResult Index()
         {
-            Alert("Same for success message",Enum.NotificationType.info);
+           
             ViewData["Name"] = new SelectList(_roleManager.Roles, "Name", "Name");
             return View();
         }
@@ -85,13 +85,13 @@ namespace learner_portal.Controllers
             input.ActiveYn = "No";
             if (ModelState.IsValid)
             {
-                if (_userManager.FindByNameAsync(input.UserName) != null || _userManager.FindByEmailAsync(input.Email) != null )
+                /*if (_userManager.FindByNameAsync(input.UserName) != null || _userManager.FindByEmailAsync(input.Email) != null )
                     {   
 
-                        _toastify.Error("Users already exists");
+                      _notyf.Error("Users already exists",10);
                     _logger.LogError("Users already exists");
                     return View();
-                }
+                }*/
 
                 _logger.LogInformation("--- Register(" + input.Email + ") Start --");
                 
@@ -100,7 +100,9 @@ namespace learner_portal.Controllers
                 
                 //Create a User on DB
                 var result = await _userManager.CreateAsync(user, input.Password);
-                
+                user.ActiveYn = Const.FALSE;
+                _context.User.Update(user);
+                await _context.SaveChangesAsync();
                 //Add User to role
                 await _userManager.AddToRoleAsync(user,input.Role);
                 
@@ -121,6 +123,7 @@ namespace learner_portal.Controllers
                         
                         if (_lookUpService.GetPersonDetailsByEmail(input.Email) == null)
                         {
+                            _notyf.Information("Your registration was successful",10);
                             _logger.LogInformation("--- Register(" + input.Email + ") Create Account Start --");
                             return RedirectToRoute("", 
                                 new { controller = "Person", action = "CreateAccount" });
@@ -129,6 +132,7 @@ namespace learner_portal.Controllers
                         {
                             if (_roleManager.GetRoleNameAsync(new Roles{Name = input.Role}).Result.Equals(Const.ADMINISTRATOR_USER) )
                             {
+                                
                                 _logger.LogInformation("--- Register(" + input.Email + ") Person Index Start --");
                                 return RedirectToRoute("",  
                                     new { controller = "Person", action = "Index" });
@@ -199,6 +203,28 @@ namespace learner_portal.Controllers
             return null;
         }
        
+       public async Task<IActionResult> ActivateAccount(string token, string userId)
+           {
+               var user = await _signInManager.UserManager.FindByIdAsync(userId);
+               if (user == null)
+               {
+                   ViewBag.ErrorTitle = "Account Activation Failed";
+                   ViewBag.ErrorMessage = "It does not look like this user was registered with us...";
+                   return View("Error");
+               }
+
+               var result = await _signInManager.UserManager.ConfirmEmailAsync(user, token);
+
+               if (result.Succeeded)
+               {
+                   Alert("Account for " + user.Email + " activated successfully...", Enum.NotificationType.success);
+                  return View("Login");
+               }
+
+               ViewBag.ErrorTitle = "Account Activation Failed";
+               ViewBag.ErrorMessage = "Please make sure that you click on the correct link....";
+               return View("Error");
+           }       
        [HttpGet]
        public IActionResult ResetPassword(string token, string email) 
        {
@@ -260,29 +286,7 @@ namespace learner_portal.Controllers
            {
                return View();    
            }    
-           
-           public async Task<IActionResult> ActivateAccount(string token, string userId)
-           {
-               var user = await _signInManager.UserManager.FindByIdAsync(userId);
-               if (user == null)
-               {
-                   ViewBag.ErrorTitle = "Account Activation Failed";
-                   ViewBag.ErrorMessage = "It does not look like this user was registered with us...";
-                   return View("Error");
-               }
 
-               var result = await _signInManager.UserManager.ConfirmEmailAsync(user, token);
-
-               if (result.Succeeded)
-               {
-                   Alert("Account for " + user.Email + " activated successfully...", Enum.NotificationType.success);
-                  return View("Login");
-               }
-
-               ViewBag.ErrorTitle = "Account Activation Failed";
-               ViewBag.ErrorMessage = "Please make sure that you click on the correct link....";
-               return View("Error");
-           }
          
         [HttpPost]        
         public async Task<IActionResult> Login(LoginDTO input) 
@@ -295,32 +299,32 @@ namespace learner_portal.Controllers
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(input.Username, input.Password, input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
-                {
+                { 
                     var person = _lookUpService.GetPersonDetailsByUsername(input.Username).Result;
 
                     if(person == null){
+                           _notyf.Warning("User logged out successful...", 5);
                            return RedirectToRoute("",   new { controller = "Person", action = "CreateAccount" } );
-                        
+                       
                     }
-                    else
+                    else 
                     {
-
+                        _notyf.Success("Login was successful",10);
                         return RedirectToRoute("",new {controller = "Person", action = "Details", Id = person.NationalID});
                       
                     }
                 }
                 else
                 {
-                    Alert("Login for " + input.Username + " failed...", Enum.NotificationType.error);
+                    _notyf.Error("Login for " + input.Username + " failed...", 5);
                    
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return View(input);
+                  return View(input);
                 }
 
-            }
-            Alert("Please capture you information correctly...", Enum.NotificationType.error);
+            } 
+            _notyf.Error("Please capture you information correctly...", 5);
             // If we got this far, something failed, redisplay form
-            return Json( new {success = true, message = "Login was success full..."});
+            return View(input);
         }
 
         public  IActionResult CreateRole()
@@ -345,6 +349,7 @@ namespace learner_portal.Controllers
         public async Task<IActionResult> LogOut()
         {
             await _signInManager.SignOutAsync();
+            _notyf.Warning("User logged out successful...", 5);
             _logger.LogInformation("User logged out");
             return View("Login");
         }
@@ -357,23 +362,24 @@ namespace learner_portal.Controllers
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordDTO input)
-        {
+        { 
             if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByEmailAsync(input.Email);
                 if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
                 {  
                     // Don't reveal that the user does not exist or is not confirmed
-                    Alert("We have sent you an email to reset your password",Enum.NotificationType.error);
-                    //return RedirectToPage("./ForgotPasswordConfirmation");
+                    _notyf.Information("We have sent you an email to reset your password",5);
+                    return View("Login");
                 }
+               else {
                 await SendForgotPasswordMail(user);
                 
                 // Send email
-                 Alert("We have sent you an email to reset your password",Enum.NotificationType.info);
-               // return RedirectToPage("./ForgotPasswordConfirmation");
+                _notyf.Information("We have sent you an email to reset your password",5);
+                }
             }
-
+            _notyf.Information("We have sent you an email to reset your password",5);
             return View("Login");
         }
         

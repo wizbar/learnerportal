@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreHero.ToastNotification.Abstractions;
 using learner_portal.DTO;
 using learner_portal.Helpers;
 using Microsoft.AspNetCore.Mvc;
@@ -23,9 +24,17 @@ namespace learner_portal.Controllers
         private readonly IFileService _fileService;
         private readonly UserManager<Users> _userManager;
         private readonly IWebHostEnvironment _env;
-        private readonly FoldersConfigation _foldersConfigation;
+        private readonly FoldersConfigation _foldersConfigation;        
+        private readonly INotyfService _notyf;
+        
 
-        public DocumentsController(LearnerContext context,ILookUpService lookUpService,IFileService fileService,IWebHostEnvironment env,FoldersConfigation foldersConfigation,UserManager<Users> userManager)
+        public DocumentsController(LearnerContext context,
+            ILookUpService lookUpService,
+            IFileService fileService,
+            IWebHostEnvironment env,
+            FoldersConfigation foldersConfigation,
+            UserManager<Users> userManager,
+            INotyfService notyf)
         {
             _context = context;
             _lookUpService = lookUpService;
@@ -33,6 +42,7 @@ namespace learner_portal.Controllers
             _userManager = userManager;
             _env = env;
             _foldersConfigation = foldersConfigation;
+            _notyf = notyf;
         }
         
         public async  Task<IActionResult> DownloadDocument(Guid id)
@@ -160,7 +170,7 @@ namespace learner_portal.Controllers
    
             if (ModelState.IsValid)
             {
-                document.Verified = Const.VERIFIED;
+                document.Verified = Const.TRUE;
                 document.VerifiedBy = User.Identity.Name;
                 document.VerificationDate = DateTime.Now;
                 document.LastUpdatedBy = User.Identity.Name;
@@ -182,6 +192,7 @@ namespace learner_portal.Controllers
                         throw;
                     }
                 }
+                _notyf.Success("Document verified successfully....");
                 var user = await _lookUpService.GetCurrentLoggedInUser(User.Identity.Name);
                 return RedirectToAction("Details","Person", new {id = user.Person.NationalId});
             }
@@ -227,7 +238,9 @@ namespace learner_portal.Controllers
                                         .TypeName) + "/";
    
                 _context.Add(document);
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();     
+                _notyf.Success("Document created successfully....");
+                
                 return RedirectToAction("Details","Person", new {id = learner.NationalID});
             } 
   
@@ -264,6 +277,7 @@ namespace learner_portal.Controllers
             {  
                 _context.Add(document);
                 await _context.SaveChangesAsync();
+                _notyf.Success("Document added successfully....");
                 return RedirectToAction(nameof(Index)); 
             }
 
@@ -302,7 +316,7 @@ namespace learner_portal.Controllers
    
             if (ModelState.IsValid)
             {
-                document.Verified = Const.NOT_VERIFIED;
+                document.Verified = Const.FALSE;
                 document.LastUpdatedBy = User.Identity.Name;
                 document.DateUpdated = DateTime.Now;
                 string path = _env.WebRootPath + document.FilePath + document.FileName;
@@ -328,6 +342,7 @@ namespace learner_portal.Controllers
                         throw;
                     }
                 }
+                _notyf.Success("Document edited successfully....");
                 var user = await _lookUpService.GetCurrentLoggedInUser(User.Identity.Name);
                 return RedirectToAction("Details","Person", new {id = user.Person.NationalId});
             }
@@ -362,7 +377,7 @@ namespace learner_portal.Controllers
             await _context.SaveChangesAsync();
             
             var person = await _lookUpService.GetLearnerDetailsById(document.LearnerId);
-            
+            _notyf.Success("Document deleted successfully....");
             return RedirectToAction("Details","Person", new { Id = person.NationalID});
         }
 

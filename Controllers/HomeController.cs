@@ -14,18 +14,17 @@ namespace learner_portal.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly RoleManager<Roles> _roleManager;
         private readonly ILookUpService _lookUpService;
-        private readonly IToastifyService _toastify;
-        public HomeController( RoleManager<Roles> roleManager,ILogger<HomeController> logger,ILookUpService lookUpService,IToastifyService toastify)
+        private readonly INotyfService _notyf;
+        public HomeController( RoleManager<Roles> roleManager,ILogger<HomeController> logger,ILookUpService lookUpService,  INotyfService notyf)
         {
             _roleManager = roleManager;
             _logger = logger;
             _lookUpService = lookUpService;
-            _toastify = toastify;
+            _notyf = notyf;
         }
 
         public IActionResult Index()
         {
-            _toastify.Error("Users already exists");
             var jobs = _lookUpService.GetAllJob().Result;
             
             ViewData["Name"] = new SelectList(_roleManager.Roles, "Name", "Name");

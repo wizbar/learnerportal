@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using AspNetCoreHero.ToastNotification;
 using AspNetCoreHero.ToastNotification.Extensions;
 using learner_portal.Helpers;
@@ -13,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -35,16 +37,10 @@ namespace learner_portal
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddToastify(config=> { config.DurationInSeconds = 5; config.Position = Position.Right; config.Gravity = Gravity.Bottom; });
-            services.AddControllersWithViews().AddNewtonsoftJson(
-                options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; })
-                /*.AddNToastNotifyNoty(new NToastNotify.NotyOptions()
-            {
-                ProgressBar = true,
-                Timeout = 5000,
-                Theme = "mint",
-            });;*/
-            ;
+            services.AddNotyf(config=> { config.DurationInSeconds = 10;config.IsDismissable = true;config.Position = NotyfPosition.BottomRight; });
+            /*services.AddControllersWithViews().AddNewtonsoftJson(
+                options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });*/
+
             //Email Server Configuration   
             var emailConfig = Configuration
                 .GetSection("EmailConfiguration")
@@ -112,6 +108,11 @@ namespace learner_portal
                 .AddEntityFrameworkStores<LearnerContext>()
                 .AddDefaultTokenProviders().AddDefaultUI();
             
+            //Folders Configuration    
+            var foldersConfigation = Configuration
+                .GetSection("FoldersConfigation")
+                .Get<FoldersConfigation>();
+            services.AddSingleton(foldersConfigation);
             services.AddScoped<IFileService, FileService>();
             services.AddScoped<ILookUpService, LookUpService>();
             services.AddScoped<IEmailSender, EmailSender>();
@@ -131,11 +132,7 @@ namespace learner_portal
                 options.Conventions.AllowAnonymousToPage("/Account");
             });
             
-            //Folders Configuration    
-            var foldersConfigation = Configuration
-                .GetSection("FoldersConfigation")
-                .Get<FoldersConfigation>();
-            services.AddSingleton(foldersConfigation);
+
             services.AddSession(options =>
             {
                 options.Cookie.Name = ".LearnerPortal.Session";
@@ -148,8 +145,8 @@ namespace learner_portal
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory, IHostingEnvironment _env)
         {
-            
-            loggerFactory.AddFile("Logs/learner_portal-{Date}.txt");
+            app.UseNotyf();
+            loggerFactory.AddFile("Logs/learner_portal-{Date}.log");
             
             if (env.IsDevelopment())
             {
@@ -164,7 +161,12 @@ namespace learner_portal
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                /*FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot")),
+                RequestPath = new PathString("/wwwroot")*/
+            });
             app.UseRouting();
 
             app.UseAuthentication();
