@@ -84,11 +84,6 @@ namespace learner_portal.Controllers
         // GET: AddressTypes/Details/5
         public async Task<IActionResult> Details(long id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var addressTypesDetails = await  _lookUpService.GetAllAddressTypeById(id);
             
             if (addressTypesDetails == null)
@@ -124,11 +119,6 @@ namespace learner_portal.Controllers
         // GET: AddressTypes/Edit/5
         public async Task<IActionResult> Edit(long id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var addressType = await _lookUpService.GetAddressTypeDetailsByIdForEditDelete(id);
             if (addressType == null)
             {
@@ -175,11 +165,6 @@ namespace learner_portal.Controllers
         // GET: AddressTypes/Delete/5
         public async Task<IActionResult> Delete(long id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var addressType = await _lookUpService.GetAddressTypeDetailsByIdForEditDelete(id);
             
             if (addressType == null)

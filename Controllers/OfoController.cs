@@ -95,11 +95,6 @@ namespace learner_portal.Controllers
         // GET: Ofo/Details/5
         public async Task<IActionResult> Details(long id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-             
             var ofoDetails = await _lookUpService.GetOFODetailsById(id);
 
             if (ofoDetails == null)
@@ -139,11 +134,6 @@ namespace learner_portal.Controllers
         // GET: Ofo/Edit/5
         public async Task<IActionResult> Edit(long id) 
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var ofo = await _lookUpService.GetOFODetailsByIdForEditDelete(id);
             if (ofo == null)
             {
@@ -197,11 +187,6 @@ namespace learner_portal.Controllers
         // GET: Ofo/Delete/5
         public async Task<IActionResult> Delete(long id)
         {
-            if (id == null)
-            {
-                return NotFound(); 
-            }
-
             var ofo = await _lookUpService.GetOFODetailsByIdForEditDelete(id);
             if (ofo == null) 
             {

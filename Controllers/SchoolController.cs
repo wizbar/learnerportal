@@ -165,10 +165,6 @@ namespace learner_portal.Controllers
         public async Task<IActionResult> Delete(long id)
         {
             var school = await _lookUpService.GetSchoolByIdForEditDelete(id);
-            if (school.SchoolId == null)
-            {
-                return NotFound();
-            }
 
             return PartialView(school);
         }

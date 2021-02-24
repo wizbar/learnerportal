@@ -267,11 +267,6 @@ namespace learner_portal.Controllers
         public async Task<IActionResult> Delete(long id)
         {
             var job = await _lookUpService.GetJobDetailsByIdForEditDelete(id);
-            
-            if (job.JobId == null)
-            {
-                return NotFound();
-            }
 
             return View(job);
         }

@@ -89,11 +89,6 @@ namespace learner_portal.Controllers
         // GET: Institution/Details/5
         public async Task<IActionResult> Details(long id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var institutionDetails = await _lookUpService.GetInstitutionDetailsById(id);
             
             if (institutionDetails == null)
@@ -132,11 +127,6 @@ namespace learner_portal.Controllers
         // GET: Institution/Edit/5
         public async Task<IActionResult> Edit(long id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var institution = await _lookUpService.GetInstitutionByIdForEditDelete(id);
             
             if (institution == null)
@@ -185,11 +175,7 @@ namespace learner_portal.Controllers
 
         // GET: Institution/Delete/5
         public async Task<IActionResult> Delete(long id)
-        { 
-            if (id == null)
-            { 
-                return NotFound();
-            }
+        {
             var institution = await _lookUpService.GetInstitutionByIdForEditDelete(id);
             
             if (institution == null)

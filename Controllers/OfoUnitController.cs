@@ -88,11 +88,6 @@ namespace learner_portal.Controllers
         // GET: OfoUnit/Details/5
         public async Task<IActionResult> Details(long id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var ofoUnitDetails = await _lookUpService.GetOFOUnitDetailsById(id);
             if (ofoUnitDetails == null)
             {
@@ -133,11 +128,6 @@ namespace learner_portal.Controllers
         // GET: OfoUnit/Edit/5
         public async Task<IActionResult> Edit(long id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var ofoUnit = await _lookUpService.GetOFOUnitDetailsByIdForEditDelete(id);
             if (ofoUnit == null) 
             {
@@ -191,11 +181,6 @@ namespace learner_portal.Controllers
         // GET: OfoUnit/Delete/5
         public async Task<IActionResult> Delete(long id) 
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var ofoUnit = await _lookUpService.GetOFOUnitDetailsByIdForEditDelete(id);
             if (ofoUnit == null)
             {
