@@ -555,7 +555,7 @@ namespace learner_portal.Services
 
         public async Task<List<CompanyDetailsDTO>>   GetCompanyDetails()    
         {    
-            return await  _context.Company
+            return await _context.Company.AsQueryable()
                 .Include(a => a.Address).ThenInclude(a =>a.Country)
                 .Include(a => a.Address).ThenInclude(a => a.City)
                 .Include(a => a.Address).ThenInclude(a => a.Suburb)
@@ -568,17 +568,17 @@ namespace learner_portal.Services
                     DateBusinessCommenced = c.DateBusinessCommenced,
                     ContactName = c.ContactName,
                     ContactSurname = c.ContactSurname,
-                    ContactEmail = c.ContactEmail,  
+                    ContactEmail = c.ContactEmail,
                     ContactMobile = c.ContactMobile,
                     ContactTelephone = c.ContactTelephone,
-                   HouseNo = c.Address.ToList()[0].HouseNo,
-                    /* StreetName = c.Address.ToList()[0].StreetName ,
+                    HouseNo = c.Address.ToList()[0].HouseNo,
+                    StreetName = c.Address.ToList()[0].StreetName , 
                     PostalCode = c.Address.ToList()[0].PostalCode,
                     CountryName = c.Address.ToList()[0].Country.CountryName,
                     CityName = c.Address.ToList()[0].City.CityName,
                     SuburbName = c.Address.ToList()[0].Suburb.SuburbName,
                     ProvinceName = c.Address.ToList()[0].Province.ProvinceName,
-                    AddressType = c.Address.ToList()[0].AddressType.AddressTypeName,*/
+                    AddressType = c.Address.ToList()[0].AddressType.AddressTypeName,
                     PhotoName = c.PhotoName,
                     PhotoPath = c.PhotoPath
                 }).ToListAsync();
