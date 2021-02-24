@@ -4310,3 +4310,8 @@ System.InvalidOperationException: EndpointRoutingMiddleware matches endpoints se
 2021-02-24T03:41:49.0592871+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
 2021-02-24T03:41:49.0593147+02:00  [INF] Hosting environment: "Production" (c3307c92)
 2021-02-24T03:41:49.0593341+02:00  [INF] Content root path: "/home/endorsed/code/learner_portal" (b5d60022)
+2021-02-24T04:26:32.8017176+02:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2021-02-24T04:26:32.8049797+02:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2021-02-24T04:26:32.8051069+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-02-24T04:26:32.8051436+02:00  [INF] Hosting environment: "Production" (c3307c92)
+2021-02-24T04:26:32.8051640+02:00  [INF] Content root path: "/home/endorsed/code/learner_portal" (b5d60022)
