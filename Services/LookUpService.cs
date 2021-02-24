@@ -846,9 +846,15 @@ namespace learner_portal.Services
                         .Include(a => a.LearnerCourse)
                         .Include(a => a.JobApplications).ThenInclude(a => a.Job).ThenInclude(j => j.JobType)
                         .Include(a => a.JobApplications).ThenInclude(a => a.Job).ThenInclude(j => j.Sector)
-                        /*.Include(a => a.Learner)
-                        .ThenInclude(a => a.Person).ThenInclude(a => a.Address).ThenInclude( s => s.Country)
-                        .Include(a => a.Learner)
+                        .Include(a => a.Person).ThenInclude(a => a.Address).ThenInclude( s => s.Suburb)
+                        .Include(a => a.Person).ThenInclude(a => a.Address).ThenInclude( s => s.City)
+                        .Include(a => a.Person).ThenInclude(a => a.Address).ThenInclude( s => s.Province)
+                        .Include(a => a.Person).ThenInclude(a => a.Address).ThenInclude( s => s.Country)
+                        .Include(a => a.Person).ThenInclude(a => a.Address).ThenInclude( s => s.AddressType)
+                        .Include(a => a.School)
+                        .Include(a => a.SchoolGrade)
+                        
+                         /* .Include(a => a.Learner)
                         .ThenInclude(a => a.Person).ThenInclude(a => a.Address).ThenInclude( s => s.AddressType)
                         .Include(a => a.Learner)
                         .ThenInclude(a => a.SchoolGrade)
@@ -857,6 +863,7 @@ namespace learner_portal.Services
                        */
                         .Select(a => new JobApplicationsDetailsDTO()
                         {
+                           LearnerId = a.LearnerId,
                             Email = a.Person.Email,
                             FirstName = a.Person.FirstName,
                             LastName = a.Person.LastName,
@@ -870,17 +877,17 @@ namespace learner_portal.Services
                             Age = Utils.CalculateAge(a.Person.PersonsDob),
                             Nationality = a.Person.Nationality.NationalityDesc,
                             NationalID = a.Person.NationalId,
-                            /*HouseNo = a.Person.Address.ToList()[0].HouseNo,
+                           HouseNo = a.Person.Address.ToList()[0].HouseNo,
                             StreetName = a.Person.Address.ToList()[0].StreetName,
                             SuburbName = a.Person.Address.ToList()[0].Suburb.SuburbName,
-                            CityName = a.Person.Address.ToList()[0].City.CityName,*/
-                         //   ProvinceName = a.Person.Address.ToList()[0].Province.ProvinceName,
-                            /*CountryName = a.Learner.Person.Address.ToList()[0].Country.CountryName,
-                            AddressType = a.Learner.Person.Address.ToList()[0].AddressType.AddressTypeName,
-                            PostalCode = a.Learner.Person.Address.ToList()[0].PostalCode,
-                            SchoolName = a.Learner.School.SchoolName,
-                            SchoolGradeName = a.Learner.SchoolGrade.SchoolGradeName,
-                            YearSchoolCompleted = a.Learner.YearSchoolCompleted,*/
+                             CityName = a.Person.Address.ToList()[0].City.CityName,
+                           ProvinceName = a.Person.Address.ToList()[0].Province.ProvinceName,
+                           PostalCode = a.Person.Address.ToList()[0].PostalCode,
+                            CountryName = a.Person.Address.ToList()[0].Country.CountryName,
+                            AddressType = a.Person.Address.ToList()[0].AddressType.AddressTypeName,
+                             SchoolName = a.School.SchoolName,
+                            SchoolGradeName = a.SchoolGrade.SchoolGradeName,
+                            YearSchoolCompleted = a.YearSchoolCompleted.ToString(Const.DATE_FORMAT),
                             Applications =
                                 (List<JobApplicationsDTO>) a.JobApplications.Select(jobApplications =>
                                     new JobApplicationsDTO()
@@ -895,9 +902,11 @@ namespace learner_portal.Services
                                         JobApplicationStatus = jobApplications.ApplicationStatus
                                     })
                         }).ToListAsync();
+           
 
                        return listOfJobApplications;
-        }             
+        }
+        
                 
                 public async Task<JobApplicationsDetailsDTO> GetJobApplicantPersonByNationalId(string id) 
                 {
