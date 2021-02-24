@@ -4,10 +4,21 @@
 
     <input type="hidden" asp-for="LearnerId" />
     <div class="row">
+        <div class="form-group col-md-6">
+            <b>Please choose a Job you are applying on behalf of the learner :</b>
+            <select asp-for="JobId" class="form-control" asp-items="ViewBag.JobId">
+                <option value="" selected disabled hidden>Choose Job OFO</option>
+            </select>
+            <span asp-validation-for="JobId" class="text-danger"></span>
+        </div>
+
+    
         <div class="col-md-6">
             <button type="submit" class="btn btn-primary float-right" value="Confirm"><i class="ki ki-check "></i>Confirm</button>
         </div>
 
     </div>
+    
+    
     @Html.PartialAsync("~/Views/Person/ViewResumePdf.cshtml", @Model).Result;
 </form>

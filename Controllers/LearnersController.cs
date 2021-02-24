@@ -305,6 +305,7 @@ namespace learner_portal.Controllers
                 throw;
             }
         }
+        
 
         // GET: Learners/Details/5
         public async Task<IActionResult> Details(long id)

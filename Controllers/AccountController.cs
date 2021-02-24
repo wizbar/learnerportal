@@ -362,9 +362,9 @@ namespace learner_portal.Controllers
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordDTO input)
-        { 
+        {
             if (ModelState.IsValid)
-            {
+            { 
                 var user = await _userManager.FindByEmailAsync(input.Email);
                 if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
                 {  

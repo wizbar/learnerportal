@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreHero.ToastNotification.Abstractions;
 using learner_portal.DTO;
 using learner_portal.Helpers;
 using Microsoft.AspNetCore.Mvc;
@@ -24,14 +25,16 @@ namespace learner_portal.Controllers
         private readonly ILogger<JobApplicationsController> _logger;
         private readonly EmailConfiguration _emailConfig; 
         private readonly IEmailSender _emailSender;
+        private readonly INotyfService _notyf;
 
-        public JobApplicationsController(LearnerContext context,ILookUpService lookUpService, ILogger<JobApplicationsController> logger,EmailConfiguration emailConfig,        IEmailSender emailSender)
+        public JobApplicationsController(LearnerContext context,ILookUpService lookUpService, ILogger<JobApplicationsController> logger,EmailConfiguration emailConfig,IEmailSender emailSender, INotyfService notyf)
         {
             _context = context;
             _lookUpService = lookUpService;
             _logger = logger; 
             _emailConfig = emailConfig;
             _emailSender = emailSender;
+            _notyf = notyf;
         }
 
         // GET: JobApplications
@@ -142,7 +145,7 @@ namespace learner_portal.Controllers
         {
             //Get currect leaner details
             var learner = await _lookUpService.GetLearnerDetailsById(id).ConfigureAwait(false);
-            
+            ViewData["JobId"] = new SelectList(_context.Jobs, "JobId", "JobTitle");   
             return PartialView(learner);
         }
      
@@ -165,11 +168,12 @@ namespace learner_portal.Controllers
             }
             else
             {
-                Alert("Please make sure you recruit Applied learners", learner_portal.Helpers.Enum.NotificationType.warning);
+                _notyf.Error("Please make sure you recruit Applied learners", 5);
                // return RedirectToAction("Index","Learners").WithSuccess("Not Recruited","Please make sure you recruit Applied learners");
             }
 
-            Alert("Learner will now be placed with a company", learner_portal.Helpers.Enum.NotificationType.success);
+            _notyf.Information("Learner will now be placed with a company", 5);  
+            ViewData["JobId"] = new SelectList(_context.Jobs, "JobId", "JobTitle");   
             return RedirectToAction("Index","Learners").WithSuccess("Recruited","Learner will now be placed with a company");
                 
         }
@@ -215,8 +219,8 @@ namespace learner_portal.Controllers
                     
                 }; 
 
- 
-                _logger.LogInformation("Send an email...");
+                _notyf.Information("Send an email...", 5);
+
                 _emailSender.SendEmail(message);
                 return message;
             }

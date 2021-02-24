@@ -12,6 +12,8 @@ namespace learner_portal.DTO
             JobApplicationsDto = new HashSet<JobApplicationsDTO>();
 
         }
+
+        public long JobId { get; set; }
          
         [DisplayName("Company")]
         public string CompanyName { get; set; }

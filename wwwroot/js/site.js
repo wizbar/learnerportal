@@ -998,13 +998,13 @@ createLearnersDataTable = (table_id, url) => {
             {
                 "render": function (data, type, full) {
 
-                    return '<span class="label label-lg font-weight-boldest label-rounded label-'+ ((full.appliedYn === 'true')? 'success label-inline"><i class="fas fa-check mr-2" style="color:#fff7f2 "></i>' : 'danger label-inline"><i class="fas fa-times mr-2" style="color:#fff7f2 "></i>')  +  full.appliedYn +'</span>';
+                    return '<span class="label label-lg font-weight-boldest label-rounded label-outline-'+ ((full.appliedYn === 'true')? 'success label-inline"><i class="fas fa-check mr-2" style="color:#00b300 "></i>' : 'danger label-inline"><i class="fas fa-times mr-2" style="color:#a71d2a "></i>')  +  full.appliedYn +'</span>';
 
                 }},
             {
                 "render": function (data, type, full) {
 
-                    return '<span class="label label-lg font-weight-boldest label-rounded label-'+ ((full.recruitedYn === 'true')? 'success label-inline"><i class="fas fa-check mr-2" style="color:#fff7f2 "></i>' : 'danger label-inline"><i class="fas fa-times mr-2" style="color:#fff7f2 "></i>') +  full.recruitedYn +'</span>';
+                    return '<span class="label label-lg font-weight-boldest label-rounded label-outline-'+ ((full.recruitedYn === 'true')? 'success label-inline"><i class="fas fa-check mr-2" style="color:#00b300 "></i>' : 'danger label-inline"><i class="fas fa-times mr-2" style="color:#a71d2a"></i>') +  full.recruitedYn +'</span>';
 
                 }},
 
@@ -1014,7 +1014,7 @@ createLearnersDataTable = (table_id, url) => {
                     if(full.appliedYn === 'false' && full.recruitedYn === 'false')
                       return  `<a href="javascript:" class="btn btn-sm btn-light-danger font-weight-bold ml-3" onClick="showInPopUpLg('/Learners/Details/` + full.learnerId + `','Learner Details')" id="btnView"><i class="fa fa-eye" aria-hidden="true" ></i>View</a>`;
                    else if(full.appliedYn === 'true' && full.recruitedYn === 'false')
-                      return  `<a href="javascript:" class="btn btn-sm btn-light-warning font-weight-bold ml-3" onClick="showInPopUpLg('/Learners/Recruited/` + full.learnerId + `','Learner Requitment')" id="btnView"><i class="fa fa-eye" aria-hidden="true" ></i>Recruit</a>`;
+                      return  `<a href="javascript:" class="btn btn-sm btn-light-warning font-weight-bold ml-3" onClick="showInPopUpLg('/JobApplications/Recruited/` + full.learnerId + `','Learner Requitment')" id="btnView"><i class="fa fa-eye" aria-hidden="true" ></i>Recruit</a>`;
                     else 
                         return  `<a href="javascript:" class="btn btn-sm btn-light-success font-weight-bold ml-3" onClick="showInPopUpLg('/Learners/Details/` + full.learnerId + `','View Employed Learner')" id="btnView"><i class="fa fa-eye" aria-hidden="true" ></i>View</a>`;
 
