@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Hosting;
 namespace learner_portal.Controllers  
 { 
     [Authorize]
-    public class CompaniesController : Controller  
+    public class CompaniesController : BaseController  
     { 
         private readonly LearnerContext _context;  
         private readonly ILookUpService _lookUpService;

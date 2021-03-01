@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace learner_portal.Controllers
 {
     [Authorize]
-    public class CourseController : Controller 
+    public class CourseController : BaseController 
     { 
         private readonly LearnerContext _context; 
 

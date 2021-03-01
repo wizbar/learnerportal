@@ -17,12 +17,12 @@ using Microsoft.AspNetCore.Identity;
 namespace learner_portal.Controllers
 { 
     [Authorize]
-    public class DocumentsController : Controller
+    public class DocumentsController : BaseController
     {
         private readonly LearnerContext _context;
         private readonly ILookUpService _lookUpService;
         private readonly IFileService _fileService;
-        private readonly UserManager<Users> _userManager;
+        private readonly UserManager<Users> _userManager; 
         private readonly FoldersConfigation _foldersConfigation;        
         private readonly INotyfService _notyf;
         
@@ -30,7 +30,6 @@ namespace learner_portal.Controllers
         public DocumentsController(LearnerContext context,
             ILookUpService lookUpService,
             IFileService fileService,
-            IWebHostEnvironment env,
             FoldersConfigation foldersConfigation,
             UserManager<Users> userManager,
             INotyfService notyf)

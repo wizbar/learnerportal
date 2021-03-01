@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace learner_portal.Controllers
 {
     [Authorize]
-    public class JobTypeController : Controller
+    public class JobTypeController : BaseController
     {
         private readonly LearnerContext _context;
         private readonly  ILookUpService _lookUpService;

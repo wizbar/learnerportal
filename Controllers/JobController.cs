@@ -17,7 +17,7 @@ using Microsoft.AspNetCore.Http;
 namespace learner_portal.Controllers
 {
     [Authorize]
-    public class JobController : Controller
+    public class JobController : BaseController
     {
         private readonly LearnerContext _context;
         private readonly IWebHostEnvironment _env;

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3nUNL2NTVp4tLWHV5k20mj+qR3kF+G2a7U9bxHBJfC4bBqeBM3r/IdRg05/2GQ5DLa2rDN+S1ff/2NXL/5UoXQ==",
+  "dgSpecHash": "oK2+UhmBS8NSkQbPF4z3/ymEado1Qi7IaSfzqpmw77m+pvwQ+WjGwgne0VUOzuvrafhCB566C5peJC3nyOZ13w==",
   "success": true,
   "projectFilePath": "/home/endorsed/code/learner_portal/learner_portal.csproj",
   "expectedPackageFiles": [
@@ -30,7 +30,7 @@
     "/home/endorsed/.nuget/packages/microsoft.aspnetcore.http.features/2.2.0/microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "/home/endorsed/.nuget/packages/microsoft.aspnetcore.identity.entityframeworkcore/3.1.11/microsoft.aspnetcore.identity.entityframeworkcore.3.1.11.nupkg.sha512",
     "/home/endorsed/.nuget/packages/microsoft.aspnetcore.identity.ui/3.1.11/microsoft.aspnetcore.identity.ui.3.1.11.nupkg.sha512",
-    "/home/endorsed/.nuget/packages/microsoft.aspnetcore.jsonpatch/3.1.12/microsoft.aspnetcore.jsonpatch.3.1.12.nupkg.sha512",
+    "/home/endorsed/.nuget/packages/microsoft.aspnetcore.jsonpatch/3.1.11/microsoft.aspnetcore.jsonpatch.3.1.11.nupkg.sha512",
     "/home/endorsed/.nuget/packages/microsoft.aspnetcore.localization/2.0.1/microsoft.aspnetcore.localization.2.0.1.nupkg.sha512",
     "/home/endorsed/.nuget/packages/microsoft.aspnetcore.mvc/2.0.1/microsoft.aspnetcore.mvc.2.0.1.nupkg.sha512",
     "/home/endorsed/.nuget/packages/microsoft.aspnetcore.mvc.abstractions/2.2.0/microsoft.aspnetcore.mvc.abstractions.2.2.0.nupkg.sha512",
@@ -40,7 +40,7 @@
     "/home/endorsed/.nuget/packages/microsoft.aspnetcore.mvc.dataannotations/2.2.0/microsoft.aspnetcore.mvc.dataannotations.2.2.0.nupkg.sha512",
     "/home/endorsed/.nuget/packages/microsoft.aspnetcore.mvc.formatters.json/2.2.0/microsoft.aspnetcore.mvc.formatters.json.2.2.0.nupkg.sha512",
     "/home/endorsed/.nuget/packages/microsoft.aspnetcore.mvc.localization/2.0.1/microsoft.aspnetcore.mvc.localization.2.0.1.nupkg.sha512",
-    "/home/endorsed/.nuget/packages/microsoft.aspnetcore.mvc.newtonsoftjson/3.1.12/microsoft.aspnetcore.mvc.newtonsoftjson.3.1.12.nupkg.sha512",
+    "/home/endorsed/.nuget/packages/microsoft.aspnetcore.mvc.newtonsoftjson/3.1.11/microsoft.aspnetcore.mvc.newtonsoftjson.3.1.11.nupkg.sha512",
     "/home/endorsed/.nuget/packages/microsoft.aspnetcore.mvc.razor/2.2.0/microsoft.aspnetcore.mvc.razor.2.2.0.nupkg.sha512",
     "/home/endorsed/.nuget/packages/microsoft.aspnetcore.mvc.razor.extensions/2.2.0/microsoft.aspnetcore.mvc.razor.extensions.2.2.0.nupkg.sha512",
     "/home/endorsed/.nuget/packages/microsoft.aspnetcore.mvc.razorpages/2.0.1/microsoft.aspnetcore.mvc.razorpages.2.0.1.nupkg.sha512",

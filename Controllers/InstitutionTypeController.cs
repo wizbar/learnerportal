@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace learner_portal.Controllers
 {
     [Authorize]
-    public class InstitutionTypeController : Controller
+    public class InstitutionTypeController : BaseController
     {
         private readonly LearnerContext _context;
         private readonly  ILookUpService _lookUpService;

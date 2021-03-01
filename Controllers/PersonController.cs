@@ -20,7 +20,7 @@ namespace learner_portal.Controllers
 {
     
     [Authorize]
-    public class PersonController : BaseController
+    public class PersonController : Controller
     {
         private readonly LearnerContext _context;
         private readonly IWebHostEnvironment _env;

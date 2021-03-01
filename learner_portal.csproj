@@ -12,7 +12,7 @@
     <PackageReference Include="MailKit-On-NETCore" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.11" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.11" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.11" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.11">
@@ -173,6 +173,7 @@
     <Folder Include="Data" />
     <Folder Include="Migrations" />
     <Folder Include="wwwroot\Uploads" />
+    <Folder Include="wwwroot\_content" />
   </ItemGroup>
 
   <ItemGroup>

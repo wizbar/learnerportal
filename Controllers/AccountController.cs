@@ -20,20 +20,18 @@ using Enum = learner_portal.Helpers.Enum;
 
 namespace learner_portal.Controllers
 {
-    public class AccountController : BaseController
+
+    public class AccountController : BaseController  
     {
         private readonly LearnerContext _context;
         private readonly EmailConfiguration _emailConfig;
         private readonly IEmailSender _emailSender;
         private readonly ILogger<AccountController> _logger;
         private readonly ILookUpService _lookUpService;
-        private readonly INotyfService _notyf;
         private readonly RoleManager<Roles> _roleManager;
         private readonly SignInManager<Users> _signInManager;
         private readonly UserManager<Users> _userManager;
-
-        //  private readonly IToastNotification _toastNotification;
-
+        public readonly INotyfService _notyf;
 
         public AccountController(
             UserManager<Users> userManager,
@@ -45,7 +43,7 @@ namespace learner_portal.Controllers
             ILogger<AccountController> logger,
             LearnerContext context,
             INotyfService notyf
-        )
+        ) 
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -118,7 +116,7 @@ namespace learner_portal.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterUserDto input)
         {
             try
@@ -244,6 +242,7 @@ namespace learner_portal.Controllers
             return null;
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> ActivateAccount(string token, string userId)
         {
             var user = await _signInManager.UserManager.FindByIdAsync(userId);
@@ -275,7 +274,7 @@ namespace learner_portal.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<IActionResult> ResetPassword(ResetPasswordDTO model)
         {
             if (ModelState.IsValid)
@@ -322,7 +321,7 @@ namespace learner_portal.Controllers
 
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginDTO input)
         {
             try

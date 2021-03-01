@@ -36,11 +36,8 @@ namespace learner_portal
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddNotyf(config=> { config.DurationInSeconds = 10;config.IsDismissable = true;config.Position = NotyfPosition.BottomRight; });
-            /*services.AddControllersWithViews().AddNewtonsoftJson(
-                options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });*/
-
+        { 
+            services.AddNotyf(config=> { config.DurationInSeconds = 10;config.IsDismissable = true;config.Position = NotyfPosition.TopCenter; });
             //Email Server Configuration   
             var emailConfig = Configuration
                 .GetSection("EmailConfiguration")
@@ -162,12 +159,7 @@ namespace learner_portal
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                /*FileProvider = new PhysicalFileProvider(
-                    Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot")),
-                RequestPath = new PathString("/wwwroot")*/
-            });
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseAuthentication();

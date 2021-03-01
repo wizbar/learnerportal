@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Identity;
 namespace learner_portal.Controllers
 {
     [Authorize]
-    public class DocumentTypesController : Controller
+    public class DocumentTypesController : BaseController
     {
         private readonly LearnerContext _context;
         private readonly  ILookUpService _lookUpService;

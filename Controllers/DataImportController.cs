@@ -21,7 +21,7 @@ using Microsoft.Extensions.Hosting;
 namespace learner_portal.Controllers
 {
     [Authorize]
-    public class DataImportController : Controller
+    public class DataImportController : BaseController
     {
         private readonly LearnerContext _learnerContext;
         private readonly ILookUpService _lookUpService;

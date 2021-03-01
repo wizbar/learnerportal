@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace learner_portal.Controllers
 {
     [Authorize]
-    public class AddressTypesController : Controller
+    public class AddressTypesController : BaseController
     {
         private readonly LearnerContext _context;
         private readonly  ILookUpService _lookUpService;

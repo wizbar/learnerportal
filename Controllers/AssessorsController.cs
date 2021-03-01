@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace learner_portal.Controllers
 {
-    public class AssessorsController : Controller
+    public class AssessorsController : BaseController
     {
         private readonly LearnerContext _context;
         private readonly ILookUpService _lookUpService;
@@ -34,7 +34,7 @@ namespace learner_portal.Controllers
 
             return View();
         }
-        
+         
         public async Task<JsonResult> GetAllAssessors()
         { 
             try   

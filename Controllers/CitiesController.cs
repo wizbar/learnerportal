@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreHero.ToastNotification.Abstractions;
 using learner_portal.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,15 +14,17 @@ using Microsoft.AspNetCore.Authorization;
 namespace learner_portal.Controllers
 {
     [Authorize]
-    public class CitiesController : Controller
+    public class CitiesController : BaseController
     {
         private readonly LearnerContext _context;
         private readonly  ILookUpService _lookUpService;
+        public readonly INotyfService _notyf;
 
-        public CitiesController(LearnerContext context,ILookUpService lookUpService)
+        public CitiesController(LearnerContext context,ILookUpService lookUpService,INotyfService notyf)
         {
             _context = context;
             _lookUpService = lookUpService;
+            _notyf = notyf;
         }
 
         // GET: Cities
@@ -114,6 +117,8 @@ namespace learner_portal.Controllers
             {
                 _context.Add(city);
                 await _context.SaveChangesAsync();
+                _notyf.Success("Created successfully...");
+                _notyf.Custom("Edited ",10,"green","user");
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ProvinceId"] = new SelectList(_context.Province, "ProvinceId", "ProvinceName", city.ProvinceId);
@@ -149,7 +154,9 @@ namespace learner_portal.Controllers
                 try
                 {
                     _context.Update(city);
-                    await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();  
+                    _notyf.Success("Created successfully...");
+                    _notyf.Custom("Edited ",10,"green","user");
                 }
                 catch (DbUpdateConcurrencyException)
                 {

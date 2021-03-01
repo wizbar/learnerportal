@@ -17,6 +17,7 @@
 </head>
 <body id="kt_body" class="quick-panel-right demo-panel-right offcanvas-right header-static header-mobile-fixed page-loading">
 		<!--html-partial:include:{"file":"partials/_extras/offcanvas/quick-user.html"}-->
+@*
 @await Html.PartialAsync("Partial/_extras/offcanvas/quick-user")
 		<!--html-partial:include:{"file":"partials/_extras/offcanvas/quick-panel.html"}-->
    @await Html.PartialAsync("Partial/_extras/offcanvas/quick-panel")
@@ -31,10 +32,11 @@
 <!--begin::Main-->
 <!-- [html-partial:include:{"file":"partials/_header-mobile.html"}] -->
    @await Html.PartialAsync("Partial/_header-mobile")
+   *@
 
 <div class="d-flex flex-column flex-lg-root flex-column-fluid">
 
-        @await Html.PartialAsync("Partial/_header")
+        @* @await Html.PartialAsync("Partial/_header") *@
 
     <!-- [html-partial:include:{"file":"partials/_header.html"}] -->
 
@@ -50,6 +52,6 @@
         await Html.RenderPartialAsync("_Scripts");
     }
     @RenderSection("scripts", required: false)
-
+ @await Component.InvokeAsync("Notyf")
 </body>
 </html>

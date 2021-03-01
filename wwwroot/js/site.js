@@ -2,7 +2,7 @@
 
 // for details on configuring this project to bundle and minify static web assets spinner spinner-track spinner-dark mr-15.
 /*$(document).ajaxStart($.blockUI({ message: '<h1><img src="../Images/busy.gif"/>Just a moment...</h1>' })).ajaxStop($.unblockUI);*/
-$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI());
+$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
 
 $('.select2').select2({
     placeholder: 'Select an option'
@@ -157,7 +157,7 @@ createPersonDataTable = (table_id, url) => {
                         return '<img src="'  + full.photoPath + full.photoName + '" style="height:100px;width:100px;" alt=""/>';
                     }
                     else {
-                        return '<img src="../Images/default-avatar.png" style="height:100px;width:100px;" alt=""/>';
+                        return '<img src="../assets/media/default-avatar.png" style="height:100px;width:100px;" alt=""/>';
                     }
 
                 }},
@@ -980,7 +980,7 @@ createLearnersDataTable = (table_id, url) => {
                     return '<img src="'  + full.photoPath + full.photoName + '" style="height:100px;width:100px;" alt=""/>';
                    }
                    else {
-                       return '<img src="../Images/default-avatar.png" style="height:100px;width:100px;" alt=""/>';
+                       return '<img src="../assets/media/default-avatar.png" style="height:100px;width:100px;" alt=""/>';
                    }
 
                 }},
@@ -1100,8 +1100,10 @@ createUsersDataTable = (table_id, url) => {
             { "data": "email", "name": "email", "autoWidth": true },
 
             { "data": "role", "name": "role", "autoWidth": true },
-
-            { "data": "activeYn", "name": "activeYn", "autoWidth": true },
+            { "render": function (data, type, full) {
+                      return '<span class="label label-lg font-weight-boldest label-rounded label-outline-'+ ((full.activeYn === 'true')? 'success label-inline"><i class="fas fa-check mr-2" style="color:#00b300 "></i>' : 'danger label-inline"><i class="fas fa-times mr-2" style="color:#a71d2a"></i>') +  full.activeYn +'</span>';
+                      }},
+/*            { "data": "activeYn", "name": "activeYn", "autoWidth": true },*/
 
             {
 
