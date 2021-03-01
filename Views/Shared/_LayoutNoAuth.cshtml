@@ -42,7 +42,10 @@
         @RenderBody()
     </main>
 </div>
-
+                 @await Html.PartialAsync("Partial/_Modal")
+                
+                 @await Html.PartialAsync("Partial/_ModalXl")
+                
     @{
         await Html.RenderPartialAsync("_Scripts");
     }

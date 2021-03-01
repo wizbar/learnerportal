@@ -2,7 +2,7 @@
 
 // for details on configuring this project to bundle and minify static web assets spinner spinner-track spinner-dark mr-15.
 /*$(document).ajaxStart($.blockUI({ message: '<h1><img src="../Images/busy.gif"/>Just a moment...</h1>' })).ajaxStop($.unblockUI);*/
-$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
+$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI());
 
 $('.select2').select2({
     placeholder: 'Select an option'

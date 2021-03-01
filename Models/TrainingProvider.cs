@@ -21,7 +21,7 @@ namespace learner_portal.Models
         public DateTime? DoeRegEndDate { get; set; }
         public string DoeRegNo { get; set; }
         public long? BeeRatingId { get; set; }
-        public decimal? BeeRecognition { get; set; }
+        public decimal BeeRecognition { get; set; }
         public string ContactFirstName { get; set; }
         public string ContactLastName { get; set; }
         public string ContactTitle { get; set; }
@@ -30,7 +30,7 @@ namespace learner_portal.Models
         public string ContactTelNo { get; set; }
         public string ContactFaxNo { get; set; }
         public string ContactCellNo { get; set; }
-        public long NoFullTimeStaff { get; set; }
+        public long NoFullTimeStaff { get; set; } 
         public long NoContractStaff { get; set; }
         public string CreatedBy { get; set; }
         public DateTime DateCreated { get; set; }

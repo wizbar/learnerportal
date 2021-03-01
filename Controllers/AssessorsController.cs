@@ -29,7 +29,7 @@ namespace learner_portal.Controllers
         }
 
         // GET: Assessors
-        public async Task<IActionResult> Index()
+        public  IActionResult Index()
         {
 
             return View();

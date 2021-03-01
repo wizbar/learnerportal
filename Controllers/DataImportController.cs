@@ -43,7 +43,7 @@ namespace learner_portal.Controllers
         }
 
         // GET: Cities
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             return View();
         }
@@ -69,7 +69,7 @@ namespace learner_portal.Controllers
                     throw new Exception("Please correct the following errors: " + Environment.NewLine + messages);
                 } 
                 //Upload the Excel Spreadsheet of learners
-                var path = _fileService.UploadFile(fileDto.File, _foldersConfigation.Uploads);
+                var path =  _fileService.UploadFile(fileDto.File, _foldersConfigation.Uploads);
                 
                 //import the data
                 if(path != null){
