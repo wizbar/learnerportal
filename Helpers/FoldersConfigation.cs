@@ -5,6 +5,8 @@
 
         public string Images { get; set; }
 
-        public string Docs { get; set; }
+        public string Documents { get; set; }
+        
+        public string Uploads { get; set; }
     }
 }

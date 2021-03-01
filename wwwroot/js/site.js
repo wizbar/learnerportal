@@ -1,6 +1,6 @@
 ﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 
-// for details on configuring this project to bundle and minify static web assets.
+// for details on configuring this project to bundle and minify static web assets spinner spinner-track spinner-dark mr-15.
 /*$(document).ajaxStart($.blockUI({ message: '<h1><img src="../Images/busy.gif"/>Just a moment...</h1>' })).ajaxStop($.unblockUI);*/
 $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
 
@@ -153,8 +153,12 @@ createPersonDataTable = (table_id, url) => {
 
             {
                 "render": function (data, type, full) {
-
-                    return '<img src="'  + full.photoPath + full.photoName + '" style="height:100px;width:100px;" alt=""/>';
+                    if(full.photoPath != null){
+                        return '<img src="'  + full.photoPath + full.photoName + '" style="height:100px;width:100px;" alt=""/>';
+                    }
+                    else {
+                        return '<img src="../Images/default-avatar.png" style="height:100px;width:100px;" alt=""/>';
+                    }
 
                 }},
 
@@ -201,11 +205,7 @@ createPersonDataTable = (table_id, url) => {
 };
 
 
-
-
-
 createCompaniesDataTable = (table_id, url) => {
-
 
 
     // The table which will be configured to use Datatables
@@ -282,7 +282,14 @@ createCompaniesDataTable = (table_id, url) => {
             {
                 "render": function (data, type, full) {
 
-                    return '<img src="'  + full.photoPath + full.photoName + '" style="height:100px;width:100px;" alt=""/>';
+                    if(full.photoPath != null){
+                        return '<img src="'  + full.photoPath + full.photoName + '" style="height:100px;width:100px;" alt=""/>';
+                    }
+                    else {
+                        return '<img src="../assets/media/misc/bg-3.jpg" style="height:100px;width:100px;" alt=""/>';
+                    }
+
+
 
                 }},
 
@@ -969,8 +976,12 @@ createLearnersDataTable = (table_id, url) => {
             { "data": "learnerId", "name": "learnerId", "autoWidth": true },
             {
                 "render": function (data, type, full) {
-
+                   if(full.photoPath != null){ 
                     return '<img src="'  + full.photoPath + full.photoName + '" style="height:100px;width:100px;" alt=""/>';
+                   }
+                   else {
+                       return '<img src="../Images/default-avatar.png" style="height:100px;width:100px;" alt=""/>';
+                   }
 
                 }},
 
@@ -1088,9 +1099,9 @@ createUsersDataTable = (table_id, url) => {
 
             { "data": "email", "name": "email", "autoWidth": true },
 
-            { "data": "activeYn", "name": "activeYn", "autoWidth": true },
+            { "data": "role", "name": "role", "autoWidth": true },
 
-            { "data": "isVerified", "name": "isVerified", "autoWidth": true },
+            { "data": "activeYn", "name": "activeYn", "autoWidth": true },
 
             {
 
@@ -2040,12 +2051,12 @@ createDocumentsDataTable = (table_id, url) => {
             { "data": "id", "name": "id", "autoWidth": true },
             { "data": "documentTypeName", "name": "documentTypeName", "autoWidth": true },
             { "data": "comment", "name": "comment", "autoWidth": true },
-            { "data": "learner", "name": "learner", "autoWidth": true },
+            { "data": "learnerId", "name": "learnerId", "autoWidth": true },
             { "data": "companyName", "name": "companyName", "autoWidth": true },
             { "data": "verified", "name": "verified", "autoWidth": true },
             { "data": "verificationDate", "name": "verificationDate", "autoWidth": true },
             { "data": "verifiedBy", "name": "verifiedBy", "autoWidth": true },
-            { "data": "jobApplication", "name": "jobApplication", "autoWidth": true },
+            { "data": "jobApplicationId", "name": "jobApplicationId", "autoWidth": true },
             {
                 "render": function (data, type, full) {
 

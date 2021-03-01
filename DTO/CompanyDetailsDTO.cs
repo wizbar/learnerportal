@@ -35,7 +35,7 @@ namespace learner_portal.DTO
         // Address Information
         
         [DisplayName("House No")]
-        public string HouseNo { get; set; }      
+        public string HouseNo { get; set; }
         [DisplayName("Street Name")]
         public string StreetName { get; set; }
         [DisplayName("Suburb")]

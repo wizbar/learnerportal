@@ -4,6 +4,13 @@ namespace learner_portal.DTO
 {
     public class UserInfoDTO
     {
+        
+        
+        [Required]
+        public string UserId { get; set; }  
+        public string FullName { get; set; }
+        public string IdentityNo { get; set; }
+        
         [Required]
         public string Username { get; set; }
         [Required]
@@ -19,7 +26,10 @@ namespace learner_portal.DTO
         public bool RememberMe { get; set; }
 
         [Required] 
-        public string Role { get; set; }
+        public string Role { get; set; }   
+        
+        public string ActiveYn { get; set; }
+        
 
         
     }

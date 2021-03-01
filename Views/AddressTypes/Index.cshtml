@@ -1,7 +1,4 @@
-﻿@{
-    Layout = "_Layout_Main";
-}
-
+﻿
 <div class="card card-custom gutter-b">
     <div class="card-header">
         <h4 class="mt-8">Address Types</h4>
@@ -28,15 +25,18 @@
 
 <script>
 
+
     $(document).ready(function () {
-        $("#divProcessing").hide();
-
         createAddressTypesDataTable('allAddressTypes', '/AddressTypes/GetAllAddressTypes');
-
-        // Hide the "busy" Gif at load:
-
 
     });
 
+    $.post(url, model, function (data) {
+        //load the partial view
+        $("#Partial").html(data);
+    }).then(function () {
+        $("form").each(function () { $.data($(this)[0], 'validator', false); });
+        $.validator.unobtrusive.parse("form");
+    });
 
 </script>

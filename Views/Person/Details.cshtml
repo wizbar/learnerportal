@@ -1,7 +1,7 @@
 @model learner_portal.DTO.PersonDetailsDTO
 
 @{
-    Layout = "_Layout_Main";
+    Layout = "_Layout";
 }
 
 <!--begin::Entry-->
@@ -188,7 +188,7 @@
 	</div>
 	<div class="card-toolbar">
 		<a asp-action="Edit" asp-route-id="@Model.NationalID"><button type="button" class="btn btn-primary font-weight-bolder mr-2">Edit</button></a>
-		<a target="_blank" asp-action="ViewResumePdf" asp-route-id="@Model.NationalID"><button type="button" class="btn btn-dark font-weight-bolder float-right mr-2">Download CV</button></a>
+		<a target="_blank" asp-action="ViewResumePdf" asp-route-id="@Model.NationalID"><button type="button" class="btn btn-dark font-weight-bolder float-right mr-2"><i class="fa fa-download"></i>Download CV</button></a>
 	</div>
 	
 </div>

@@ -274,7 +274,7 @@ namespace learner_portal.Controllers
         // POST: Job/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(long id)
         {
             var job = await _context.Jobs.FindAsync(id);
             _context.Jobs.Remove(job);

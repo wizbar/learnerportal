@@ -1,0 +1,27 @@
+﻿@using System.Globalization
+@*@inject BaseProject.Timing.AppTimes AppTimes
+
+    <script type="text/javascript">
+            // This is used to get the application's root path from javascript.
+            // It's useful if you're running application in a virtual directory under IIS.
+            var abp = abp || {};
+            abp.appPath = '@ApplicationPath';
+    </script>*@
+
+<environment names="Development,Production">
+    <!--begin::Global Theme Bundle(used by all pages)-->
+    <script src="~/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="~/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+    <script src="~/assets/js/scripts.bundle.js"></script> 
+    <!--end::Global Theme Bundle-->
+    <!--begin::Page Vendors(used by this page)-->
+    <script src="~/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+    <!--end::Page Vendors-->
+    <!--begin::Page Scripts(used by this page)-->
+    <script src="~/assets/js/pages/widgets.js"></script>
+    <script src="~/assets/DataTables/datatables.min.js"></script>
+ <script src="~/js/site.js"></script>
+    <!--end::Page site.jscripts-->
+    
+</environment>
+

@@ -114,6 +114,7 @@ namespace learner_portal
                 .Get<FoldersConfigation>();
             services.AddSingleton(foldersConfigation);
             services.AddScoped<IFileService, FileService>();
+            services.AddScoped<IDataImportService, DataImportService>();
             services.AddScoped<ILookUpService, LookUpService>();
             services.AddScoped<IEmailSender, EmailSender>();
             services.ConfigureApplicationCookie(options =>

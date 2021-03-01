@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace learner_portal.Controllers
 {
-    public class BaseController: Controller   
+    public class BaseController: Controller     
     {   
         protected  void OnException(ExceptionContext filterContext)  
         {  

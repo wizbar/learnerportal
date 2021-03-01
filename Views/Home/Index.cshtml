@@ -1,53 +1,9 @@
 ﻿@using learner_portal.Helpers
 @model IEnumerable<learner_portal.Models.Job>
-
 @{
-    ViewData["Title"] = "Home Page";
+	Layout = "_LayoutNoAuth";
 }
-<!DOCTYPE html>
-<html lang="en">
-<!--begin::Head-->
-<head><base href="../../../../">
-	<meta charset="utf-8" /> 
-	<title>CHIETA | Sign Up</title>
-	<meta name="description" content="Singin page example" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<!--begin::Fonts-->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
-	<!--end::Fonts--> 
-	<!--begin::Page Custom Styles(used by this page)-->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" type="text/css" />
-	<link href="~/assets/css/courasel-style.css" rel="stylesheet" type="text/css" />
-	<link href="~/assets/css/pages/login/login-3.css" rel="stylesheet" type="text/css" />
-	<link href="~/assets/css/pages/wizard/wizard-1.css" rel="stylesheet" type="text/css" />
-	<!--end::Page Custom Styles-->
-	<!--begin::Global Theme Styles(used by all pages)-->
-	<link href="~/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-	<link href="~/assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
-	<link href="~/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
-	<!--end::Global Theme Styles-->
-	<!--begin::Layout Themes(used by all pages)-->
-	<!--begin::Layout Themes(used by all pages)-->
-		<!--begin::Layout Themes(used by all pages)-->
-		<link href="~/assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
-		<link href="~/assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" /> 
-		<link href="~/assets/css/themes/layout/brand/light.css" rel="stylesheet" type="text/css" />
-	<link href="~/assets/css/themes/layout/aside/light.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="assets/DataTables/datatables.min.css"/>
-	<!--begin::Page Vendors Styles(used by this page)-->
-	<link href="~/assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
-	<!--end::Layout Themes-->
-	<link rel="shortcut icon" href="~/assets/media/logos/favicon.ico" />
-	<!-- Third party JavaScript Plugins -->
-	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" type="text/javascript"></script>
-	@*<link href="css/select2.min.css" rel="stylesheet" />
-    <script src="js/select2.min.js"></script>*@
-</head> 
-<!--end::Head--> 
-<body id="kt_body" class="quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled aside-enabled aside-fixed aside-minimize-hoverable page-loading">
-<!--begin::Entry-->
+
 
 <!--begin::Container-->  
 <div class="d-flex-fluid">
@@ -63,34 +19,13 @@
 		<div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
 			<!--begin::Header Menu-->
 			<div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
-				<!--begin::Header Nav-->
-				<ul class="menu-nav">
-					<li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
-						<a href="javascript:;" class="menu-link menu-toggle">
-							<span class="menu-text">Tel: <i class="icon-1.5x text-dark-50 flaticon2-phone mr-1 ml-2"></i> 087 944 4377</span>
-						</a>
-					</li>
-					<li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
-						<a href="javascript:;" class="menu-link menu-toggle">
-							<span class="menu-text"> <i class="icon-1.5x text-dark-50 flaticon2-phone mr-1 ml-2"></i>Anti-Fraud Line: 0800 204 489</span>
-						</a>
-					</li>
-					<li class="menu-item menu-item-submenu menu-item-rel mr-1 ml-2" data-menu-toggle="click" aria-haspopup="true">
-						<a href="mailto:info@chieta.org.za" class="menu-link">
-							<span class="menu-text"><i class="icon-1.5x text-dark-50 flaticon-chat mr-1 ml-2"></i>info@chieta.org.za</span>
-						</a>
-					</li>
-										<li class="menu-item menu-item-submenu menu-item-rel mr-1 ml-2" data-menu-toggle="click" aria-haspopup="true">
-                    						<a href="/Dashboard/Index" class="menu-link btn btn-dark">
-                    							<span class="text-white"><i class="fa fa-home"></i>Home</span>
-                    						</a>
-                    					</li>
-				</ul>
+                @await Html.PartialAsync("Partial/_header")
 				<!--end::Header Nav-->
 			</div>
 			<!--end::Header Menu-->
 		</div>
 	</div>
+	
 
 	<section class="home">
 		<div class="slider">
@@ -137,33 +72,6 @@
 		<partial  name="_AvailableJobs" ></partial>
   
 
-		<!--begin::partners-->
-	<div class="card align-items-center">
-		<div class="text-muted display-4 mt-2">
-			Our Partners
-		</div>
-		<div class="row mt-3 mb-3">
-			<div class="col-lmd-4 mr-1">
-				<img class="bg-gray-200 rounded" src="~/assets/media/Partners/Caltex.jpg" alt="" style="height: 150px; width: 150px;">
-			</div>
-			<div class="col-lmd-4 mr-1">
-				<img class="bg-gray-200 rounded" src="~/assets/media/Partners/budget.jpg" alt="" style="height: 150px; width: 150px;">
-			</div>
-			<div class="col-lmd-4 mr-1">
-				<img class="bg-gray-200 rounded" src="~/assets/media/Partners/Sasol.jpg" alt="" style="height: 150px; width: 150px;">
-			</div>
-			<div class="col-lmd-4 mr-1">
-				<img class="bg-gray-200 rounded" src="~/assets/media/Partners/fnb-logo.png" alt="" style="height: 150px; width: 150px;">
-			</div>
-			<div class="col-lmd-4 mr-1">
-				<img class="bg-gray-200 rounded" src="~/assets/media/Partners/Michelin.jpg" alt="" style="height: 150px; width: 150px;">
-			</div>
-			<div class="col-lmd-4">
-				<img class="bg-gray-200 rounded" src="~/assets/media/Partners/multichoice.jpg" alt="" style="height: 150px; width: 150px;">
-			</div>
-		</div>
-	</div><hr class="hr-light"> 
-	<!--end::partners-->
 </div>
 
 <!--begin::Footer-->
@@ -187,7 +95,6 @@
 <!--end::Footer-->
 
 <!--Start:: JavaScript-->
-@section scripts {
 	<script>
 //Start-Courasel
 	
@@ -332,24 +239,4 @@ let timer = setInterval(autoPlay, 4000);
             return false;
         });
     </script>
-}
-<!--end:: JavaScript-->
 
-<script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1400 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#3E97FF", "secondary": "#E5EAEE", "success": "#08D1AD", "info": "#844AFF", "warning": "#F5CE01", "danger": "#FF3D60", "light": "#E4E6EF", "dark": "#181C32" }, "light": { "white": "#ffffff", "primary": "#DEEDFF", "secondary": "#EBEDF3", "success": "#D6FBF4", "info": "#6125E1", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#3F4254", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#EBEDF3", "gray-300": "#E4E6EF", "gray-400": "#D1D3E0", "gray-500": "#B5B5C3", "gray-600": "#7E8299", "gray-700": "#5E6278", "gray-800": "#3F4254", "gray-900": "#181C32" } }, "font-family": "Poppins" };</script>
-
-	<!--end::Global Config-->
-<script src="~/assets/plugins/global/plugins.bundle.js"></script>
-<script src="~/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
-<script src="~/assets/js/scripts.bundle.js"></script>
-<script src="~/js/site.js"></script> 
-<script src="~/assets/js/pages/custom/login/login-3.js"></script>
-<script src="~/assets/plugins/custom/datatables/datatables.bundle.js"></script>
-<script src="~/assets/js/pages/features/datatables/basic/headers.js"></script>
-<script src="~/assets/js/pages/custom/wizard/wizard-1.js"></script>
-<script src="~/assets/js/pages/features/forms/widgets/select2.js"></script>
-<script src="~/assets/js/pages/widgets.js"></script>
-<script src="~/assets/js/pages/custom/profile/profile.js"></script>
-<!--end::Global Theme Bundle-->
-
-	</body>
-</html>

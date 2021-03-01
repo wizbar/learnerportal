@@ -7,6 +7,8 @@
   <ItemGroup>
     <PackageReference Include="AspNetCoreHero.ToastNotification" Version="1.1.0" />
     <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="ExcelDataReader" Version="3.6.0" />
+    <PackageReference Include="ExcelDataReader.DataSet" Version="3.6.0" />
     <PackageReference Include="MailKit-On-NETCore" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.11" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.11" />
@@ -31,6 +33,7 @@
     <PackageReference Include="Rotativa.AspNetCore" Version="1.1.1" />
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="2.0.0" />
     <PackageReference Include="System.Runtime.Caching" Version="4.6.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -161,11 +164,15 @@
     <_ContentIncludedByDefault Remove="wwwroot\_content\AspNetCoreHero.ToastNotification\bin\Debug\netcoreapp3.1\AspNetCoreHero.ToastNotification.pdb" />
     <_ContentIncludedByDefault Remove="wwwroot\_content\AspNetCoreHero.ToastNotification\bin\Debug\netcoreapp3.1\AspNetCoreHero.ToastNotification.Views.dll" />
     <_ContentIncludedByDefault Remove="wwwroot\_content\AspNetCoreHero.ToastNotification\bin\Debug\netcoreapp3.1\AspNetCoreHero.ToastNotification.Views.pdb" />
+    <_ContentIncludedByDefault Remove="Testing\packages.config" />
+    <_ContentIncludedByDefault Remove="PrimeService.Tests\obj\PrimeService.Tests.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="PrimeService.Tests\obj\project.assets.json" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Data" />
     <Folder Include="Migrations" />
+    <Folder Include="wwwroot\Uploads" />
     <Folder Include="wwwroot\_content" />
   </ItemGroup>
 

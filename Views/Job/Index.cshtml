@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Home Page";
-	Layout = "_Layout";
+	Layout = "_LayoutNoAuth";
 }
 
 <!--begin::Container-->  
@@ -16,7 +16,7 @@
 			
 		</div>
 		<div class="col-md-5"></div>
-		<div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
+		@*<div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
 			<!--begin::Header Menu-->
 			<div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
 				<!--begin::Header Nav-->
@@ -46,7 +46,7 @@
 				<!--end::Header Nav-->
 			</div>
 			<!--end::Header Menu-->
-		</div>
+		</div>*@
 	</div>
 
 	<section class="home">
@@ -101,8 +101,8 @@
 
 						<div class="text-center pt-10">
 							<span class="font-weight-bolder display-5 text-dark-52 align-self-center">@Html.DisplayFor(modelItem => item.JobTitle)</span>
-							<p class="font-size-h6 d-block d-block font-weight-bold text-dark-50 pb-5">@Html.DisplayFor(modelItem => item.JobDesc)
-								<small><a asp-action="Details" asp-route-id="@item.JobCode" class="label label-outline-success label-inline ml-2">more info <i class="icon-xl la la-arrow-right" style="color: #1BC5BD"></i></a></small>
+							<p class="font-size-h6 d-block d-block font-weight-bold text-dark-50 pb-5">
+								@Html.DisplayFor(modelItem => item.JobDesc)
 							</p>
 
 							<p>
@@ -127,31 +127,11 @@
 
 
 		<!--begin::partners-->
-	<div class="card align-items-center">
+	@*<div class="card align-items-center">
 		<div class="text-muted display-4 mt-2">
 			Our Partners
 		</div>
-		<div class="row mt-3 mb-3">
-			<div class="col-lmd-4 mr-1">
-				<img class="bg-gray-200 rounded" src="~/assets/media/Partners/Caltex.jpg" alt="" style="height: 150px; width: 150px;">
-			</div>
-			<div class="col-lmd-4 mr-1">
-				<img class="bg-gray-200 rounded" src="~/assets/media/Partners/budget.jpg" alt="" style="height: 150px; width: 150px;">
-			</div>
-			<div class="col-lmd-4 mr-1">
-				<img class="bg-gray-200 rounded" src="~/assets/media/Partners/Sasol.jpg" alt="" style="height: 150px; width: 150px;">
-			</div>
-			<div class="col-lmd-4 mr-1">
-				<img class="bg-gray-200 rounded" src="~/assets/media/Partners/fnb-logo.png" alt="" style="height: 150px; width: 150px;">
-			</div>
-			<div class="col-lmd-4 mr-1">
-				<img class="bg-gray-200 rounded" src="~/assets/media/Partners/Michelin.jpg" alt="" style="height: 150px; width: 150px;">
-			</div>
-			<div class="col-lmd-4">
-				<img class="bg-gray-200 rounded" src="~/assets/media/Partners/multichoice.jpg" alt="" style="height: 150px; width: 150px;">
-			</div>
-		</div>
-	</div><hr class="hr-light"> 
+	</div><hr class="hr-light"> *@
 	<!--end::partners-->
 </div>
 

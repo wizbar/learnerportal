@@ -44967,7 +44967,7 @@ code {
     -webkit-animation: animation-dropdown-menu-fade-in .3s ease 1, animation-dropdown-menu-move-up .3s ease-out 1;
     animation: animation-dropdown-menu-fade-in .3s ease 1, animation-dropdown-menu-move-up .3s ease-out 1; }
   .dropup .dropdown-menu.dropdown-menu-anim,
-  .dropdown-menu .dropdown-menu-anim-down.dropdown-menu-anim {
+  .dropdown-menu .dropdown-menu-anim-down.dropdown-menu-anim { 
     -webkit-animation: animation-dropdown-menu-fade-in .3s ease 1, animation-dropdown-menu-move-down .3s ease-out 1;
     animation: animation-dropdown-menu-fade-in .3s ease 1, animation-dropdown-menu-move-down .3s ease-out 1; }
 

@@ -1,0 +1,52 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+    <title>Base</title>
+    @{
+        await Html.RenderPartialAsync("_StylesNoAuth");
+    }
+    @RenderSection("styles", required: false)
+</head>
+<body id="kt_body" class="quick-panel-right demo-panel-right offcanvas-right header-static header-mobile-fixed page-loading">
+		<!--html-partial:include:{"file":"partials/_extras/offcanvas/quick-user.html"}-->
+@await Html.PartialAsync("Partial/_extras/offcanvas/quick-user")
+		<!--html-partial:include:{"file":"partials/_extras/offcanvas/quick-panel.html"}-->
+   @await Html.PartialAsync("Partial/_extras/offcanvas/quick-panel")
+		<!--html-partial:include:{"file":"partials/_extras/chat.html"}-->
+   @await Html.PartialAsync("Partial/_extras/chat")
+		<!--html-partial:include:{"file":"partials/_extras/scrolltop.html"}-->
+   @await Html.PartialAsync("Partial/_extras/scrolltop")
+		<!--html-partial:include:{"file":"partials/_extras/toolbar.html"}-->
+   @await Html.PartialAsync("Partial/_extras/toolbar")
+		<!--html-partial:include:{"file":"partials/_extras/offcanvas/demo-panel.html"}-->
+   @await Html.PartialAsync("Partial/_extras/offcanvas/demo-panel")
+<!--begin::Main-->
+<!-- [html-partial:include:{"file":"partials/_header-mobile.html"}] -->
+   @await Html.PartialAsync("Partial/_header-mobile")
+
+<div class="d-flex flex-column flex-lg-root flex-column-fluid">
+
+        @await Html.PartialAsync("Partial/_header")
+
+    <!-- [html-partial:include:{"file":"partials/_header.html"}] -->
+
+    <main role="main" class="d-flex flex-column flex-lg-root">
+        @RenderBody()
+    </main>
+</div>
+
+    @{
+        await Html.RenderPartialAsync("_Scripts");
+    }
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

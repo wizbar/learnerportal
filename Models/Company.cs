@@ -22,6 +22,7 @@ namespace learner_portal.Models
         [DisplayName("SDL")]
         public string SDL { get; set; }
         [DisplayName("Date Business Commenced")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateBusinessCommenced { get; set; }
         [DisplayName("Contact Name")]
         public string ContactName { get; set; }

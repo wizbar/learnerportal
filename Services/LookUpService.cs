@@ -1,25 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net;
-using System.Net.Mime;
 using System.Threading.Tasks;
-using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using MimeKit;
 using learner_portal.DTO;
 using learner_portal.Helpers;
 using learner_portal.Models;
-using learner_portal.Services;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore.Internal;
-using Rotativa.AspNetCore;
+using static learner_portal.Helpers.Const;
 
 namespace learner_portal.Services
 {
@@ -64,7 +52,58 @@ namespace learner_portal.Services
                 .FirstOrDefaultAsync(u => u.UserName.Equals(username));
             return user;
         }         
-        
+                
+        public async Task<List<AssessorDetailsDTO>> GetAssessorDetails()   
+        {  
+            
+            var assessorDetails =
+                await _context.Assessor
+                    .Include(a => a.AccreditationStatuses)
+                    .Include(e => e.Evaluator)
+                    .Include(p => p.ProcessIndicators)
+                    .Include(a => a.ApplicationType)
+                    .Include(e => e.Etqe)
+                    .Include(p => p.Person)
+                    .ThenInclude(a => a.Address).ThenInclude(s => s.Suburb)
+                    .ThenInclude(a => a.Address).ThenInclude(c => c.City)
+                    .ThenInclude(a => a.Address).ThenInclude(p => p.Province)
+                    .ThenInclude(a => a.Address).ThenInclude(c => c.Country)
+                    
+                    .ThenInclude(a => a.Address).ThenInclude(s => s.Suburb)
+                    .Select(a => new AssessorDetailsDTO()
+                    {  
+                       AssessorId = a.AssessorId,
+                       AccredStartDate = a.AccredStartDate,
+                       AccredEndDate = a.AccredEndDate,
+                       AccreditationStatusDesc = a.AccreditationStatuses.AccreditationStatusDesc,
+                       RegistrationNo = a.RegistrationNo,
+                       Evaluator = a.EvaluatorsId,
+                       ApplicationDate = a.ApplicationDate,
+                       RegistrationDate = a.RegistrationDate,
+                       ApprovedBy = a.ApprovedBy,
+                       ProcessIndicatorsDesc = a.ProcessIndicators.ProcessIndicatorsDesc,
+                       ApplicationTypesDesc = a.ApplicationType.ApplicationTypesDesc,
+                       SendForApprovalDate = a.SendForApprovalDate,
+                       CertificateIssuedYn = a.CertificateIssuedYn,
+                       CertificateDate = a.CertificateDate,
+                       CertificateNo = a.CertificateNo,
+                       ReissueDate = a.ReissueDate,
+                       EtqeName = a.Etqe.EtqeName,
+                       HouseNo = a.Person.Address.ToList()[0].HouseNo,
+                       StreetName = a.Person.Address.ToList()[0].StreetName,
+                       SuburbName = a.Person.Address.ToList()[0].Suburb.SuburbName,
+                       CityName = a.Person.Address.ToList()[0].City.CityName,
+                       ProvinceName = a.Person.Address.ToList()[0].Province.ProvinceName,
+                       CountryName = a.Person.Address.ToList()[0].Country.CountryName,
+                       AddressType = a.Person.Address.ToList()[0].AddressType.AddressTypeName,
+                       PostalCode = a.Person.Address.ToList()[0].PostalCode
+                       
+
+                    }).ToListAsync(); 
+ 
+            return  assessorDetails; 
+        }
+
         public async Task<List<Lookup>> GetInstitutions()
         {
             var list = new List<Lookup>
@@ -93,7 +132,23 @@ namespace learner_portal.Services
 
             return  await _userManager.FindByNameAsync(name);
         }
-               
+             
+        public async Task<UserInfoDTO> GetUserInfoByUsrname(string name)
+        {
+
+            var user = await _context.Users.Include(u => u.Person).FirstOrDefaultAsync(a => a.UserName.Equals(name));
+            var userRole = await _userManager.GetRolesAsync(user);
+            return new UserInfoDTO()
+            {
+                Email = user.Email,
+                Username = user.UserName,
+                ActiveYn = user.ActiveYn,
+                UserId = user.Id,
+                IdentityNo =  (user.Person != null)? user.Person.NationalId : null,
+                FullName = (user.Person != null)? (user.Person.FirstName + "  " + user.Person.LastName) : "Unknown",
+                Role = userRole[0]
+            };
+        }
         public async Task<List<Institution>> GetAllInstitution()
         {
             return  await _context.Institution.ToListAsync();
@@ -386,6 +441,148 @@ namespace learner_portal.Services
                 });
 
             return list;
+        }          
+        
+        public async Task<List<Lookup>> GetGenders()
+        {
+            var list = new List<Lookup>
+            {
+                new Lookup
+                {
+                    id = 0,
+                    name = "-- Select Province --"
+                }
+            };        
+            
+                    
+            var result = await _context.Gender.ToListAsync();
+            
+            list.AddRange(from a in result
+                select new Lookup
+                {
+                    id = a.GenderId,
+                    name = a.GenderDesc
+                });
+
+            return list;
+        }  
+        
+        
+       public async Task<List<Lookup>> GetNationalities()
+        {
+            var list = new List<Lookup>
+            {
+                new Lookup
+                {
+                    id = 0,
+                    name = "-- Select Province --"
+                }
+            };       
+            
+                        
+            var result = await _context.Nationality.ToListAsync();
+            
+            list.AddRange(from a in result
+                select new Lookup
+                {
+                    id = a.NationalityId,
+                    name = a.NationalityDesc
+                });
+
+            return list;
+        }  
+            public async Task<List<Lookup>> GetEquities()
+        {
+            var list = new List<Lookup>
+            {
+                new Lookup
+                {
+                    id = 0,
+                    name = "-- Select Province --"
+                }
+            };
+                        
+            var result = await _context.Equity.ToListAsync();
+            
+            list.AddRange(from a in result
+                select new Lookup
+                {
+                    id = a.EquityId,
+                    name = a.EquityDesc
+                });
+
+            return list;
+        }  
+            
+            public async Task<List<Lookup>> GetDisabilities()
+        {
+            var list = new List<Lookup>
+            {
+                new Lookup
+                {
+                    id = 0,
+                    name = "-- Select Province --"
+                }
+            };      
+                       
+            var result = await _context.DisabilityStatus.ToListAsync();
+            
+            list.AddRange(from a in result
+                select new Lookup
+                {
+                    id = a.DisabilityStatusId,
+                    name = a.DisabilityStatusDesc
+                });
+
+            return list;
+        }   
+            
+            
+            public async Task<List<Lookup>> GetCitizenships()
+        {
+            var list = new List<Lookup>
+            {
+                new Lookup
+                {
+                    id = 0,
+                    name = "-- Select Province --"
+                }
+            };       
+           
+            var result = await _context.CitizenshipStatus.ToListAsync();
+            
+            list.AddRange(from a in result
+                select new Lookup
+                {
+                    id = a.CitizenshipStatusId,
+                    name = a.CitizenshipStatusDesc
+                });
+
+            return list;
+        }
+
+            public async Task<List<Lookup>> GetHomeLanguages()
+        {
+            var list = new List<Lookup>
+            {
+                new Lookup
+                {
+                    id = 0,
+                    name = "-- Select Province --"
+                }
+            };       
+
+            
+            var result = await _context.HomeLanguage.ToListAsync();
+            
+            list.AddRange(from a in result
+                select new Lookup
+                {
+                    id = a.HomeLanguageId,
+                    name = a.HomeLanguageDesc
+                });
+
+            return list;
         }       
         
         public async Task<List<Lookup>> GetCountries()
@@ -510,7 +707,7 @@ namespace learner_portal.Services
                     LastName = person.Person.LastName,
                     Email = person.Person.Email,
                     PhoneNumber = person.Person.PhoneNumber,
-                    PersonsDob = person.Person.PersonsDob.ToString(Const.DATE_FORMAT),
+                    PersonsDob = person.Person.PersonsDob.ToString(DATE_FORMAT),
                     Age = Utils.CalculateAge(person.Person.PersonsDob),
                     NationalID = person.Person.NationalId,
                     EquityName = person.Person.Equity.EquityDesc,
@@ -531,7 +728,7 @@ namespace learner_portal.Services
                     PhotoPath = person.Person.PhotoPath,
                     SchoolName = person.School.SchoolName,
                     SchoolGradeName = person.SchoolGrade.SchoolGradeName,
-                    YearSchoolCompleted = person.YearSchoolCompleted.ToString(Const.DATE_FORMAT),
+                    YearSchoolCompleted = person.YearSchoolCompleted.ToString(DATE_FORMAT),
                     Qualifications = (List<QualificationDTO>) person.LearnerCourse.Select(a => new QualificationDTO()
                     {
                         CourseName = a.CourseName,
@@ -540,8 +737,8 @@ namespace learner_portal.Services
                     }),
                     JobApplicationsDto = person.JobApplications.Select(a => new JobApplicationsDTO()
                     {
-                        DateApplied = a.DateApplied.ToString(Const.DATE_FORMAT),
-                        ExpiryDate = a.Job.ExpiryDate.ToString(Const.DATE_FORMAT),
+                        DateApplied = a.DateApplied.ToString(DATE_FORMAT),
+                        ExpiryDate = a.Job.ExpiryDate.ToString(DATE_FORMAT),
                         JobTitle = a.Job.JobTitle,
                         SectorDesc = a.Job.Sector.SectorDesc,
                         JobTypeDesc = a.Job.JobType.JobTypeDesc,
@@ -551,10 +748,10 @@ namespace learner_portal.Services
                 }).FirstOrDefaultAsync()
                 ;
         }
+        
 
-
-        public async Task<List<CompanyDetailsDTO>>   GetCompanyDetails()    
-        {    
+        /*public async Task<List<CompanyDetailsDTO>> GetCompanyDetails()    
+        {
             return await _context.Company.AsQueryable()
                 .Include(a => a.Address).ThenInclude(a =>a.Country)
                 .Include(a => a.Address).ThenInclude(a => a.City)
@@ -583,7 +780,43 @@ namespace learner_portal.Services
                     PhotoPath = c.PhotoPath
                 }).ToListAsync();
 
-        }  
+        }*/
+        
+         public async Task<List<CompanyDetailsDTO>> GetCompanyDetails()   
+        {
+            var companyDetails =
+                await _context.Company
+                    .Include(a => a.Address).ThenInclude(a =>a.Country)
+                    .Include(a => a.Address).ThenInclude(a => a.City)
+                    .Include(a => a.Address).ThenInclude(a => a.Suburb)
+                    .Include(a => a.Address).ThenInclude(a => a.Province)
+                    .Include(a => a.Address).ThenInclude(a => a.AddressType)
+                    .Select(c => new CompanyDetailsDTO()
+                    {  
+                        CompanyId = c.CompanyId,
+                        CompanyName = c.CompanyName,
+                        CompanyRegistrationNo = c.CompanyRegistrationNo,
+                        DateBusinessCommenced = c.DateBusinessCommenced,
+                        ContactName = c.ContactName,
+                        ContactSurname = c.ContactSurname,
+                        ContactEmail = c.ContactEmail,
+                        ContactMobile = c.ContactMobile,
+                        ContactTelephone = c.ContactTelephone,
+                        HouseNo = c.Address.ToList()[0].HouseNo,
+                        StreetName = c.Address.ToList()[0].StreetName , 
+                        PostalCode = c.Address.ToList()[0].PostalCode,
+                        CountryName = c.Address.ToList()[0].Country.CountryName,
+                        CityName = c.Address.ToList()[0].City.CityName,
+                        SuburbName = c.Address.ToList()[0].Suburb.SuburbName,
+                        ProvinceName = c.Address.ToList()[0].Province.ProvinceName,
+                        AddressType = c.Address.ToList()[0].AddressType.AddressTypeName,
+                        PhotoName = c.PhotoName,
+                        PhotoPath = c.PhotoPath
+                        
+                    }).ToListAsync(); 
+ 
+            return  companyDetails; 
+        }
         
         public async Task<CompanyDetailsDTO> GetCompanyDetailsById(long id)
         {   
@@ -681,7 +914,7 @@ namespace learner_portal.Services
                     .Select(p => new PersonDetailsDTO()
                     {  
                         FirstName = p.FirstName, LastName = p.LastName, Email = p.Email, PhoneNumber = p.PhoneNumber,
-                        PersonsDob = p.PersonsDob.ToString(Const.DATE_FORMAT),
+                        PersonsDob = p.PersonsDob.ToString(DATE_FORMAT),
                         Age = Utils.CalculateAge(p.PersonsDob),
                         NationalID = p.NationalId,
                         EquityName = p.Equity.EquityDesc,
@@ -729,7 +962,7 @@ namespace learner_portal.Services
                     LastName = p.LastName,
                     Email = p.Email,
                     PhoneNumber = p.PhoneNumber,
-                    PersonsDob = p.PersonsDob.ToString(Const.DATE_FORMAT),
+                    PersonsDob = p.PersonsDob.ToString(DATE_FORMAT),
                     Age = Utils.CalculateAge(p.PersonsDob),
                     NationalID = p.NationalId,
                     EquityName = p.Equity.EquityDesc,
@@ -775,7 +1008,7 @@ namespace learner_portal.Services
                     LastName = person.Person.LastName,
                     Email = person.Person.Email,
                     PhoneNumber = person.Person.PhoneNumber,
-                    PersonsDob = person.Person.PersonsDob.ToString(Const.DATE_FORMAT),
+                    PersonsDob = person.Person.PersonsDob.ToString(DATE_FORMAT),
                     Age = Utils.CalculateAge(person.Person.PersonsDob),
                     NationalID = person.Person.NationalId,
                     EquityName = person.Person.Equity.EquityDesc,
@@ -796,7 +1029,7 @@ namespace learner_portal.Services
                     PhotoPath = person.Person.PhotoPath,
                     SchoolName = person.School.SchoolName,
                     SchoolGradeName = person.SchoolGrade.SchoolGradeName,
-                    YearSchoolCompleted = person.YearSchoolCompleted.ToString(Const.DATE_FORMAT),
+                    YearSchoolCompleted = person.YearSchoolCompleted.ToString(DATE_FORMAT),
                     Qualifications = person.LearnerCourse.Select(a => new QualificationDTO()
                     {
                         Id = a.LearnerCourseId,
@@ -828,9 +1061,9 @@ namespace learner_portal.Services
             throw new System.NotImplementedException();
         }
 
-        public async Task<List<JobApplicationsDetailsDTO>> GetJobApplicationsDetails()
-        {
-
+        public async Task<List<JobApplicationsDetailsDTO>> GetJobApplicationsDetails() 
+        {     
+ 
            var listOfJobApplications = await  _context.Learner.Include(a => a.JobApplications)
                         .Include(a => a.Person).ThenInclude(g => g.Gender)
                         .Include(a => a.Person).ThenInclude(g => g.Equity)
@@ -867,7 +1100,7 @@ namespace learner_portal.Services
                             Email = a.Person.Email,
                             FirstName = a.Person.FirstName,
                             LastName = a.Person.LastName,
-                            PersonsDob = a.Person.PersonsDob.ToString(Const.DATE_FORMAT),
+                            PersonsDob = a.Person.PersonsDob.ToString(DATE_FORMAT),
                             GenderName = a.Person.Gender.GenderDesc,
                             EquityName = a.Person.Equity.EquityDesc,
                             HomeLanguage = a.Person.HomeLanguage.HomeLanguageDesc,
@@ -887,15 +1120,15 @@ namespace learner_portal.Services
                             AddressType = a.Person.Address.ToList()[0].AddressType.AddressTypeName,
                              SchoolName = a.School.SchoolName,
                             SchoolGradeName = a.SchoolGrade.SchoolGradeName,
-                            YearSchoolCompleted = a.YearSchoolCompleted.ToString(Const.DATE_FORMAT),
+                            YearSchoolCompleted = a.YearSchoolCompleted.ToString(DATE_FORMAT),
                             Applications =
                                 (List<JobApplicationsDTO>) a.JobApplications.Select(jobApplications =>
                                     new JobApplicationsDTO()
                                     {
                                         LearnerId = jobApplications.LearnerId,
                                         JobId = jobApplications.JobId,
-                                        DateApplied = jobApplications.DateApplied.ToString(Const.DATE_FORMAT),
-                                        ExpiryDate = jobApplications.Job.ExpiryDate.ToString(Const.DATE_FORMAT),
+                                        DateApplied = jobApplications.DateApplied.ToString(DATE_FORMAT),
+                                        ExpiryDate = jobApplications.Job.ExpiryDate.ToString(DATE_FORMAT),
                                         JobTitle = jobApplications.Job.JobTitle,
                                         SectorDesc = jobApplications.Job.Sector.SectorDesc,
                                         JobTypeDesc = jobApplications.Job.JobType.JobTypeDesc,
@@ -939,7 +1172,7 @@ namespace learner_portal.Services
                             Email = a.Learner.Person.Email,
                             FirstName = a.Learner.Person.FirstName,
                             LastName = a.Learner.Person.LastName,
-                            PersonsDob = a.Learner.Person.PersonsDob.ToString(Const.DATE_FORMAT),
+                            PersonsDob = a.Learner.Person.PersonsDob.ToString(DATE_FORMAT),
                             GenderName = a.Learner.Person.Gender.GenderDesc,
                             EquityName = a.Learner.Person.Equity.EquityDesc,
                             HomeLanguage = a.Learner.Person.HomeLanguage.HomeLanguageDesc,
@@ -959,15 +1192,15 @@ namespace learner_portal.Services
                             PostalCode = a.Learner.Person.Address.ToList()[0].PostalCode,
                             SchoolName = a.Learner.School.SchoolName,
                             SchoolGradeName = a.Learner.SchoolGrade.SchoolGradeName,
-                            YearSchoolCompleted = a.Learner.YearSchoolCompleted.ToString(Const.DATE_FORMAT),
+                            YearSchoolCompleted = a.Learner.YearSchoolCompleted.ToString(DATE_FORMAT),
                             Applications =
                                 (List<JobApplicationsDTO>) a.Learner.JobApplications.Select(jobApplications =>
                                     new JobApplicationsDTO()
                                     {
                                         LearnerId = jobApplications.LearnerId,
                                         JobId = jobApplications.JobId,
-                                        DateApplied = jobApplications.DateApplied.ToString(Const.DATE_FORMAT),
-                                        ExpiryDate = jobApplications.Job.ExpiryDate.ToString(Const.DATE_FORMAT),
+                                        DateApplied = jobApplications.DateApplied.ToString(DATE_FORMAT),
+                                        ExpiryDate = jobApplications.Job.ExpiryDate.ToString(DATE_FORMAT),
                                         JobTitle = jobApplications.Job.JobTitle,
                                         SectorDesc = jobApplications.Job.Sector.SectorDesc,
                                         JobTypeDesc = jobApplications.Job.JobType.JobTypeDesc,
@@ -1054,7 +1287,32 @@ namespace learner_portal.Services
                 ProvinceCode = a.ProvinceCode
             }).ToListAsync();
             
+        }      
+        public async  Task<List<UserInfoDTO>> GetUsers()
+        {
+            return await _context.Users.Include(a => a.Person).Select( a => new UserInfoDTO()
+            {
+              UserId = a.Id,
+              Username = a.UserName,
+              Email = a.Email,
+              ActiveYn = a.ActiveYn,
+              Role = _userManager.GetRolesAsync(a).Result[0]
+            }).ToListAsync();
+            
         }
+                public async  Task<List<UserInfoDTO>> GetUser(string Id)
+        {
+            return await _context.Users.Include(a => a.Person).Where(a => a.Id.Equals(Id)).Select( a => new UserInfoDTO()
+            {
+                UserId = a.Id,
+              Username = a.UserName,
+              Email = a.Email,
+              ActiveYn = a.ActiveYn,
+              Role = _userManager.GetRolesAsync(a).Result[0]
+            }).ToListAsync();
+            
+        }
+        
 
         public async Task<List<CityDetailsDTO>> GetCitiesByProvincesId(long id)
         {
@@ -1062,7 +1320,7 @@ namespace learner_portal.Services
             {
                 Id = a.CityId,
                 CityName = a.CityName,
-                CityCode = a.CityCode,
+                CityCode = a.CityCode, 
                 ProvinceName = a.Province.ProvinceName
             }).ToListAsync();
         }
@@ -1451,7 +1709,7 @@ namespace learner_portal.Services
         public async Task<List<DocumentTypesDetailsDTO>> GetDocumentTypesDetailsByRole(string role)
         {
             var documentTypesDetails =
-                await _context.DocumentType.Where(a => a.Role.Name.Equals(role) && a.ActiveYn.Equals(Const.TRUE)).Include(r => r.Role)
+                await _context.DocumentType.Where(a => a.Role.Name.Equals(role) && a.ActiveYn.Equals(TRUE)).Include(r => r.Role)
                 
                     .Select(d => new DocumentTypesDetailsDTO()
                     {
@@ -1495,7 +1753,7 @@ namespace learner_portal.Services
                 await _context.Document
                     .Include(t => t.DocumentType)
                     .Include(t => t.Company)
-                    .Include(t => t.Learner)
+                    .Include(t => t.Learner).ThenInclude(t => t.Person)
                     .Include(t => t.JobApplications)
                     
                     .Select(d => new DocumentDetailsDTO()
@@ -1507,8 +1765,8 @@ namespace learner_portal.Services
                         CompanyName = d.Company.CompanyName,
                         Verified = d.Verified,
                         VerifiedBy = d.VerifiedBy,
-                        VerificationDate = d.VerificationDate,
-                        JobApplication = new Guid(d.JobApplications.ApplicationStatus)
+                        VerificationDate = d.VerificationDate.ToString(Const.DATE_FORMAT),
+                        JobApplicationId  = d.JobApplicationId
 
 
                     }).ToListAsync(); 
@@ -1524,7 +1782,7 @@ namespace learner_portal.Services
                 .Include(t => t.Company)
                 .Include(t => t.Learner)
                 .Include(t => t.JobApplications)
-                .Where(d => d.Id ==id ).Select( d => new DocumentDetailsDTO()
+                .Where(d => d.Id ==id ).Select( d => new DocumentDetailsDTO
                 {
 
                     Id = d.Id,
@@ -1534,8 +1792,8 @@ namespace learner_portal.Services
                     CompanyName = d.Company.CompanyName,
                     Verified = d.Verified,
                     VerifiedBy = d.VerifiedBy,
-                    VerificationDate = d.VerificationDate,
-                    JobApplication = new Guid(d.JobApplications.ApplicationStatus)
+                    VerificationDate = d.VerificationDate.ToString(Const.DATE_FORMAT),
+                    JobApplicationId = d.JobApplicationId
                     
                 }).FirstOrDefaultAsync();
 
@@ -1614,7 +1872,7 @@ namespace learner_portal.Services
                     LastName = learner.Person.LastName,
                     Email = learner.Person.Email,
                     PhoneNumber = learner.Person.PhoneNumber,
-                    PersonsDob = learner.Person.PersonsDob.ToString(Const.DATE_FORMAT), 
+                    PersonsDob = learner.Person.PersonsDob.ToString(DATE_FORMAT), 
                     Age = Utils.CalculateAge(learner.Person.PersonsDob), 
                     NationalID = learner.Person.NationalId,
                     EquityName = learner.Person.Equity.EquityDesc,
@@ -1636,7 +1894,7 @@ namespace learner_portal.Services
                     MotivationText = learner.MotivationText,
                     SchoolName = learner.School.SchoolName,
                     SchoolGradeName = learner.SchoolGrade.SchoolGradeName,
-                    YearSchoolCompleted = learner.YearSchoolCompleted.ToString(Const.DATE_FORMAT),
+                    YearSchoolCompleted = learner.YearSchoolCompleted.ToString(DATE_FORMAT),
                     Qualifications = learner.LearnerCourse.Select(a => new QualificationDTO()
                     {
                         CourseName = a.CourseName,
@@ -1663,7 +1921,7 @@ namespace learner_portal.Services
                     Email = a.Learner.Person.Email,
                     FirstName = a.Learner.Person.FirstName,
                     LastName = a.Learner.Person.LastName,
-                    PersonsDob = a.Learner.Person.PersonsDob.ToString(Const.DATE_FORMAT),
+                    PersonsDob = a.Learner.Person.PersonsDob.ToString(DATE_FORMAT),
                     GenderName = a.Learner.Person.Gender.GenderDesc,
                     EquityName = a.Learner.Person.Equity.EquityDesc,
                     HomeLanguage = a.Learner.Person.HomeLanguage.HomeLanguageDesc,
@@ -1683,13 +1941,13 @@ namespace learner_portal.Services
                     PostalCode = a.Learner.Person.Address.ToList()[0].PostalCode,
                     SchoolName = a.Learner.School.SchoolName,
                     SchoolGradeName = a.Learner.SchoolGrade.SchoolGradeName,
-                    YearSchoolCompleted = a.Learner.YearSchoolCompleted.ToString(Const.DATE_FORMAT),
+                    YearSchoolCompleted = a.Learner.YearSchoolCompleted.ToString(DATE_FORMAT),
                     Applications =
                         (List<JobApplicationsDTO>) a.Learner.JobApplications.Select(jobApplications =>
                             new JobApplicationsDTO()
                             {
-                                DateApplied = jobApplications.DateApplied.ToString(Const.DATE_FORMAT),
-                                ExpiryDate = jobApplications.Job.ExpiryDate.ToString(Const.DATE_FORMAT),
+                                DateApplied = jobApplications.DateApplied.ToString(DATE_FORMAT),
+                                ExpiryDate = jobApplications.Job.ExpiryDate.ToString(DATE_FORMAT),
                                 JobTitle = jobApplications.Job.JobTitle,
                                 SectorDesc = jobApplications.Job.Sector.SectorDesc,
                                 JobTypeDesc = jobApplications.Job.JobType.JobTypeDesc,

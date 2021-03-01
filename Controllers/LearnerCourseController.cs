@@ -169,6 +169,7 @@ namespace learner_portal.Controllers
                 {
                     _context.Update(learnerCourse);
                     await _context.SaveChangesAsync();
+                    _notyf.Success("Qualification updated successfully...");
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -181,7 +182,7 @@ namespace learner_portal.Controllers
                         throw;
                     }
                 }
-                _notyf.Success("Qualification edited successfully...");
+                _notyf.Success("Qualification updated successfully...");
                 return RedirectToAction("Details","Person", new { Id = person.NationalID});
             }
             return View();

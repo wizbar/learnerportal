@@ -42,6 +42,11 @@ namespace learner_portal.Helpers
                 age = age - 1;  
   
             return age;  
+        }         
+        public static DateTime GetDate(string idate)  
+        {  
+          return  Convert.ToDateTime(idate);
+          
         } 
     }
 }

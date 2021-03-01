@@ -10,26 +10,24 @@
 					
                 <div class="text-center pt-10"> 
                     <span class="font-weight-bolder display-5 text-dark-52 align-self-center">@Html.DisplayFor(modelItem => item.JobTitle)</span>
-                    <p class="font-size-h6 d-block d-block font-weight-bold text-dark-50 pb-5">@Html.DisplayFor(modelItem => item.JobDesc)
-                        <small><a asp-controller="Job" asp-action="Details" asp-route-id="@item.JobCode" class="label label-outline-success label-inline ml-2">more info <i class="icon-xl la la-arrow-right" style="color: #1BC5BD"></i></a></small>
-                    </p>
-						
-                    <p>
+	                <p class="font-size-h6 d-block d-block font-weight-bold text-dark-50 pb-5">
+		                @Html.DisplayFor(modelItem => item.JobDesc)
+	                </p>
+	                <p>
                         @Html.DisplayFor(modelItem => item.ExpiryDate)
                     </p>
                     @if(User.Identity.IsAuthenticated){
 												   
-                        <a href="#" class="btn btn-primary text-uppercase font-weight-bolder px-16 py-4"  data-toggle="modal" data-target="#exampleModalCenter">Apply</a>
+                        <a href="#" class="btn btn-primary btn-sm mb-2 btn-rounded"  data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-envelope"></i> Apply</a>
                     }
                     else {
                         <a href="/Account/Register" class="btn btn-success text-uppercase font-weight-bolder px-16 py-4">Register</a>
                     }
                     
-                    
                     <!-- Modal-->
                     <div class="modal fade" id="exampleModalCenter" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
                     	                    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-                    		                    <div class="modal-content"> 
+                    		                    <div class="modal-content">
                     			                    <div class="modal-header ribbon ribbon-clip ribbon-left">
                     				                    <div class="ribbon-target" style="top: 12px;">
                     					                    <span class="ribbon-inner bg-primary"></span><p class=" text-uppercase text-white">Confirm Job Details</p></div>

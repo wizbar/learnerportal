@@ -10,6 +10,13 @@ namespace learner_portal.Services
     {
         // Start DataTables Methods
         public Task<List<Lookup>> GetProvinces();
+        public  Task<List<AssessorDetailsDTO>> GetAssessorDetails();
+        public Task<List<Lookup>> GetGenders();
+        public Task<List<Lookup>> GetNationalities();
+        public Task<List<Lookup>> GetEquities();
+        public Task<List<Lookup>> GetDisabilities();
+        public Task<List<Lookup>> GetCitizenships();       
+        public Task<List<Lookup>> GetHomeLanguages();
         public Task<Users> GetCurrentLoggedInUser(string username);
         public Task<List<Province>> GetAllProvince();
         public Task<List<Lookup>> GetCities();
@@ -51,54 +58,79 @@ namespace learner_portal.Services
         public Task<PersonDetailsDTO> GetPersonByNationalId(string id);
         public Task<Learner> GetPersonByNationalIdForEditDelete(string id); 
         public Task<Users> GetUserByUsrname(string name);
+        public Task<UserInfoDTO> GetUserInfoByUsrname(string name);
+        public Task<List<UserInfoDTO>> GetUsers();
+        
         public Task<JobApplicationsDetailsDTO> GetJobApplicantPersonByNationalId(string id);
         public Task<PersonDetailsDTO> GetPersonDetailsByUsername(string username);
-            
-        // Methods For Learner 
+        
+        #region Learner
+
         public Task<LearnerDetailsDto> GetLearnerDetailsByIdEmail(string email); 
         public Task<LearnerDetailsDto> GetLearnerDetailsById(long id);
+
+        #endregion
+        
         public Task<List<CompanyDetailsDTO>> GetCompanyDetails();
         public Task<CompanyDetailsDTO> GetCompanyDetailsById(long CompanyRegistrationNo);
         public Task<CompanyViewModel> GetCompanyDetailsByIdForEditDelete(long id); 
-         
-        // Methods For OFO
+
+        #region OFO
+
         public Task<List<OfoDTO>> GetOFODetails();
         public Task<OfoDTO> GetOFODetailsById(long id);
         public Task<Ofo> GetOFODetailsByIdForEditDelete(long id);
 
-        // Methods For OFO Unit
+        #endregion
+
+        #region OFOUnit
+
         public Task<List<OfoUnitDTO>> GetOfoUnitDetails();
         public Task<OfoUnitDTO> GetOFOUnitDetailsById(long id); 
         public Task<OfoUnit> GetOFOUnitDetailsByIdForEditDelete(long id);
-        
+
+        #endregion
         
         public Task<List<ProvinceDetailsDTO>> GetProvincesByCountryId(long id);
         public Task<List<CityDetailsDTO>> GetCitiesByProvincesId(long id);
         public Task<List<SuburbsDetailsDTO>> GetSuburbsByCityId(long id);
-        
-        // Methods For OFO Minor
+
+        #region OFOMinor
+
         public Task<List<OfoMinorDTO>> GetOfoMinorDetails(); 
         public Task<OfoMinorDTO> GetOfoMinorById(long id);
         public Task<OfoMinor> GetOfoMinorByIdForEditDelete(long id);
-        
-        // Methods For School 
+
+        #endregion
+
+        #region School
+
         public Task<List<SchoolDTO>> GetSchoolDetails();
         public Task<SchoolDTO> GetSchoolDetailsById(long id); 
         public Task<School> GetSchoolByIdForEditDelete(long id);
+
+        #endregion
         
         public Task<List<JobApplicationsDetailsDTO>> GetJobApplicationsDetails();
 
         public Task<DocumentDetailsDTO> GetDocumentById(Guid id);
 
         //Methods For Institution
+
+        #region Intitution
         public Task<List<InstitutionDetailsDTO>> GetInstitutionDetails();
         public Task<InstitutionDetailsDTO> GetInstitutionDetailsById(long id);
         public Task<Institution> GetInstitutionByIdForEditDelete(long id);
+
+        #endregion
         
-        // Methods For Job
+        #region Job
+
         public Task<List<JobDetailsDTO>> GetJobDetails();
         public Task<JobDetailsDTO> GetJobDetailsById(long id);
         public Task<Job> GetJobDetailsByIdForEditDelete(long id);
+
+        #endregion
 
         #region Address
 
@@ -129,8 +161,7 @@ namespace learner_portal.Services
         public Task<AddressType> GetAddressTypeDetailsByIdForEditDelete(long id);
 
         #endregion
-       
-
+        
         #region Documents
 
         public Task<List<DocumentTypesDetailsDTO>> GetDocumentTypesDetails();
@@ -145,10 +176,6 @@ namespace learner_portal.Services
         public Task<Document> GetDocumentsDetailsByIdForEditDelete(Guid id);
 
         #endregion
-
-        
-        //Get Country Provinces 
-        /*public List<Province> GetAllProvinces(long id);*/
 
     } 
 }

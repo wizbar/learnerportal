@@ -1,0 +1,152 @@
+﻿@model IEnumerable<learner_portal.Models.Assessor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccredStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccredEndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegistrationNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EvaluatorsId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegistrationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApprovedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastUpdatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateUpdated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicationTypesId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SendForApprovalDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CertificateIssuedYn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CertificateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CertificateNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReissueDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccreditationStatuses)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProcessIndicators)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Etqe)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccredStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccredEndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistrationNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EvaluatorsId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistrationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApprovedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateUpdated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationTypesId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SendForApprovalDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CertificateIssuedYn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CertificateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CertificateNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReissueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccreditationStatuses.AccreditationStatusId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Etqe.EtqeId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AssessorId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AssessorId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AssessorId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

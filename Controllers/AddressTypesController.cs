@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using learner_portal.Models;
 using learner_portal.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace learner_portal.Controllers
 {
+    [Authorize]
     public class AddressTypesController : Controller
     {
         private readonly LearnerContext _context;
@@ -107,13 +109,26 @@ namespace learner_portal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("AddressTypeId,AddressTypeName,AddressTypeCode,CreatedBy,DateCreated,LastUpdatedBy,DateUpdated")] AddressType addressType)
         {
-            if (ModelState.IsValid)
+            try
             {
+                if (!ModelState.IsValid)
+                {
+                    string messages = string.Join("; ", ModelState.Values
+                        .SelectMany(x => x.Errors)
+                        .Select(x => x.ErrorMessage));
+                    throw new Exception("Please correct the following errors: " + Environment.NewLine + messages);
+                }
+
                 _context.Add(addressType);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+           //     return RedirectToAction(nameof(Index));
+
+                return Json(new { Result = "OK" });
             }
-            return PartialView(addressType);
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
         }
 
         // GET: AddressTypes/Edit/5

@@ -8,11 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore; 
 using learner_portal.Models; 
-using learner_portal.Services;   
+using learner_portal.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting; 
  
 namespace learner_portal.Controllers  
 { 
+    [Authorize]
     public class CompaniesController : Controller  
     { 
         private readonly LearnerContext _context;  
@@ -37,52 +39,58 @@ namespace learner_portal.Controllers
         }
 
         public async Task<JsonResult> GetAllCompanies()
-        {
-            var draw = HttpContext.Request.Query["draw"].FirstOrDefault();
-            // Skiping number of Rows count  
-            var start = Request.Query["start"].FirstOrDefault();
-            // Paging Length 10,20   
-            var length = Request.Query["length"].FirstOrDefault();
-            // Sort Column Name  
-            var sortColumn = Request
-                .Query["columns[" + Request.Query["order[0][column]"].FirstOrDefault() + "][name]"]
-                .FirstOrDefault();
-            // Sort Column Direction ( asc ,desc)  
-            var sortColumnDirection = Request.Query["order[0][dir]"].FirstOrDefault(); 
-            // Search Value from (Search box)  
-            var searchValue = Request.Query["search[value]"].FirstOrDefault(); 
+        { 
+            try   
+            { 
+                var draw = HttpContext.Request.Query["draw"].FirstOrDefault();
+                // Skiping number of Rows count  
+                var start = Request.Query["start"].FirstOrDefault();
+                // Paging Length 10,20   
+                var length = Request.Query["length"].FirstOrDefault();
+                // Sort Column Name  
+                var sortColumn = Request
+                    .Query["columns[" + Request.Query["order[0][column]"].FirstOrDefault() + "][name]"]
+                    .FirstOrDefault();
+                // Sort Column Direction ( asc ,desc)  
+                var sortColumnDirection = Request.Query["order[0][dir]"].FirstOrDefault();
+                // Search Value from (Search box)  
+                var searchValue = Request.Query["search[value]"].FirstOrDefault();
 
-            //Paging Size (10,20,50,100)  
-            int pageSize = length != null ? Convert.ToInt32(length) : 0;
-            int skip = start != null ? Convert.ToInt32(start) : 0;
-            int recordsTotal = 0; 
+                //Paging Size (10,20,50,100)  
+                var pageSize = length != null ? Convert.ToInt32(length) : 0;
+                var skip = start != null ? Convert.ToInt32(start) : 0;
+                var recordsTotal = 0;
 
                 
-            var listOfCompanies = await _lookUpService.GetCompanyDetails().ConfigureAwait(false);
+               var listOfCompanies = await _lookUpService.GetCompanyDetails().ConfigureAwait(false);
 
-            // Getting all Customer data  z 
-            var allCompanies = listOfCompanies;
+                // Getting all Customer data  z 
+                var allCompanies = listOfCompanies;
 
-            //Search
-            if (!string.IsNullOrEmpty(searchValue))
-            {
-                allCompanies = allCompanies.Where(m =>
-                        m.CompanyName == searchValue ||
-                        m.CityName == searchValue || 
-                        m.ProvinceName == searchValue)
-                    as List<CompanyDetailsDTO>;
-            }
+                //Search
+                if (!string.IsNullOrEmpty(searchValue))
+                {
+                    allCompanies = allCompanies.Where(m =>
+                            m.CompanyName == searchValue ||
+                            m.ProvinceName == searchValue || 
+                            m.CityName == searchValue)
+                        as List<CompanyDetailsDTO>;
+                }
 
-            //total number of rows count   
-            recordsTotal = allCompanies.Count(); 
-            //Paging    
-            var data = allCompanies.Skip(skip).Take(pageSize).ToList(); 
-            //Returning Json Data   
-            return Json(new 
+                //total number of rows count   
+                recordsTotal = allCompanies.Count();
+                //Paging   
+                var data = allCompanies.Skip(skip).Take(pageSize).ToList();
+                //Returning Json Data  
+                return Json(new 
                 { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = allCompanies });
+            }
+            catch (Exception)
+            {
+                throw;
+            }  
         }
         
-    
         // GET: Companies/Details/5
         public async Task<IActionResult> Details(long id)
         { 
@@ -251,7 +259,7 @@ namespace learner_portal.Controllers
         // POST: Companies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(long id)
         {
             var company = await _context.Company.FindAsync(id);
             _context.Company.Remove(company);

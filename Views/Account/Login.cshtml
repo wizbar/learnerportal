@@ -2,11 +2,11 @@
 
 @{
 
-	Layout = "_Layout";
+	Layout = "_LayoutNoAuth";
 }
 
 
-<div class="d-flex flex-column flex-root">
+<div class="d-flex flex-column flex-root" id="kt_blockui_content">
 	<!--begin::Login-->
 	<div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_blockui_card">
 		<!--begin::Aside-->
@@ -58,11 +58,7 @@
 					</div>
 
 					<div class="pb-lg-0 pb-5">
-						<button type="submit" value="Login" class="btn font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3 text-white" id="LoginBtn2"  style="background-color: #3e254f;">Sign In</button>
-						@*<a href="javascript:;" class="btn btn-primary font-weight-bold" id="LoginBtn">Show Toast Success</a>
-						<a href="javascript:;" class="btn btn-primary font-weight-bold" id="showtoastWarning">Show Toast Warning</a>
-						<a href="javascript:;" class="btn btn-primary font-weight-bold" id="showtoastInfo">Show Toast Info</a>
-						<a href="javascript:;" class="btn btn-primary font-weight-bold" id="showtoastDanger">Show Toast Danger</a>*@
+						<button type="submit" value="Login" class="btn font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3 text-white" id="kt_login_1"  style="background-color: #3e254f;">Sign In</button>
 					</div>
 					<!--end::Action-->
 				</form>
@@ -106,11 +102,12 @@
 	});
 	*/
 		
-			$(document).ready(function (){
-				$('#LoginBtn2').click(function () {
-					Login();
-				});
-			});
+$('#kt_login_1').click(function() {
+ KTApp.block('#kt_blockui_content', {
+  overlayColor: 'red',
+  opacity: 0.1,
+  state: 'primary' // a bootstrap color
+ });
 			
 			function Login() {
 				let username = $('#Username').val();
@@ -140,6 +137,20 @@
 				
 			}
 
+			    var demo1 = function () {
+                    // Demo 1
+                    var btn = KTUtil.getById("kt_login_1");
+            
+                    KTUtil.addEvent(btn, "click", function() {
+                        KTUtil.btnWait(btn, "spinner spinner-right spinner-white pr-15", "Please wait");
+            
+                        setTimeout(function() {
+                            KTUtil.btnRelease(btn);
+                        }, 1000);
+                    });
+                }
+			
+			
 	</script>
 
 

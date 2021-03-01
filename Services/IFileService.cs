@@ -6,7 +6,7 @@ namespace learner_portal.Services
 {    
     public interface IFileService 
     {     
-        bool UploadFile(IFormFile file,string filePath);
+        string UploadFile(IFormFile file,string filePath);
         bool UploadFiles(IEnumerable<IFormFile> files,string filePath);
 
         FileDTO DownloadFile(string path);

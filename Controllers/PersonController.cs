@@ -55,7 +55,7 @@ namespace learner_portal.Controllers
         {
                    
             return View().WithSuccess("It worked!", "You were able to view the about page, congrats!");
-        }  
+        }
         
         public async Task<JsonResult> GetAllPerson()
         { 
@@ -140,7 +140,7 @@ namespace learner_portal.Controllers
             ViewData["GenderId"] = new SelectList(_context.Gender, "GenderId", "GenderId");
             ViewData["HomeLanguageId"] = new SelectList(_context.HomeLanguage, "HomeLanguageId", "HomeLanguageId");
             ViewData["NationalityId"] = new SelectList(_context.Nationality, "NationalityId", "NationalityId");
-            ViewData["UserId"] = new SelectList(_context.User, "UserId", "UserId");
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId");
             return View();
         }
 
@@ -251,12 +251,14 @@ namespace learner_portal.Controllers
             ViewData["CityId"] = new SelectList(await _lookUpService.GetCities(), "id", "name");
             ViewData["SuburbId"] = new SelectList(_lookUpService.GetSuburbs().Result, "id", "name");
             ViewData["CountryId"] = new SelectList(_lookUpService.GetCountries().Result, "id", "name");
-            ViewData["InstitutionId"] = new SelectList(_lookUpService.GetInstitutions().Result, "id", "name");
-            ViewData["CourseId"] = new SelectList(_lookUpService.GetCourses().Result, "id", "name");
-            ViewData["SchoolId"] = new SelectList(_lookUpService.GetSchools().Result, "id", "name");
-            ViewData["SchoolGradeId"] = new SelectList(_lookUpService.GetSchoolGrades().Result, "id", "name");
             ViewData["ProvinceId"] = new SelectList(_lookUpService.GetProvinces().Result, "id", "name");
             ViewData["AddressTypeId"] = new SelectList(_lookUpService.GetAddressTypes().Result, "id", "name");
+            
+            /*ViewData["InstitutionId"] = new SelectList(_lookUpService.GetInstitutions().Result, "id", "name");
+            ViewData["CourseId"] = new SelectList(_lookUpService.GetCourses().Result, "id", "name");*/
+            ViewData["SchoolId"] = new SelectList(_lookUpService.GetSchools().Result, "id", "name");
+            ViewData["SchoolGradeId"] = new SelectList(_lookUpService.GetSchoolGrades().Result, "id", "name");
+        
             
             
 
@@ -282,7 +284,7 @@ namespace learner_portal.Controllers
                    Console.WriteLine(" FILE NAME : " + learnerViewModel.Photo.FileName); 
                 }
                 
-                var cvPath =  _fconfig.Docs  + learnerViewModel.Person.NationalId + "/" + Utils.GenerateDocsFolderId() + "/";
+                var cvPath =  _fconfig.Documents  + learnerViewModel.Person.NationalId + "/" + Utils.GenerateDocsFolderId() + "/";
 
                 if (learnerViewModel.Cv != null)
                 { 
@@ -335,21 +337,21 @@ namespace learner_portal.Controllers
                 await _context.SaveChangesAsync();
                 _notyf.Warning("Profile created successful...", 5);
                 
-                ViewData["CitizenshipStatusId"] = new SelectList(_context.CitizenshipStatus, "CitizenshipStatusId", "CitizenshipStatusDesc");
-                ViewData["DisabilityStatusId"] = new SelectList(_context.DisabilityStatus, "DisabilityStatusId", "DisabilityStatusDesc");
-                ViewData["EquityId"] = new SelectList(_context.Equity, "EquityId", "EquityDesc");
-                ViewData["GenderId"] = new SelectList(_context.Gender, "GenderId", "GenderDesc");
-                ViewData["HomeLanguageId"] = new SelectList(_context.HomeLanguage, "HomeLanguageId", "HomeLanguageDesc");
-                ViewData["NationalityId"] = new SelectList(_context.Nationality, "NationalityId", "NationalityDesc");
-                ViewData["CityId"] = new SelectList(await _lookUpService.GetCities(), "id", "name");
-                ViewData["SuburbId"] = new SelectList(_lookUpService.GetSuburbs().Result, "id", "name");
-                ViewData["CountryId"] = new SelectList(_lookUpService.GetCountries().Result, "id", "name");
-                ViewData["InstitutionId"] = new SelectList(_lookUpService.GetInstitutions().Result, "id", "name");
-                ViewData["CourseId"] = new SelectList(_lookUpService.GetCourses().Result, "id", "name");
-                ViewData["SchoolId"] = new SelectList(_lookUpService.GetSchools().Result, "id", "name");
-                ViewData["SchoolGradeId"] = new SelectList(_lookUpService.GetSchoolGrades().Result, "id", "name");
-                ViewData["ProvinceId"] = new SelectList(_lookUpService.GetProvinces().Result, "id", "name");
-                ViewData["AddressTypeId"] = new SelectList(_lookUpService.GetAddressTypes().Result, "id", "name");
+                ViewData["CitizenshipStatusId"] = new SelectList(_context.CitizenshipStatus, "CitizenshipStatusId", "CitizenshipStatusDesc",learnerViewModel.Person.CitizenshipStatusId);
+                ViewData["DisabilityStatusId"] = new SelectList(_context.DisabilityStatus, "DisabilityStatusId", "DisabilityStatusDesc",learnerViewModel.Person.DisabilityStatusId);
+                ViewData["EquityId"] = new SelectList(_context.Equity, "EquityId", "EquityDesc",learnerViewModel.Person.EquityId);
+                ViewData["GenderId"] = new SelectList(_context.Gender, "GenderId", "GenderDesc",learnerViewModel.Person.GenderId);
+                ViewData["HomeLanguageId"] = new SelectList(_context.HomeLanguage, "HomeLanguageId", "HomeLanguageDesc",learnerViewModel.Person.HomeLanguageId);
+                ViewData["NationalityId"] = new SelectList(_context.Nationality, "NationalityId", "NationalityDesc",learnerViewModel.Person.NationalityId);
+                ViewData["SuburbId"] = new SelectList(_lookUpService.GetSuburbs().Result, "id", "name",learnerViewModel.Address.SuburbId);
+                ViewData["CityId"] = new SelectList(await _lookUpService.GetCities(), "id", "name",learnerViewModel.Address.CityId);
+                ViewData["ProvinceId"] = new SelectList(_lookUpService.GetProvinces().Result, "id", "name",learnerViewModel.Address.ProvinceId);
+                ViewData["CountryId"] = new SelectList(_lookUpService.GetCountries().Result, "id", "name",learnerViewModel.Address.CountryId);
+                ViewData["AddressTypeId"] = new SelectList(_lookUpService.GetAddressTypes().Result, "id", "name",learnerViewModel.Person.CitizenshipStatusId);
+                /*ViewData["InstitutionId"] = new SelectList(_lookUpService.GetInstitutions().Result, "id", "name",learnerViewModel.Learner.);
+                ViewData["CourseId"] = new SelectList(_lookUpService.GetCourses().Result, "id", "name",learnerViewModel.Person.CitizenshipStatusId);*/
+                ViewData["SchoolId"] = new SelectList(_lookUpService.GetSchools().Result, "id", "name",learnerViewModel.Learner.SchoolId);
+                ViewData["SchoolGradeId"] = new SelectList(_lookUpService.GetSchoolGrades().Result, "id", "name",learnerViewModel.Learner.SchoolGradeId); 
                 return RedirectToAction(nameof(Details), new { id = learnerViewModel.Person.NationalId });
             }
 
@@ -379,7 +381,7 @@ namespace learner_portal.Controllers
             ViewData["GenderId"] = new SelectList(_context.Gender, "GenderId", "GenderDesc");
             ViewData["HomeLanguageId"] = new SelectList(_context.HomeLanguage, "HomeLanguageId", "HomeLanguageDesc");
             ViewData["NationalityId"] = new SelectList(_context.Nationality, "NationalityId", "NationalityDesc");
-            ViewData["UserId"] = new SelectList(_context.User, "UserId", "UserId");
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId");
             ViewData["CityId"] = new SelectList(_context.City, "CityId", "CityName");
             ViewData["SuburbId"] = new SelectList(_context.Suburb, "SuburbId", "SuburbName");
             ViewData["CountryId"] = new SelectList(_context.Country, "CountryId", "CountryName");

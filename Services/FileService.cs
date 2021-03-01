@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using System.IO;
 using learner_portal.DTO;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Hosting;
 
 namespace learner_portal.Services
 {
     public class FileService : IFileService, IDisposable
     {
-        private readonly IHostEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         private bool _disposed;
-        public FileService(IHostEnvironment env)
+        public FileService(IWebHostEnvironment env)
         {
             _env = env;
-
         }
         public void Dispose()
         {
@@ -35,29 +34,32 @@ namespace learner_portal.Services
         }
         
         
-        public bool UploadFile(IFormFile file,string filePath)
+        public string UploadFile(IFormFile file,string path)
         {
-            if (!Directory.Exists(filePath))
+            path = _env.WebRootPath + path;
+            
+            if (!Directory.Exists(path))
             {
-                Directory.CreateDirectory(filePath);
+                Directory.CreateDirectory(path);
             }
 
-            using var fileStream = new FileStream(Path.Combine(filePath,file.FileName),FileMode.Create,FileAccess.Write);
+            using var fileStream = new FileStream(Path.Combine(path,file.FileName),FileMode.Create,FileAccess.Write);
             file.CopyToAsync(fileStream);
 
-            return true;
+            return path + file.FileName;
         }
 
-        public bool UploadFiles(IEnumerable<IFormFile> files,string filePath)
+        public bool UploadFiles(IEnumerable<IFormFile> files,string path)
         {
-            if (!Directory.Exists(filePath))
+            path = _env.WebRootPath + path;
+            if (!Directory.Exists(path))
             { 
-                Directory.CreateDirectory(filePath);
+                Directory.CreateDirectory(path);
             }
 
             foreach (var file in files)
             {
-                using var fileStream = new FileStream(Path.Combine(filePath,file.FileName),FileMode.Create,FileAccess.Write);
+                using var fileStream = new FileStream(Path.Combine(path,file.FileName),FileMode.Create,FileAccess.Write);
                 file.CopyToAsync(fileStream);
             }
  
@@ -74,7 +76,7 @@ namespace learner_portal.Services
             {
                 try
                 {
-                    dataFile.Data = File.ReadAllBytes(path);
+                    dataFile.Data = File.ReadAllBytes(_env.WebRootPath + path);
                     dataFile.Path = path;
                 }
                 catch (Exception e)
@@ -88,6 +90,7 @@ namespace learner_portal.Services
         
         public bool  DeleteFile(string path)
         {
+            path = _env.WebRootPath + path;
             // Checks if the id.
             if (!string.IsNullOrEmpty(path))
             {
@@ -106,6 +109,7 @@ namespace learner_portal.Services
         
         public bool  FileExists(string path)
         {
+             path = _env.WebRootPath + path;
             // Checks if the id.
             return File.Exists(path);
 

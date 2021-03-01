@@ -22,10 +22,10 @@ namespace learner_portal.DTO
         [DisplayName("Verified?")]
         public string Verified { get; set; }
         [DisplayName("Verification Date")]
-        public DateTime? VerificationDate { get; set; }
+        public string VerificationDate { get; set; }
         [DisplayName("Verified By")]
         public string VerifiedBy { get; set; }
         [DisplayName("Job Application")]
-        public Guid? JobApplication { get; set; }
+        public Guid JobApplicationId { get; set; }
     }
 }

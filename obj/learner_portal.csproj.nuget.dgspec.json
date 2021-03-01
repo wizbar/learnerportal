@@ -44,6 +44,14 @@
               "target": "Package",
               "version": "[10.1.1, )"
             },
+            "ExcelDataReader": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
+            "ExcelDataReader.DataSet": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
             "MailKit-On-NETCore": {
               "target": "Package",
               "version": "[2.1.0, )"
@@ -115,6 +123,10 @@
             "System.Runtime.Caching": {
               "target": "Package",
               "version": "[4.6.0, )"
+            },
+            "System.Text.Encoding.CodePages": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             },
             "reCAPTCHA.AspNetCore": {
               "target": "Package",

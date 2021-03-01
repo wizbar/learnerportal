@@ -23,7 +23,6 @@ namespace learner_portal.Controllers
         private readonly ILookUpService _lookUpService;
         private readonly IFileService _fileService;
         private readonly UserManager<Users> _userManager;
-        private readonly IWebHostEnvironment _env;
         private readonly FoldersConfigation _foldersConfigation;        
         private readonly INotyfService _notyf;
         
@@ -40,7 +39,6 @@ namespace learner_portal.Controllers
             _lookUpService = lookUpService;
             _fileService = fileService;
             _userManager = userManager;
-            _env = env;
             _foldersConfigation = foldersConfigation;
             _notyf = notyf;
         }
@@ -56,7 +54,7 @@ namespace learner_portal.Controllers
             
             if (ModelState.IsValid)
             {
-                var path =  _env.WebRootPath + document.FilePath + "/" + document.FileName;
+                var path =   document.FilePath + "/" + document.FileName;
                 fileBytes =  _fileService.DownloadFile(path).Data;
             }
           
@@ -74,6 +72,14 @@ namespace learner_portal.Controllers
         {
             try 
             {
+                
+                if (!ModelState.IsValid)
+                {
+                    string messages = string.Join("; ", ModelState.Values
+                        .SelectMany(x => x.Errors)
+                        .Select(x => x.ErrorMessage));
+                    throw new Exception("Please correct the following errors: " + Environment.NewLine + messages);
+                }
                 var draw = HttpContext.Request.Query["draw"].FirstOrDefault();
                 // Skiping number of Rows count  
                 var start = Request.Query["start"].FirstOrDefault();
@@ -96,7 +102,12 @@ namespace learner_portal.Controllers
                 var listOfDocuments = new List<DocumentDetailsDTO>();
 
                 listOfDocuments = await _lookUpService.GetDocumentsDetails();
-  
+
+                if (listOfDocuments == null)
+                {
+                    return Json(new { Result = "ERROR", Message ="Oops something went wrong..."});
+                }
+
                 // Getting all Customer data  z 
                 var allDocuments = listOfDocuments;
 
@@ -117,9 +128,9 @@ namespace learner_portal.Controllers
                 return Json(new 
                 { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = allDocuments });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return Json(new { Result = "ERROR", Message = ex.Message });
             } 
         }
 
@@ -222,7 +233,7 @@ namespace learner_portal.Controllers
 
                 document.FileName = document.MyFiles.FileName;
                 if (document.DocumentTypeId != null)
-                    document.FilePath = _env.WebRootPath + _foldersConfigation.Docs + learner.NationalID + "/" +
+                    document.FilePath =  _foldersConfigation.Documents + learner.NationalID + "/" +
                                         (_lookUpService.GetAllDocumentTypesById(document.DocumentTypeId).Result
                                             .TypeName);
                 _fileService.UploadFile(document.MyFiles,document.FilePath);
@@ -233,7 +244,7 @@ namespace learner_portal.Controllers
                 document.LastUpdatedBy = user.UserName;
                 document.DateUpdated = DateTime.Now;
                 document.Verified = "false";
-                document.FilePath =  _foldersConfigation.Docs + learner.NationalID + "/" +
+                document.FilePath =  _foldersConfigation.Documents + learner.NationalID + "/" +
                                     (_lookUpService.GetAllDocumentTypesById(document.DocumentTypeId).Result
                                         .TypeName) + "/";
    
@@ -319,12 +330,12 @@ namespace learner_portal.Controllers
                 document.Verified = Const.FALSE;
                 document.LastUpdatedBy = User.Identity.Name;
                 document.DateUpdated = DateTime.Now;
-                string path = _env.WebRootPath + document.FilePath + document.FileName;
+                string path = document.FilePath + document.FileName;
                 if (_fileService.FileExists(path))
                 {
                     _fileService.DeleteFile(path);
                 }
-                  _fileService.UploadFile(document.MyFiles, _env.WebRootPath + document.FilePath );
+                  _fileService.UploadFile(document.MyFiles, document.FilePath );
                 try
                 {
                     document.FileName = document.MyFiles.FileName;

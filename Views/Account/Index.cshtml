@@ -1,8 +1,39 @@
-@model object
-
-@{
-    ViewBag.Title = "Accounts";
-    Layout = "_Layout_Main";
+﻿@{
+    Layout = "_Layout";
 }
 
-<h2>Accounts</h2>
+<div class="card card-custom gutter-b">
+    <div class="card-body">
+        <table id="allUser" class="table">
+            <thead>
+            <tr>
+                @*<div class="form-actions no-color"> 
+                    <a class="btn btn-primary btn-sm mb-2 btn-rounded" asp-action="Create"><i class="fa fa-plus"></i> Create New</a>
+                </div>*@
+            </tr>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Active(Y/N)</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+        </table>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#divProcessing").hide();
+ 
+        createUsersDataTable('allUser', '/Account/GetAllUsers'); 
+
+        // Hide the "busy" Gif at load:
+
+    });
+
+</script>    

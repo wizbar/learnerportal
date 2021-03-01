@@ -19,6 +19,9 @@ namespace learner_portal.Models
         [Required(ErrorMessage = "Please enter FirstName")]
         public string FirstName { get; set; }
         
+        [DisplayName("Title")]
+        [Required(ErrorMessage = "Please enter Title")]
+        public string Title { get; set; }
         public string UserId { get; set; }
         
         [DisplayName("Last Name")]

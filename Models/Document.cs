@@ -30,7 +30,7 @@ namespace learner_portal.Models
         [DisplayName("Verified")]
         public string Verified { get; set; }
         [DisplayName("Verification Date")]
-        public DateTime? VerificationDate { get; set; }
+        public DateTime VerificationDate { get; set; }
         [DisplayName("Verified By")]
         public string VerifiedBy { get; set; }
         [DisplayName("Job Application")]
