@@ -364,7 +364,7 @@
 		        </div>*@
 		        <div class="form-group col-md-4">
 			        <b>Accreditation Status</b>
-			        <select asp-for="Assessor.AccreditationStatusId" class="form-control select2" style="width: 100%" asp-items="ViewBag.AccreditationStatusId">
+			        <select asp-for="Assessor.AccreditationStatusesId" class="form-control select2" style="width: 100%" asp-items="ViewBag.AccreditationStatusesId">
 				        <option value="" selected disabled hidden>Status</option>
 			        </select>
 		        </div>
@@ -421,7 +421,7 @@
 				        <select asp-for="Qualification.QualificationId" class="form-control select2-search--dropdown" style="width: 100%" asp-items="ViewBag.QualificationId">
 					        <option value="" selected disabled hidden>Choose</option>
 				        </select>
-				        <span asp-validation-for="Assessor.AccredStartDate" class="text-danger"></span>
+				        <span asp-validation-for="Qualification.QualificationId" class="text-danger"></span>
 			        </div>
 		        </div>
 	        </div>

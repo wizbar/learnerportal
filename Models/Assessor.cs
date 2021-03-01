@@ -17,7 +17,7 @@ namespace learner_portal.Models
         [DisplayName("Accred End Date")]
         public DateTime AccredEndDate { get; set; }
         [DisplayName("Accreditation Status")]
-        public long AccreditationStatusId { get; set; }
+        public long AccreditationStatusesId { get; set; }
         [DisplayName("Registration No")]
         public string RegistrationNo { get; set; }
         [DisplayName("Evaluator")]
@@ -37,7 +37,7 @@ namespace learner_portal.Models
         [DisplayName("Date Updated")]
         public DateTime? DateUpdated { get; set; }
         [DisplayName("Process Indicator")]
-        public long ProcessIndicatorId { get; set; }
+        public long ProcessIndicatorsId { get; set; }
         [DisplayName("Application Type")]
         public long ApplicationTypesId { get; set; }
         [DisplayName("Send For Approval Date")]
@@ -56,11 +56,11 @@ namespace learner_portal.Models
       
         public virtual AccreditationStatuses AccreditationStatuses { get; set; }
 
-        public virtual Evaluator Evaluator { get; set; }
+        public virtual Evaluators Evaluators { get; set; }
    
         public virtual ProcessIndicators ProcessIndicators { get; set; }
 
-        public virtual ApplicationType ApplicationType { get; set; }
+        public virtual ApplicationTypes ApplicationTypes { get; set; }
         public virtual Etqe Etqe { get; set; }
         public virtual Person Person { get; set; }
     }

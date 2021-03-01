@@ -17,7 +17,7 @@ namespace learner_portal.Models
         }
 
         public virtual DbSet<AccreditationStatuses> AccreditationStatuses => Set<AccreditationStatuses>();
-        public virtual DbSet<ApplicationType> ApplicationType => Set<ApplicationType>();
+        public virtual DbSet<ApplicationTypes> ApplicationType => Set<ApplicationTypes>();
         public virtual DbSet<Assessor> Assessor => Set<Assessor>();
         public virtual DbSet<Address> Address => Set<Address>();
         public virtual DbSet<AddressType> AddressType => Set<AddressType>();
@@ -27,7 +27,7 @@ namespace learner_portal.Models
         public virtual DbSet<Course> Course => Set<Course>();
         public virtual DbSet<DisabilityStatus> DisabilityStatus => Set<DisabilityStatus>();
         public virtual DbSet<Equity> Equity => Set<Equity>();
-        public virtual DbSet<Evaluator> Evaluator => Set<Evaluator>();
+        public virtual DbSet<Evaluators> Evaluator => Set<Evaluators>();
         public virtual DbSet<Etqe> Etqe => Set<Etqe>();
         public virtual DbSet<Gender> Gender => Set<Gender>();
         public virtual DbSet<HomeLanguage> HomeLanguage => Set<HomeLanguage>();

@@ -59,9 +59,9 @@ namespace learner_portal.Services
             var assessorDetails =
                 await _context.Assessor
                     .Include(a => a.AccreditationStatuses)
-                    .Include(e => e.Evaluator)
+                    .Include(e => e.Evaluators)
                     .Include(p => p.ProcessIndicators)
-                    .Include(a => a.ApplicationType)
+                    .Include(a => a.ApplicationTypes)
                     .Include(e => e.Etqe)
                     .Include(p => p.Person)
                     .ThenInclude(a => a.Address).ThenInclude(s => s.Suburb)
@@ -82,7 +82,7 @@ namespace learner_portal.Services
                        RegistrationDate = a.RegistrationDate,
                        ApprovedBy = a.ApprovedBy,
                        ProcessIndicatorsDesc = a.ProcessIndicators.ProcessIndicatorsDesc,
-                       ApplicationTypesDesc = a.ApplicationType.ApplicationTypesDesc,
+                       ApplicationTypesDesc = a.ApplicationTypes.ApplicationTypesDesc,
                        SendForApprovalDate = a.SendForApprovalDate,
                        CertificateIssuedYn = a.CertificateIssuedYn,
                        CertificateDate = a.CertificateDate,

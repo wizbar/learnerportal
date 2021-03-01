@@ -47,9 +47,6 @@ namespace learner_portal.Models
         public string DisplayOnSiteYn { get; set; }
         public string TrainingMaterialYn { get; set; }
         public string TradeYn { get; set; }
-        public string MinimumCredits1 { get; set; }
         public long? QualificationTypesId { get; set; }
-        public string RegistrationEndDate1 { get; set; }
-        public string RegistrationStartDate1 { get; set; }
     }
 }

@@ -31,8 +31,8 @@ namespace learner_portal.Controllers
         // GET: Assessors
         public async Task<IActionResult> Index()
         {
-            var baseProjectContext = _context.Assessor;
-            return View(await baseProjectContext.ToListAsync());
+
+            return View();
         }
         
         public async Task<JsonResult> GetAllAssessors()
@@ -165,10 +165,10 @@ namespace learner_portal.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AccreditationStatusId"] = new SelectList(_context.AccreditationStatuses, "AccreditationStatusId", "AccreditationStatusDesc", assessorViewModel.Assessor.AccreditationStatusId);
+            ViewData["AccreditationStatusId"] = new SelectList(_context.AccreditationStatuses, "AccreditationStatusId", "AccreditationStatusDesc", assessorViewModel.Assessor.AccreditationStatusesId);
             ViewData["EtqeId"] = new SelectList(_context.Etqe, "EtqeId", "EtqeName", assessorViewModel.Assessor.EtqeId);
-            ViewData["ApplicationTypesId"] = new SelectList(_context.ApplicationType, "ApplicationTypesId", "ApplicationTypesDesc", assessorViewModel.Assessor.ApplicationType);
-            ViewData["EvaluatorsId"] = new SelectList(_context.Evaluator, "EvaluatorsId", "EvaluatorsId", assessorViewModel.Assessor.Evaluator);
+            ViewData["ApplicationTypesId"] = new SelectList(_context.ApplicationType, "ApplicationTypesId", "ApplicationTypesDesc", assessorViewModel.Assessor.ApplicationTypes);
+            ViewData["EvaluatorsId"] = new SelectList(_context.Evaluator, "EvaluatorsId", "EvaluatorsId", assessorViewModel.Assessor.Evaluators);
             ViewData["CitizenshipStatusId"] = new SelectList(_context.CitizenshipStatus, "CitizenshipStatusId", "CitizenshipStatusDesc", assessorViewModel.Person.CitizenshipStatus);
             ViewData["DisabilityStatusId"] = new SelectList(_context.DisabilityStatus, "DisabilityStatusId", "DisabilityStatusDesc", assessorViewModel.Person.DisabilityStatus);
             ViewData["EquityId"] = new SelectList(_context.Equity, "EquityId", "EquityDesc", assessorViewModel.Person.Equity);
@@ -199,7 +199,7 @@ namespace learner_portal.Controllers
             {
                 return NotFound();
             }
-            ViewData["AccreditationStatusId"] = new SelectList(_context.AccreditationStatuses, "AccreditationStatusId", "AccreditationStatusId", assessor.AccreditationStatusId);
+            ViewData["AccreditationStatusId"] = new SelectList(_context.AccreditationStatuses, "AccreditationStatusId", "AccreditationStatusId", assessor.AccreditationStatusesId);
             ViewData["EtqeId"] = new SelectList(_context.Etqe, "EtqeId", "EtqeId", assessor.EtqeId);
             return View(assessor);
         }
@@ -241,7 +241,7 @@ namespace learner_portal.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AccreditationStatusId"] = new SelectList(_context.AccreditationStatuses, "AccreditationStatusId", "AccreditationStatusId", assessor.AccreditationStatusId);
+            ViewData["AccreditationStatusId"] = new SelectList(_context.AccreditationStatuses, "AccreditationStatusId", "AccreditationStatusId", assessor.AccreditationStatusesId);
             ViewData["EtqeId"] = new SelectList(_context.Etqe, "EtqeId", "EtqeId", assessor.EtqeId);
             return View(assessor);
         }

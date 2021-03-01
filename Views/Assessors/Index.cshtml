@@ -79,7 +79,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model ?? new List<Assessor>()) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.PersonId)
@@ -136,7 +136,7 @@
                 @Html.DisplayFor(modelItem => item.ReissueDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AccreditationStatuses.AccreditationStatusId)
+                @Html.DisplayFor(modelItem => item.AccreditationStatuses.AccreditationStatusesId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Etqe.EtqeId)

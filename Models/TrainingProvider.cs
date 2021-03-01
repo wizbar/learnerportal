@@ -62,8 +62,8 @@ namespace learner_portal.Models
         public virtual AccreditationStatuses AccreditationStatuses { get; set; }
         public virtual Etqe Etqe { get; set; }
         public virtual ProcessIndicators ProcessIndicators { get; set; }
-        public virtual Evaluator Evaluator { get; set; }
-        public virtual ApplicationType ApplicationType { get; set; }
+        public virtual Evaluators Evaluator { get; set; }
+        public virtual ApplicationTypes ApplicationTypes { get; set; }
         public virtual BbbeeRating BbbeeRating { get; set; }
         public virtual Seta Seta { get; set; }
         public virtual ProgrammeType ProgrammeType { get; set; }

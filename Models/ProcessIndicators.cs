@@ -13,9 +13,9 @@ namespace learner_portal.Models
             TrainingProviders = new HashSet<TrainingProvider>();
         }
         [Key]
-        public long ProcessIndicatorId { get; set; }
+        public long ProcessIndicatorsId { get; set; }
         public string ProcessIndicatorsDesc { get; set; }
-        public long? RoleId { get; set; }
+        public long RoleId { get; set; }
         public virtual ICollection<Assessor> Assessors { get; set; }
         public virtual ICollection<Moderator> Moderators { get; set; }
         public virtual ICollection<TrainingProvider> TrainingProviders { get; set; }

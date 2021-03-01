@@ -31,9 +31,9 @@ namespace learner_portal.Models
         public long EtqeId { get; set; }
         
         public virtual AccreditationStatuses AccreditationStatuses { get; set; }
-        public virtual Evaluator Evaluator { get; set; }
+        public virtual Evaluators Evaluators { get; set; }
         public virtual ProcessIndicators ProcessIndicators { get; set; }
-        public virtual ApplicationType ApplicationType { get; set; }
+        public virtual ApplicationTypes ApplicationTypes { get; set; }
         public virtual Etqe Etqe { get; set; }
         public virtual Person Person { get; set; }
 

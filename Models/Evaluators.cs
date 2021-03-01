@@ -4,21 +4,21 @@ using System.ComponentModel.DataAnnotations;
 
 namespace learner_portal.Models
 {
-    public class ApplicationType
+    public class Evaluators
     {
-        public ApplicationType()
+        public Evaluators()
         {
             Assessors = new HashSet<Assessor>();
             Moderators = new HashSet<Moderator>();
             TrainingProviders = new HashSet<TrainingProvider>();
         }
         [Key]
-        public long ApplicationTypesId { get; set; }
-        public string ApplicationTypesDesc { get; set; }
-        
+        public Guid EvaluatorsId { get; set; }
+        public Guid PersonId { get; set; }
         public virtual ICollection<Assessor> Assessors { get; set; }
         public virtual ICollection<Moderator> Moderators { get; set; }
         public virtual ICollection<TrainingProvider> TrainingProviders { get; set; }
+
     }
 }
  
