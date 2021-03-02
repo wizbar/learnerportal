@@ -77,12 +77,9 @@ $(document).ready(function() {
 
 
 createPersonDataTable = (table_id, url) => {
-
-
-
     // The table which will be configured to use Datatables
 
-    $("#" + table_id).DataTable({
+    let oTable = $("#" + table_id).DataTable({
 
         responsive: true,
         dom: 'Bfrtip',
@@ -149,39 +146,38 @@ createPersonDataTable = (table_id, url) => {
 
         "columns": [
 
-            { "data": "nationalID", "name": "nationalID", "autoWidth": true },
+            {"data": "nationalID", "name": "nationalID", "autoWidth": true},
 
             {
                 "render": function (data, type, full) {
-                    if(full.photoPath != null){
-                        return '<img src="'  + full.photoPath + full.photoName + '" style="height:100px;width:100px;" alt=""/>';
-                    }
-                    else {
+                    if (full.photoPath != null) {
+                        return '<img src="' + full.photoPath + full.photoName + '" style="height:100px;width:100px;" alt=""/>';
+                    } else {
                         return '<img src="../assets/media/default-avatar.png" style="height:100px;width:100px;" alt=""/>';
                     }
 
-                }},
+                }
+            },
 
-            { "data": "firstName", "name": "firstName", "autoWidth": true },
+            {"data": "firstName", "name": "firstName", "autoWidth": true},
 
-            { "data": "lastName", "name": "lastName", "autoWidth": true },
+            {"data": "lastName", "name": "lastName", "autoWidth": true},
 
-            { "data": "personsDob", "name": "personsDob", "autoWidth": true },
+            {"data": "personsDob", "name": "personsDob", "autoWidth": true},
 
-            { "data": "age", "name": "age", "autoWidth": true },
+            {"data": "age", "name": "age", "autoWidth": true},
 
-            { "data": "email", "name": "email", "autoWidth": true },
+            {"data": "email", "name": "email", "autoWidth": true},
 
-            { "data": "phoneNumber", "name": "phoneNumber", "autoWidth": true },
+            {"data": "phoneNumber", "name": "phoneNumber", "autoWidth": true},
 
-            { "data": "provinceName", "name": "provinceName", "autoWidth": true },
+            {"data": "provinceName", "name": "provinceName", "autoWidth": true},
 
-            { "data": "countryName", "name": "countryName", "autoWidth": true },
+            {"data": "countryName", "name": "countryName", "autoWidth": true},
 
             {
 
                 "render": function (data, type, full) {
-
 
 
                     return `<a href="/Person/Edit/` + full.nationalID + `"  class=" mr-2" ><i class="fa fa-edit" aria-hidden="true" style="color:#727cf5"></i></a>| ` +
@@ -195,13 +191,13 @@ createPersonDataTable = (table_id, url) => {
             }
 
 
-
         ],
 
 
-
     });
-
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    });
 };
 
 
@@ -210,7 +206,7 @@ createCompaniesDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
 
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
 
         responsive : true,
         dom: 'Bfrtip',
@@ -337,7 +333,9 @@ createCompaniesDataTable = (table_id, url) => {
 
     });
 
-
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 
 };
 
@@ -347,7 +345,7 @@ createJobDataTable = (table_id, url) => {
     
     // The table which will be configured to use Datatables
 
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
 
         "order": [[2, "asc"]],
 
@@ -432,7 +430,9 @@ createJobDataTable = (table_id, url) => {
 
 
     });
-
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 };
 
 
@@ -443,7 +443,7 @@ createJobSectorDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
 
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
 
         "order": [[2, "asc"]],
 
@@ -513,7 +513,9 @@ createJobSectorDataTable = (table_id, url) => {
 
     });
 
-
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 
 };
 
@@ -527,7 +529,7 @@ createJobTypeDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
 
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
 
         "order": [[2, "asc"]],
 
@@ -596,7 +598,9 @@ createJobTypeDataTable = (table_id, url) => {
 
 
     });
-
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 };
 
 
@@ -609,7 +613,7 @@ createInstitutionTypeDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
 
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
 
         "order": [[2, "asc"]],
 
@@ -678,7 +682,9 @@ createInstitutionTypeDataTable = (table_id, url) => {
 
 
     });
-
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 };
 
 
@@ -691,7 +697,7 @@ createInstitutionDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
 
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
 
         "order": [[2, "asc"]],
 
@@ -755,7 +761,9 @@ createInstitutionDataTable = (table_id, url) => {
         ],
         
     });
-
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 }; 
 
 
@@ -764,7 +772,7 @@ createSchoolDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
 
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
 
         "order": [[2, "asc"]],
 
@@ -836,7 +844,9 @@ createSchoolDataTable = (table_id, url) => {
 
 
     });
-
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 };
 
 
@@ -849,7 +859,7 @@ createSchoolGradeDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
 
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
         "responsive": true,
         "order": [[2, "asc"]],
 
@@ -918,7 +928,9 @@ createSchoolGradeDataTable = (table_id, url) => {
 
 
     });
-
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 };
 
 
@@ -931,7 +943,7 @@ createLearnersDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
 
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
         responsive : true,
         dom: 'Bfrtip',
 
@@ -1040,7 +1052,9 @@ createLearnersDataTable = (table_id, url) => {
 
 
     });
-
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 };
 
 
@@ -1053,7 +1067,7 @@ createUsersDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
 
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
 
         "order": [[2, "asc"]],
 
@@ -1128,7 +1142,9 @@ createUsersDataTable = (table_id, url) => {
 
 
     });
-
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 };
 
 
@@ -1141,7 +1157,7 @@ createRolesDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
 
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
 
         "order": [[2, "asc"]],
 
@@ -1212,7 +1228,9 @@ createRolesDataTable = (table_id, url) => {
 
 
     });
-
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 };
 
 
@@ -1225,7 +1243,7 @@ createOfoDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
 
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
 
         "order": [[2, "asc"]],
 
@@ -1297,7 +1315,9 @@ createOfoDataTable = (table_id, url) => {
 
 
     });
-
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 };
 
 
@@ -1310,7 +1330,7 @@ createFinancialyearDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
 
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
 
         "order": [[2, "asc"]],
 
@@ -1387,7 +1407,9 @@ createFinancialyearDataTable = (table_id, url) => {
 
 
     });
-
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 };
 
 
@@ -1400,7 +1422,7 @@ createSectorDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
 
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
 
         "order": [[2, "asc"]],
 
@@ -1469,7 +1491,9 @@ createSectorDataTable = (table_id, url) => {
 
 
     });
-
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 };
 
 
@@ -1482,7 +1506,7 @@ createOfoUnitDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
 
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
 
         "order": [[2, "asc"]],
 
@@ -1551,7 +1575,9 @@ createOfoUnitDataTable = (table_id, url) => {
 
 
     });
-
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 };
 
 
@@ -1562,7 +1588,7 @@ createOfoMinorDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
 
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
 
         "order": [[2, "asc"]],
 
@@ -1633,7 +1659,9 @@ createOfoMinorDataTable = (table_id, url) => {
 
 
     });
-
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 };
 
 
@@ -1646,7 +1674,7 @@ createJobApplicationsDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
 
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
 
         dom: 'Bfrtip',
         responsive: true,
@@ -1767,14 +1795,16 @@ createJobApplicationsDataTable = (table_id, url) => {
 
 
     });
-
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 };
 
 
 createAddressTypesDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
         "order": [[2, "asc"]],
         "processing": true, // for show progress bar      
         "serverSide": false, // for process server side       
@@ -1809,12 +1839,16 @@ createAddressTypesDataTable = (table_id, url) => {
         ],
 
     });
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 };
 
 createCitiesDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
-    $("#" + table_id).DataTable({
+    let oTable =  $("#" + table_id).DataTable({
+        searching: true,  info: false,
         "order": [[2, "asc"]],
         "processing": true, // for show progress bar      
         "serverSide": false, // for process server side       
@@ -1850,12 +1884,17 @@ createCitiesDataTable = (table_id, url) => {
         ],
 
     });
+
+    $('#mySearchButton').on( 'keyup change', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
+    
 };
 
 createCountriesDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
-    $("#" + table_id).DataTable({
+   let oTable = $("#" + table_id).DataTable({
         "order": [[2, "asc"]],
         "processing": true, // for show progress bar      
         "serverSide": false, // for process server side       
@@ -1890,12 +1929,17 @@ createCountriesDataTable = (table_id, url) => {
         ],
 
     });
+
+
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 };
 
 createProvincesDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
         "order": [[2, "asc"]],
         "processing": true, // for show progress bar      
         "serverSide": false, // for process server side       
@@ -1931,13 +1975,16 @@ createProvincesDataTable = (table_id, url) => {
         ],
 
     });
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 };
 
 
 createSuburbsDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
         "order": [[2, "asc"]],
         "processing": true, // for show progress bar      
         "serverSide": false, // for process server side       
@@ -1973,13 +2020,17 @@ createSuburbsDataTable = (table_id, url) => {
         ],
 
     });
+
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 };
 
 
 createDocumentTypesDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
         "order": [[2, "asc"]],
         "processing": true, // for show progress bar      
         "serverSide": false, // for process server side       
@@ -2024,13 +2075,16 @@ createDocumentTypesDataTable = (table_id, url) => {
         ],
 
     });
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 };
 
 
 createDocumentsDataTable = (table_id, url) => {
 
     // The table which will be configured to use Datatables
-    $("#" + table_id).DataTable({
+      let oTable = $("#" + table_id).DataTable({
         "order": [[2, "asc"]],
         "processing": true, // for show progress bar      
         "serverSide": false, // for process server side       
@@ -2071,4 +2125,7 @@ createDocumentsDataTable = (table_id, url) => {
         ],
 
     });
+    $('#mySearchButton').on( 'keyup click', function () {
+        oTable.search($('#mySearchText').val()).draw();
+    } );
 };

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Text; 
 using System.Threading.Tasks;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using learner_portal.DTO;
@@ -23,7 +23,7 @@ namespace learner_portal.Controllers
 
     public class AccountController : BaseController  
     {
-        private readonly LearnerContext _context;
+        private readonly LearnerContext _context;  
         private readonly EmailConfiguration _emailConfig;
         private readonly IEmailSender _emailSender;
         private readonly ILogger<AccountController> _logger;

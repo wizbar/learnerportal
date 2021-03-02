@@ -52,6 +52,11 @@ html {
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block; }
 
+
+	.dataTables_filter, .dataTables_info .dataTables_length { display: none; }
+
+
+
 body {
   margin: 0;
   font-family: Poppins, Helvetica, "sans-serif";

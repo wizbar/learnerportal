@@ -9,29 +9,7 @@
     <div class="card-body">
         <table id="allPerson" class="table ">
             <thead>
-            <tr>
-                   
 
-                    @{
-                        var user = await _userManager.FindByNameAsync(User.Identity.Name);
-                    
-                        if( (await _userManager.GetRolesAsync(user)).ToList()[0].Equals(Const.ADMINISTRATOR_USER)){
-                            <div class="row">                
-                                <div class="form-actions no-color col-md-2 float-left" data-toggle="tooltip" title="" data-placement="top" data-original-title="Quick actions">
-                                    <a asp-action="CreateAccount" class="btn btn-primary  btn-block btn-sm mb-2 btn-rounded" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-user-plus"></i> Create Profile
-                                    </a>
-                                </div>
-                                <div class="form-actions no-color col-md-2 float-left">
-                                    <button class="btn btn-danger btn-block btn-sm mb-2 btn-rounded" onclick="showInPopUp('@Url.Action("ImportData", "DataImport", null, Context.Request.Scheme)', 'Import Document')" id="btnImport"><i class="fa fa-upload"></i>Import Data</button>
-                                </div>
-                            </div>
-                            
-                        }
-                    }
-               
-                   
-            </tr>
             
             
             <tr>

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "oK2+UhmBS8NSkQbPF4z3/ymEado1Qi7IaSfzqpmw77m+pvwQ+WjGwgne0VUOzuvrafhCB566C5peJC3nyOZ13w==",
+  "dgSpecHash": "UCs11+indRW4NxLCXyXmIl+5euoiyEYLPcVEQ0Xb1O2gYWtRdE/wC5YQoIWKCLyxoHze4SOdTLBhm9N/88Zd1A==",
   "success": true,
   "projectFilePath": "/home/endorsed/code/learner_portal/learner_portal.csproj",
   "expectedPackageFiles": [
@@ -132,7 +132,7 @@
     "/home/endorsed/.nuget/packages/nuget.frameworks/4.7.0/nuget.frameworks.4.7.0.nupkg.sha512",
     "/home/endorsed/.nuget/packages/portable.bouncycastle/1.8.5/portable.bouncycastle.1.8.5.nupkg.sha512",
     "/home/endorsed/.nuget/packages/recaptcha.aspnetcore/3.0.10/recaptcha.aspnetcore.3.0.10.nupkg.sha512",
-    "/home/endorsed/.nuget/packages/rotativa.aspnetcore/1.1.1/rotativa.aspnetcore.1.1.1.nupkg.sha512",
+    "/home/endorsed/.nuget/packages/rotativa.aspnetcore/1.2.0-beta/rotativa.aspnetcore.1.2.0-beta.nupkg.sha512",
     "/home/endorsed/.nuget/packages/runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl/4.3.2/runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "/home/endorsed/.nuget/packages/runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl/4.3.2/runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "/home/endorsed/.nuget/packages/runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl/4.3.2/runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",

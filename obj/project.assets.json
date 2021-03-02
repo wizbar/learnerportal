@@ -2166,7 +2166,7 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Rotativa.AspNetCore/1.1.1": {
+      "Rotativa.AspNetCore/1.2.0-beta": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Mvc": "2.0.1"
@@ -7521,15 +7521,15 @@
         "recaptcha.aspnetcore.nuspec"
       ]
     },
-    "Rotativa.AspNetCore/1.1.1": {
-      "sha512": "LzlleiGJ+r39cDm4ln/gd1s7QEIeFtYOcxS5AIwGcE4kk1+axULj48xMV1MTEr7U+yH73VBl+aUbkJsKAVmzAA==",
+    "Rotativa.AspNetCore/1.2.0-beta": {
+      "sha512": "xD7d604SNA9RFhLxTdWX3NERdg/ziCPmz3RVG56oEP3y+E+hfF2Dr0BjfAkCdqQh69L2dA9IKSLgohHqZsWFhg==",
       "type": "package",
-      "path": "rotativa.aspnetcore/1.1.1",
+      "path": "rotativa.aspnetcore/1.2.0-beta",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Rotativa.AspNetCore.dll",
-        "rotativa.aspnetcore.1.1.1.nupkg.sha512",
+        "rotativa.aspnetcore.1.2.0-beta.nupkg.sha512",
         "rotativa.aspnetcore.nuspec"
       ]
     },
@@ -13072,7 +13072,7 @@
       "Microsoft.VisualStudio.Web.CodeGeneration >= 3.1.4",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4",
       "Microsoft.VisualStudio.Web.CodeGeneration.Tools >= 2.0.4",
-      "Rotativa.AspNetCore >= 1.1.1",
+      "Rotativa.AspNetCore >= 1.2.0-beta",
       "Serilog.Extensions.Logging.File >= 2.0.0",
       "System.Runtime.Caching >= 4.6.0",
       "System.Text.Encoding.CodePages >= 5.0.0",
@@ -13192,7 +13192,7 @@
           },
           "Rotativa.AspNetCore": {
             "target": "Package",
-            "version": "[1.1.1, )"
+            "version": "[1.2.0-beta, )"
           },
           "Serilog.Extensions.Logging.File": {
             "target": "Package",

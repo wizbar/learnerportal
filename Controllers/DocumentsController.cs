@@ -182,7 +182,7 @@ namespace learner_portal.Controllers
             {
                 document.Verified = Const.TRUE;
                 document.VerifiedBy = User.Identity.Name;
-                document.VerificationDate = DateTime.Now;
+                document.VerificationDate =  DateTime.Now;
                 document.LastUpdatedBy = User.Identity.Name;
                 document.DateUpdated = DateTime.Now;
  
@@ -239,9 +239,9 @@ namespace learner_portal.Controllers
 
                 //create an audit trail
                 document.CreatedBy = user.UserName;
-                document.DateCreated = DateTime.Now;
+                document.DateCreated =  DateTime.Now.Date;
                 document.LastUpdatedBy = user.UserName;
-                document.DateUpdated = DateTime.Now;
+                document.DateUpdated =  DateTime.Now.Date;
                 document.Verified = "false";
                 document.FilePath =  _foldersConfigation.Documents + learner.NationalID + "/" +
                                     (_lookUpService.GetAllDocumentTypesById(document.DocumentTypeId).Result
@@ -282,7 +282,9 @@ namespace learner_portal.Controllers
             //create an audit trailss
             document.VerifiedBy = user.UserName;
             document.CreatedBy = user.UserName;
-            document.DateCreated = DateTime.Now;
+            document.DateCreated = DateTime.Now.Date;
+            document.DateUpdated = DateTime.Now.Date; 
+            
             if (ModelState.IsValid)
             {  
                 _context.Add(document);
